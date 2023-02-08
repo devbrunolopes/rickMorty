@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C839D0629942F1C00ECCD91 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */; };
+		5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */; };
+		5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */; };
 		BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F153C299427A30061E432 /* AppDelegate.swift */; };
 		BE8F153F299427A30061E432 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F153E299427A30061E432 /* SceneDelegate.swift */; };
 		BE8F1546299427A40061E432 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8F1545299427A40061E432 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
+		5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		BE8F1539299427A30061E432 /* rickMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rickMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F153C299427A30061E432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE8F153E299427A30061E432 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +39,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C839D0129942EB900ECCD91 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				5C839D0229942EC900ECCD91 /* ForgotPassword */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		5C839D0229942EC900ECCD91 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */,
+				5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */,
+				5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
 		BE8F1530299427A30061E432 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +76,7 @@
 		BE8F153B299427A30061E432 /* rickMorty */ = {
 			isa = PBXGroup;
 			children = (
+				5C839D0129942EB900ECCD91 /* Features */,
 				BE8F153C299427A30061E432 /* AppDelegate.swift */,
 				BE8F153E299427A30061E432 /* SceneDelegate.swift */,
 				BE8F1545299427A40061E432 /* Assets.xcassets */,
@@ -131,7 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */,
+				5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */,
 				BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */,
+				5C839D0629942F1C00ECCD91 /* ForgotPasswordScreen.swift in Sources */,
 				BE8F153F299427A30061E432 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
