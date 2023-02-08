@@ -55,14 +55,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		5C839CFC29942D3700ECCD91 /* Features */ = {
-			isa = PBXGroup;
-			children = (
-				5C839CF929942CC500ECCD91 /* Login */,
-			);
-			path = Features;
-			sourceTree = "<group>";
-		};
 		BE8F1530299427A30061E432 = {
 			isa = PBXGroup;
 			children = (
@@ -82,7 +74,6 @@
 		BE8F153B299427A30061E432 /* rickMorty */ = {
 			isa = PBXGroup;
 			children = (
-				5C839CFC29942D3700ECCD91 /* Features */,
 				EB90EA5429942EC000FC36CF /* Protocol */,
 				EB90EA4A29942C9400FC36CF /* Features */,
 				BE8F153C299427A30061E432 /* AppDelegate.swift */,
@@ -97,18 +88,11 @@
 		EB90EA4A29942C9400FC36CF /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5C839CF929942CC500ECCD91 /* Login */,
 				EB90EA4D29942CAB00FC36CF /* ForgotPassword */,
 				EB90EA4C29942CA300FC36CF /* Register */,
-				EB90EA4B29942C9B00FC36CF /* Login */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		EB90EA4B29942C9B00FC36CF /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		EB90EA4C29942CA300FC36CF /* Register */ = {
