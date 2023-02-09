@@ -18,7 +18,8 @@ class RegisterVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.screen?.delegate(delegate: self)
+        screen?.delegate(delegate: self)
+        screen?.configTextField(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,9 +37,17 @@ extension RegisterVC: RegisterScreenProtocol {
     }
     
     func actionRegisterButton() {
-        
+        screen?.configCheckPassword()
     }
-    
     
 }
 
+// MARK: Extension ConfigTextField
+
+extension RegisterVC: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

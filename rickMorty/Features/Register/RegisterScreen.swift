@@ -154,6 +154,15 @@ class RegisterScreen: UIView {
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
         return button
     }()
+    
+    lazy var checkPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Senhas divergentes, Tente Novamente!"
+        label.textColor = .clear
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        return label
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -170,6 +179,25 @@ class RegisterScreen: UIView {
     
     @objc func tappedRegisterButton(){
         delegate?.actionRegisterButton()
+    }
+    
+    func configTextField(delegate: UITextFieldDelegate){
+        nameTextField.delegate = delegate
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
+        confirmPasswordTextField.delegate = delegate
+    }
+    
+    func configOnButton(){
+        
+    }
+    
+    func configCheckPassword(){
+        if passwordTextField.text != confirmPasswordTextField.text {
+            checkPasswordLabel.textColor = .red
+        } else {
+            checkPasswordLabel.textColor = .clear
+        }
     }
     
 }
@@ -190,6 +218,7 @@ extension RegisterScreen: ViewCode {
         addSubview(confirmPasswordLabel)
         addSubview(confirmPasswordTextField)
         addSubview(registerButton)
+        addSubview(checkPasswordLabel)
     }
     
     func configConstraint() {
@@ -237,6 +266,9 @@ extension RegisterScreen: ViewCode {
                 confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor,constant: 10),
                 confirmPasswordTextField.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
                 confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+                
+                checkPasswordLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor),
+                checkPasswordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
                 
                 registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
                 registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
