@@ -35,6 +35,4 @@ extension ForgotPasswordViewController: ForgotPasswordDelegate {
     func tappedBackButton() {
         navigationController?.popViewController(animated: true)
     }
-    
-    
 }
