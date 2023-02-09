@@ -22,7 +22,7 @@ class RegisterScreen: UIView {
     lazy var imageLogo: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "logo")
+        image.image = UIImage(named: "newLogo")
         return image
     }()
     
@@ -37,7 +37,7 @@ class RegisterScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1)
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         return button
     }()
@@ -57,8 +57,6 @@ class RegisterScreen: UIView {
         tf.autocorrectionType = .no
         tf.borderStyle = .roundedRect
         tf.keyboardType = .default
-        tf.layer.borderWidth = 3.0
-        tf.layer.borderColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1).cgColor
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
@@ -83,8 +81,6 @@ class RegisterScreen: UIView {
         tf.autocorrectionType = .no
         tf.borderStyle = .roundedRect
         tf.keyboardType = .emailAddress
-        tf.layer.borderWidth = 3.0
-        tf.layer.borderColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1).cgColor
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
@@ -110,8 +106,6 @@ class RegisterScreen: UIView {
         tf.borderStyle = .roundedRect
         tf.keyboardType = .default
         tf.isSecureTextEntry = true
-        tf.layer.borderWidth = 3.0
-        tf.layer.borderColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1).cgColor
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
@@ -126,7 +120,7 @@ class RegisterScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Confirma Senha:"
         label.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         return label
     }()
     
@@ -137,8 +131,6 @@ class RegisterScreen: UIView {
         tf.borderStyle = .roundedRect
         tf.keyboardType = .default
         tf.isSecureTextEntry = true
-        tf.layer.borderWidth = 3.0
-        tf.layer.borderColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1).cgColor
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
