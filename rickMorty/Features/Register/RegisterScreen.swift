@@ -167,6 +167,7 @@ class RegisterScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewCode()
+        configButtonEnable(false)
     }
     
     required init?(coder: NSCoder) {
@@ -188,7 +189,28 @@ class RegisterScreen: UIView {
         confirmPasswordTextField.delegate = delegate
     }
     
+    func configButtonEnable(_ enable:Bool){
+        if enable{
+            self.registerButton.setTitleColor(.black, for: .normal)
+            self.registerButton.isEnabled = true
+        } else {
+            self.registerButton.setTitleColor(.lightGray, for: .normal)
+            self.registerButton.isEnabled = false
+        }
+    }
+    
     func configOnButton(){
+        let name = nameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        let confirmPassword = confirmPasswordTextField.text ?? ""
+        
+        if !name.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
+            self.configButtonEnable(true)
+        } else {
+            self.configButtonEnable(false)
+        }
+        
         
     }
     
