@@ -21,15 +21,12 @@ class ForgotPasswordViewController: UIViewController {
         screen?.delegate(delegate: self)
        
         view.backgroundColor = .black
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
-
 }
 
 //MARK: -Extensão
