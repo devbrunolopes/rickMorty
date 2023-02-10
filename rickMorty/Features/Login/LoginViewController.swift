@@ -37,7 +37,17 @@ class LoginViewController: UIViewController {
 //MARK: - LoginDelegate
 
 extension LoginViewController: LoginDelegate {
+    func tappedSinginButton() {
+        
+    }
+    
+    func tappedRegisterButton() {
+        let vc:RegisterVC = RegisterVC()
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
     func tappedForgotPasswordButton() {
-        print(#function)
+        let vc:ForgotPasswordViewController = ForgotPasswordViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
     }
 }
