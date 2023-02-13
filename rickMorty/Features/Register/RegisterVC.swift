@@ -6,17 +6,11 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseFirestore
 
 class RegisterVC: UIViewController {
     
     var screen: RegisterScreen?
-    //    var alert: Alert?
     var viewModel: RegisterViewModel = RegisterViewModel()
-    
     
     override func loadView() {
         screen = RegisterScreen()
@@ -33,11 +27,12 @@ class RegisterVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
-    
 }
+
 // MARK: Extension ActionButton
 
 extension RegisterVC: RegisterScreenProtocol {
+    
     func actionButtonBack() {
         
     }
@@ -45,9 +40,8 @@ extension RegisterVC: RegisterScreenProtocol {
     func actionRegisterButton() {
         screen?.configCheckPassword()
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
-        }
     }
-
+}
 
 // MARK: Extension ConfigTextField
 

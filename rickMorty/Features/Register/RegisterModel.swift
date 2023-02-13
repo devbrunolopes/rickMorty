@@ -13,7 +13,6 @@ class RegisterViewModel {
     var auth: Auth?
     var db = Firestore.firestore()
     
-    
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             completion(error)
@@ -39,7 +38,5 @@ class RegisterViewModel {
                 }
             }
         }
-        
     }
-    
 }

@@ -41,7 +41,7 @@ class RegisterScreen: UIView {
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         return button
     }()
-   
+    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -61,8 +61,8 @@ class RegisterScreen: UIView {
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         tf.attributedPlaceholder = NSAttributedString(
-        string: "Digite seu nome",
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            string: "Digite seu nome",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return tf
     }()
     
@@ -85,8 +85,8 @@ class RegisterScreen: UIView {
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         tf.attributedPlaceholder = NSAttributedString(
-        string: "Digite seu email",
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            string: "Digite seu email",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         tf.autocapitalizationType = .none
         return tf
     }()
@@ -111,8 +111,8 @@ class RegisterScreen: UIView {
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         tf.attributedPlaceholder = NSAttributedString(
-        string: "Digite sua senha",
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            string: "Digite sua senha",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return tf
     }()
     
@@ -136,8 +136,8 @@ class RegisterScreen: UIView {
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         tf.attributedPlaceholder = NSAttributedString(
-        string: "Digite sua senha novamente",
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            string: "Digite sua senha novamente",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         return tf
     }()
     
@@ -164,7 +164,7 @@ class RegisterScreen: UIView {
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewCode()
@@ -220,7 +220,6 @@ class RegisterScreen: UIView {
             checkPasswordLabel.textColor = .clear
         }
     }
-    
 }
 
 // MARK: Extension ViewCode
@@ -243,63 +242,63 @@ extension RegisterScreen: ViewCode {
     }
     
     func configConstraint() {
-            NSLayoutConstraint.activate([
-                
-                imageFundo.topAnchor.constraint(equalTo: topAnchor),
-                imageFundo.leadingAnchor.constraint(equalTo: leadingAnchor),
-                imageFundo.trailingAnchor.constraint(equalTo: trailingAnchor),
-                imageFundo.bottomAnchor.constraint(equalTo: bottomAnchor),
-                
-                imageLogo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 30),
-                imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor),
-                imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor),
-                imageLogo.heightAnchor.constraint(equalToConstant: 180),
-                
-                backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                backButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15),
-                backButton.heightAnchor.constraint(equalToConstant: 20),
-                backButton.widthAnchor.constraint(equalToConstant: 20),
-                
-                nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 180),
-                nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-                
-                nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 10),
-                nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 22),
-                nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-                
-                emailLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor,constant: 25),
-                emailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-                
-                emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 10),
-                emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
-                emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-                
-                passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 25),
-                passwordLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
-                
-                passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor,constant: 10),
-                passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
-                passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-                
-                confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 25),
-                confirmPasswordLabel.leadingAnchor.constraint(equalTo: passwordLabel.leadingAnchor),
-                
-                confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor,constant: 10),
-                confirmPasswordTextField.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
-                confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-                
-                checkPasswordLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor),
-                checkPasswordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-                
-                registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
-                registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-                registerButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-                registerButton.heightAnchor.constraint(equalToConstant: 60),
-                
-            ])
-        }
+        NSLayoutConstraint.activate([
+            
+            imageFundo.topAnchor.constraint(equalTo: topAnchor),
+            imageFundo.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageFundo.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageFundo.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            imageLogo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 30),
+            imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageLogo.heightAnchor.constraint(equalToConstant: 180),
+            
+            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15),
+            backButton.heightAnchor.constraint(equalToConstant: 20),
+            backButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 180),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 10),
+            nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 22),
+            nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            
+            emailLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor,constant: 25),
+            emailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            
+            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 10),
+            emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
+            emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            
+            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 25),
+            passwordLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
+            
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor,constant: 10),
+            passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            
+            confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 25),
+            confirmPasswordLabel.leadingAnchor.constraint(equalTo: passwordLabel.leadingAnchor),
+            
+            confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor,constant: 10),
+            confirmPasswordTextField.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
+            confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            
+            checkPasswordLabel.topAnchor.constraint(equalTo: confirmPasswordTextField.bottomAnchor),
+            checkPasswordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            
+            registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            registerButton.heightAnchor.constraint(equalToConstant: 60),
+            
+        ])
     }
-    
-    
+}
+
+
 
 
