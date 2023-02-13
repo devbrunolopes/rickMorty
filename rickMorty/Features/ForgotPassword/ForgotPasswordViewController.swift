@@ -10,29 +10,42 @@ import UIKit
 class ForgotPasswordViewController: UIViewController {
     
     var screen: ForgotPasswordScreen?
+    var viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
     
     override func loadView() {
         screen = ForgotPasswordScreen()
         view = screen
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
-       
-        view.backgroundColor = .black
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        screen?.configTextField(delegate: self)
     }
 }
 
-//MARK: -Extensão
+//MARK: -Extensão ActionButton
 
 extension ForgotPasswordViewController: ForgotPasswordDelegate {
+    func tappedSendButton() {
+        viewModel.sendPassword(email: screen?.emailForgotTextField.text ?? "")
+    }
+    
     func tappedBackButton() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: Extension TextFields
+
+extension ForgotPasswordViewController: UITextFieldDelegate{
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        screen?.validarTextField()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

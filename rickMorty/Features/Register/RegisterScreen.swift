@@ -19,17 +19,10 @@ class RegisterScreen: UIView {
         self.delegate = delegate
     }
     
-    lazy var imageLogo: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "newLogo")
-        return image
-    }()
-    
     lazy var imageFundo: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "1")
+        image.image = UIImage(named: "4")
         return image
     }()
     
@@ -40,6 +33,13 @@ class RegisterScreen: UIView {
         button.tintColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1)
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         return button
+    }()
+    
+    lazy var imageLogo: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.image = UIImage(named: "newLogo")
+        return image
     }()
     
     lazy var nameLabel: UILabel = {
@@ -60,9 +60,7 @@ class RegisterScreen: UIView {
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
-        tf.attributedPlaceholder = NSAttributedString(
-            string: "Digite seu nome",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.placeholder = "Digite seu Nome:"
         return tf
     }()
     
@@ -84,9 +82,7 @@ class RegisterScreen: UIView {
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
-        tf.attributedPlaceholder = NSAttributedString(
-            string: "Digite seu email",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.placeholder = "Digite seu Email:"
         tf.autocapitalizationType = .none
         return tf
     }()
@@ -110,9 +106,7 @@ class RegisterScreen: UIView {
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
-        tf.attributedPlaceholder = NSAttributedString(
-            string: "Digite sua senha",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.placeholder = "Digite sua Senha:"
         return tf
     }()
     
@@ -135,9 +129,7 @@ class RegisterScreen: UIView {
         tf.layer.cornerRadius = 10
         tf.clipsToBounds = true
         tf.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
-        tf.attributedPlaceholder = NSAttributedString(
-            string: "Digite sua senha novamente",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.placeholder = "Digite novamente sua Senha:"
         return tf
     }()
     
@@ -168,7 +160,7 @@ class RegisterScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewCode()
-        configButtonEnable(false)
+        configButtonEnable()
     }
     
     required init?(coder: NSCoder) {
@@ -190,8 +182,11 @@ class RegisterScreen: UIView {
         confirmPasswordTextField.delegate = delegate
     }
     
-    func configButtonEnable(_ enable:Bool){
-        if enable{
+    func configButtonEnable(){
+        let emptyTextField = checkForEmptyTextField()
+        let isPasswordEqual = configCheckPassword()
+        
+        if emptyTextField && isPasswordEqual {
             self.registerButton.setTitleColor(.black, for: .normal)
             self.registerButton.isEnabled = true
         } else {
@@ -200,24 +195,26 @@ class RegisterScreen: UIView {
         }
     }
     
-    func configOnButton(){
+    func checkForEmptyTextField() -> Bool{
         let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let confirmPassword = confirmPasswordTextField.text ?? ""
         
         if !name.isEmpty && !email.isEmpty && !password.isEmpty && !confirmPassword.isEmpty {
-            self.configButtonEnable(true)
+            return true
         } else {
-            self.configButtonEnable(false)
+            return false
         }
     }
     
-    func configCheckPassword(){
+    func configCheckPassword()-> Bool{
         if passwordTextField.text != confirmPasswordTextField.text {
             checkPasswordLabel.textColor = .red
+            return false
         } else {
             checkPasswordLabel.textColor = .clear
+            return true
         }
     }
 }
@@ -249,41 +246,41 @@ extension RegisterScreen: ViewCode {
             imageFundo.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageFundo.bottomAnchor.constraint(equalTo: bottomAnchor),
             
-            imageLogo.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 30),
-            imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageLogo.heightAnchor.constraint(equalToConstant: 180),
-            
             backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15),
             backButton.heightAnchor.constraint(equalToConstant: 20),
             backButton.widthAnchor.constraint(equalToConstant: 20),
             
-            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 180),
+            imageLogo.topAnchor.constraint(equalTo: backButton.bottomAnchor),
+            imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageLogo.heightAnchor.constraint(equalToConstant: 180),
+            
+            nameLabel.topAnchor.constraint(equalTo: imageLogo.bottomAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
             
-            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 10),
+            nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 5),
             nameTextField.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 22),
             nameTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
             
-            emailLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor,constant: 25),
+            emailLabel.topAnchor.constraint(equalTo: nameTextField.bottomAnchor,constant: 10),
             emailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             
-            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 10),
+            emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 5),
             emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
             
-            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 25),
+            passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 10),
             passwordLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
             
-            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor,constant: 10),
+            passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor,constant: 5),
             passwordTextField.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
             passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
             
-            confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 25),
+            confirmPasswordLabel.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,constant: 10),
             confirmPasswordLabel.leadingAnchor.constraint(equalTo: passwordLabel.leadingAnchor),
             
-            confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor,constant: 10),
+            confirmPasswordTextField.topAnchor.constraint(equalTo: confirmPasswordLabel.bottomAnchor,constant: 5),
             confirmPasswordTextField.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
             confirmPasswordTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
             
