@@ -9,6 +9,8 @@ import UIKit
 
 protocol LoginDelegate: AnyObject {
     func tappedForgotPasswordButton()
+    func tappedSinginButton()
+    func tappedRegisterButton()
 }
 
 class LoginScreen: UIView {
@@ -73,6 +75,7 @@ class LoginScreen: UIView {
         button.setTitle("Entrar", for: .normal)
         button.layer.cornerRadius = 15
         button.backgroundColor = .green
+        button.addTarget(self, action: #selector(tappedSinginButton), for: .touchUpInside)
         return button
     }()
     
@@ -90,12 +93,20 @@ class LoginScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Não tem conta? Cadastre-se", for: .normal)
         button.setTitleColor(.lightGray, for: .normal)
-//        button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedregisterButton), for: .touchUpInside)
         return button
     }()
     
     @objc func tappedForgotPasswordButton(){
         delegate?.tappedForgotPasswordButton()
+    }
+    
+    @objc func tappedregisterButton(){
+        delegate?.tappedRegisterButton()
+    }
+    
+    @objc func tappedSinginButton(){
+        delegate?.tappedSinginButton()
     }
 
     override init(frame: CGRect) {
