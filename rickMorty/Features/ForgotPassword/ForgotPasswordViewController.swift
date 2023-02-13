@@ -12,21 +12,17 @@ class ForgotPasswordViewController: UIViewController {
     
     var screen: ForgotPasswordScreen?
     var auth: Auth?
+    var viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
     
     override func loadView() {
         screen = ForgotPasswordScreen()
         view = screen
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         screen?.configTextField(delegate: self)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 
@@ -34,8 +30,7 @@ class ForgotPasswordViewController: UIViewController {
 
 extension ForgotPasswordViewController: ForgotPasswordDelegate {
     func tappedSendButton() {
-        let email: String = screen?.emailForgotTextField.text ?? ""
-        self.auth?.sendPasswordReset(withEmail: email)
+        viewModel.sendPassword(email: screen?.emailForgotTextField.text ?? "")
     }
     
     func tappedBackButton() {

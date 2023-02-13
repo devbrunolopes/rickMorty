@@ -6,7 +6,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class ForgotPasswordViewModel {
+    
+    var auth: Auth?
 
+    func sendPassword(email: String){
+        self.auth?.sendPasswordReset(withEmail: email)
+    }
+    
 }
