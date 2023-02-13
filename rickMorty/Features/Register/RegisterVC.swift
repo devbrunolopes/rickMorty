@@ -38,7 +38,7 @@ extension RegisterVC: RegisterScreenProtocol {
     }
     
     func actionRegisterButton() {
-        screen?.configCheckPassword()
+       
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
     }
 }
@@ -47,14 +47,16 @@ extension RegisterVC: RegisterScreenProtocol {
 
 extension RegisterVC: UITextFieldDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        screen?.configOnButton()
-    }
-}
 
-func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        screen?.configButtonEnable()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
 }
 
 
