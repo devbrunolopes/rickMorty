@@ -15,10 +15,7 @@ class RegisterVC: UIViewController {
     
     var screen: RegisterScreen?
     //    var alert: Alert?
-    var auth: Auth?
-    var user = Auth.auth().currentUser
-    var firestore: Firestore?
-    var db = Firestore.firestore()
+    var viewModel: RegisterViewModel = RegisterViewModel()
     
     
     override func loadView() {
@@ -37,13 +34,6 @@ class RegisterVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
     
-    func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            completion(error)
-        }
-    }
-    func createDadosDatabse(){
-    }
 }
 // MARK: Extension ActionButton
 
@@ -54,31 +44,10 @@ extension RegisterVC: RegisterScreenProtocol {
     
     func actionRegisterButton() {
         screen?.configCheckPassword()
-        
-        
-        let name: String = screen?.nameTextField.text ?? ""
-        let email: String = screen?.emailTextField.text ?? ""
-        let senha: String = screen?.passwordTextField.text ?? ""
-        
-        createUser(email: email, password: senha) { error in
-            if let error = error{
-                print(error.localizedDescription)
-            } else {
-                DispatchQueue.global(qos: .userInitiated).async {
-                    let data = ["name": name,
-                                "email": email,]
-                    self.db.collection("usuarios").addDocument(data: data) { (error) in
-                        if error != nil {
-                            print("erro")
-                        } else {
-                            print("foi")
-                        }
-                    }
-                }
-            }
+        viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
         }
     }
-}
+
 
 // MARK: Extension ConfigTextField
 

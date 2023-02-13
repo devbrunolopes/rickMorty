@@ -87,6 +87,7 @@ class RegisterScreen: UIView {
         tf.attributedPlaceholder = NSAttributedString(
         string: "Digite seu email",
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        tf.autocapitalizationType = .none
         return tf
     }()
     
@@ -210,8 +211,6 @@ class RegisterScreen: UIView {
         } else {
             self.configButtonEnable(false)
         }
-        
-        
     }
     
     func configCheckPassword(){
