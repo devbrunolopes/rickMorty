@@ -9,6 +9,7 @@ import UIKit
 
 protocol ForgotPasswordDelegate: AnyObject {
     func tappedBackButton()
+    func tappedSendButton()
 }
 
 class ForgotPasswordScreen: UIView {
@@ -62,21 +63,51 @@ class ForgotPasswordScreen: UIView {
         button.setTitle("Enviar", for: .normal)
         button.backgroundColor = .green
         button.layer.cornerRadius = 15
+        button.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
         return button
     }()
-    
-    @objc func tappedBackButton(){
-        delegate?.tappedBackButton()
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
         constraintSettings()
+        configButtonEnable(false)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func tappedBackButton(){
+        delegate?.tappedBackButton()
+    }
+    
+    @objc func tappedSendButton(){
+        delegate?.tappedSendButton()
+    }
+    
+    func configTextField(delegate: UITextFieldDelegate){
+        emailForgotTextField.delegate = delegate
+    }
+    
+    func configButtonEnable(_ enable:Bool){
+        if enable {
+            self.sendButton.setTitleColor(.white, for: .normal)
+            self.sendButton.isEnabled = true
+        }else{
+            self.sendButton.setTitleColor(.lightGray, for: .normal)
+            self.sendButton.isEnabled = false
+        }
+    }
+    
+    func validarTextField(){
+        let email = emailForgotTextField.text ?? ""
+        
+        if !email.isEmpty {
+            self.configButtonEnable(true)
+        } else {
+            self.configButtonEnable(false)
+        }
     }
     
     private func addViews(){

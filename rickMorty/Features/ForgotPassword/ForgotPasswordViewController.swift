@@ -19,8 +19,7 @@ class ForgotPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
-       
-        view.backgroundColor = .black
+        screen?.configTextField(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,10 +28,29 @@ class ForgotPasswordViewController: UIViewController {
     }
 }
 
-//MARK: -Extensão
+//MARK: -Extensão ActionButton
 
 extension ForgotPasswordViewController: ForgotPasswordDelegate {
+    func tappedSendButton() {
+        
+    }
+    
     func tappedBackButton() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+//MARK: Extension TextFields
+
+extension ForgotPasswordViewController: UITextFieldDelegate{
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        screen?.validarTextField()
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
