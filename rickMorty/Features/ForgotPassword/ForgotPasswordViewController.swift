@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ForgotPasswordViewController: UIViewController {
     
     var screen: ForgotPasswordScreen?
+    var auth: Auth?
     
     override func loadView() {
         screen = ForgotPasswordScreen()
@@ -32,7 +34,8 @@ class ForgotPasswordViewController: UIViewController {
 
 extension ForgotPasswordViewController: ForgotPasswordDelegate {
     func tappedSendButton() {
-        
+        let email: String = screen?.emailForgotTextField.text ?? ""
+        self.auth?.sendPasswordReset(withEmail: email)
     }
     
     func tappedBackButton() {
