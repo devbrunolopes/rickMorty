@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class ForgotPasswordViewController: UIViewController {
     
     var screen: ForgotPasswordScreen?
-    var auth: Auth?
     var viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
     
     override func loadView() {
@@ -45,7 +43,6 @@ extension ForgotPasswordViewController: UITextFieldDelegate{
     func textFieldDidEndEditing(_ textField: UITextField) {
         screen?.validarTextField()
     }
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

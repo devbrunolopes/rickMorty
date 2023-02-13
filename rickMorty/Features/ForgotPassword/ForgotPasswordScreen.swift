@@ -23,7 +23,7 @@ class ForgotPasswordScreen: UIView {
     lazy var ForgotPasswordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "rick")
+        imageView.image = UIImage(named: "teste")
         return imageView
     }()
     
@@ -52,9 +52,8 @@ class ForgotPasswordScreen: UIView {
         button.setImage(UIImage(named: "back-button"), for: .normal)
         button.tintColor = .blue
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
-
         return button
-        }()
+    }()
     
     lazy var sendButton: UIButton = {
         let button = UIButton()
@@ -120,12 +119,11 @@ class ForgotPasswordScreen: UIView {
     
     private func constraintSettings(){
         NSLayoutConstraint.activate([
-        
-            ForgotPasswordImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
+            
+            ForgotPasswordImageView.topAnchor.constraint(equalTo: topAnchor),
             ForgotPasswordImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             ForgotPasswordImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            ForgotPasswordImageView.heightAnchor.constraint(equalToConstant: 270),
-            ForgotPasswordImageView.widthAnchor.constraint(equalToConstant: 90),
+            ForgotPasswordImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             emailForgotLabel.topAnchor.constraint(equalTo: ForgotPasswordImageView.bottomAnchor),
             emailForgotLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
@@ -146,10 +144,6 @@ class ForgotPasswordScreen: UIView {
             backButton.widthAnchor.constraint(equalToConstant: 25)
         ])
     }
-  
-
-
-
 }
 
 
