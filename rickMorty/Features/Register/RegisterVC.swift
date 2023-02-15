@@ -21,15 +21,18 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         screen?.configTextField(delegate: self)
+        viewModel.delegate(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+    
 }
 
-// MARK: Extension ActionButton
+// MARK: RegisterScreenProtocol
 
 extension RegisterVC: RegisterScreenProtocol {
     
@@ -43,7 +46,7 @@ extension RegisterVC: RegisterScreenProtocol {
     }
 }
 
-// MARK: Extension ConfigTextField
+// MARK: UITextFieldDelegate
 
 extension RegisterVC: UITextFieldDelegate {
     
@@ -57,6 +60,21 @@ extension RegisterVC: UITextFieldDelegate {
         return true
     }
 
+}
+
+//MARK: RegisterViewModelProtocol
+
+extension RegisterVC: RegisterViewModelProtocol {
+    func sucess() {
+//        let vc:HomeVC = HomeVC()
+//        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    func error() {
+        //alert 
+    }
+    
+    
 }
 
 

@@ -23,7 +23,7 @@ class ForgotPasswordScreen: UIView {
     lazy var ForgotPasswordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "3")
+        imageView.image = UIImage(named: "6")
         return imageView
     }()
     
@@ -70,7 +70,7 @@ class ForgotPasswordScreen: UIView {
     lazy var sendButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cadastrar", for: .normal)
+        button.setTitle("Enviar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.backgroundColor = .clear
         button.clipsToBounds = true
@@ -151,7 +151,6 @@ class ForgotPasswordScreen: UIView {
             emailForgotTextField.topAnchor.constraint(equalTo: emailForgotLabel.bottomAnchor, constant: 5),
             emailForgotTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             emailForgotTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-//            emailForgotTextField.heightAnchor.constraint(equalToConstant: 45),
             
             sendButton.topAnchor.constraint(equalTo: emailForgotTextField.bottomAnchor, constant: 35),
             sendButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 55),

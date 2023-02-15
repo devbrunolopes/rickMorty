@@ -9,7 +9,18 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
+protocol RegisterViewModelProtocol: AnyObject {
+    func sucess()
+    func error()
+}
+
 class RegisterViewModel {
+    
+    var delegate: RegisterViewModelProtocol?
+    func delegate(delegate: RegisterViewModelProtocol){
+        self.delegate = delegate
+    }
+    
     var auth: Auth?
     var db = Firestore.firestore()
     
@@ -24,6 +35,7 @@ class RegisterViewModel {
         createUser(email: email, password: senha) { error in
             if let error = error{
                 print(error.localizedDescription)
+                
             } else {
                 DispatchQueue.global(qos: .userInitiated).async {
                     let data = ["name": name,
@@ -31,8 +43,10 @@ class RegisterViewModel {
                     self.db.collection("usuarios").addDocument(data: data) { (error) in
                         if error != nil {
                             print("erro")
+                            self.delegate?.error()
                         } else {
                             print("foi")
+                            self.delegate?.sucess()
                         }
                     }
                 }
