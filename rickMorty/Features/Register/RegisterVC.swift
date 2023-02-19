@@ -11,7 +11,7 @@ class RegisterVC: UIViewController {
     
     var screen: RegisterScreen?
     var viewModel: RegisterViewModel = RegisterViewModel()
-    
+    var alert: Alert?
     override func loadView() {
         screen = RegisterScreen()
         view = screen
@@ -22,6 +22,7 @@ class RegisterVC: UIViewController {
         screen?.delegate(delegate: self)
         screen?.configTextField(delegate: self)
         viewModel.delegate(delegate: self)
+        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,7 +72,7 @@ extension RegisterVC: RegisterViewModelProtocol {
     }
     
     func error() {
-        //alert 
+        self.alert?.getAlert(titulo: "Atenção", mensagem: "Erro ao cadastrar. Tente novamente!")
     }
     
     
