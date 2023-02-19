@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 protocol RegisterScreenProtocol: AnyObject {
     func actionButtonBack()
@@ -85,6 +86,15 @@ class RegisterScreen: UIView {
         tf.placeholder = "Digite seu Email:"
         tf.autocapitalizationType = .none
         return tf
+    }()
+    
+    lazy var checkEmailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Email ja cadastrado"
+        label.textColor = .clear
+        label.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
+        return label
     }()
     
     lazy var passwordLabel: UILabel = {
@@ -217,6 +227,24 @@ class RegisterScreen: UIView {
             return true
         }
     }
+    
+    
+    func configCheckEmail(){
+
+        let email = self.emailTextField.text ?? ""
+        Auth.auth().fetchSignInMethods(forEmail: email) { (methods, error) in
+            if let error = error {
+                print("Erro ao verificar o e-mail: \(error.localizedDescription)")
+            } else if let methods = methods {
+                if methods.isEmpty {
+                    print("Não há conta associada ao e-mail \(email)")
+                } else {
+                    self.checkEmailLabel.textColor = .red
+                }
+            }
+        }
+
+    }
 }
 
 // MARK: Extension ViewCode
@@ -230,6 +258,7 @@ extension RegisterScreen: ViewCode {
         addSubview(nameTextField)
         addSubview(emailLabel)
         addSubview(emailTextField)
+        addSubview(checkEmailLabel)
         addSubview(passwordLabel)
         addSubview(passwordTextField)
         addSubview(confirmPasswordLabel)
@@ -269,6 +298,9 @@ extension RegisterScreen: ViewCode {
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 5),
             emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            
+            checkEmailLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
+            checkEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
             
             passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 10),
             passwordLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),

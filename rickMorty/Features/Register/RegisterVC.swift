@@ -44,6 +44,7 @@ extension RegisterVC: RegisterScreenProtocol {
     func actionRegisterButton() {
        
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
+        screen?.configCheckEmail()
     }
 }
 
