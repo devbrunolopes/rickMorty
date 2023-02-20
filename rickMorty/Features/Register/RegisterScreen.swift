@@ -229,22 +229,6 @@ class RegisterScreen: UIView {
     }
     
     
-    func configCheckEmail(){
-
-        let email = self.emailTextField.text ?? ""
-        Auth.auth().fetchSignInMethods(forEmail: email) { (methods, error) in
-            if let error = error {
-                print("Erro ao verificar o e-mail: \(error.localizedDescription)")
-            } else if let methods = methods {
-                if methods.isEmpty {
-                    print("Não há conta associada ao e-mail \(email)")
-                } else {
-                    self.checkEmailLabel.textColor = .red
-                }
-            }
-        }
-
-    }
 }
 
 // MARK: Extension ViewCode

@@ -24,6 +24,7 @@ class RegisterViewModel {
     var auth: Auth?
     var db = Firestore.firestore()
     
+    
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             completion(error)
@@ -50,6 +51,22 @@ class RegisterViewModel {
                         }
                     }
                 }
+            }
+        }
+    }
+    
+    func checkEmailFirebase(email: String, label: UILabel) {
+        Auth.auth().fetchSignInMethods(forEmail: email) { (methods, error) in
+            if let error = error {
+                print("Erro ao verificar o e-mail: \(error.localizedDescription)")
+            } else if let methods = methods {
+                if methods.isEmpty {
+                    print("deu certo")
+                } else {
+                    label.textColor = .red                }
+            } else {
+                label.textColor = .clear
+                aler
             }
         }
     }
