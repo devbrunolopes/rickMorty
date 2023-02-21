@@ -11,6 +11,7 @@ class ForgotPasswordViewController: UIViewController {
     
     var screen: ForgotPasswordScreen?
     var viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
+    var alert: Alert?
     
     override func loadView() {
         screen = ForgotPasswordScreen()
@@ -21,6 +22,8 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         screen?.configTextField(delegate: self)
+        viewModel.delegate(delegate: self)
+        alert = Alert(controller: self)
     }
 }
 
@@ -28,6 +31,7 @@ class ForgotPasswordViewController: UIViewController {
 
 extension ForgotPasswordViewController: ForgotPasswordDelegate {
     func tappedSendButton() {
+        viewModel.checkEmailFirebase(email: screen?.emailForgotTextField.text ?? "", label: screen?.checkEmailLabel ?? UILabel())
         viewModel.sendPassword(email: screen?.emailForgotTextField.text ?? "")
     }
     
@@ -47,5 +51,17 @@ extension ForgotPasswordViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+//MARK: Extension ForgotPasswordViewModelProtocol
+
+extension ForgotPasswordViewController: ForgotPasswordViewModelProtocol {
+    func alertSucess() {
+        alert?.getAlert(titulo: "Sucess", mensagem: "Link para redefinir a senha enviado!")
+    }
+    
+    func alertError() {
+        alert?.getAlert(titulo: "Atenção", mensagem: "Erro ao verificar email. Tente novamente!")
     }
 }

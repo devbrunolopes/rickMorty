@@ -63,10 +63,10 @@ class RegisterViewModel {
                 if methods.isEmpty {
                     print("deu certo")
                 } else {
-                    label.textColor = .red                }
+                    label.textColor = .red
+                }
             } else {
                 label.textColor = .clear
-                aler
             }
         }
     }

@@ -42,7 +42,6 @@ extension RegisterVC: RegisterScreenProtocol {
     }
     
     func actionRegisterButton() {
-       
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
         viewModel.checkEmailFirebase(email: screen?.emailTextField.text ?? "", label: screen?.checkEmailLabel ?? UILabel())
     }
@@ -68,8 +67,10 @@ extension RegisterVC: UITextFieldDelegate {
 
 extension RegisterVC: RegisterViewModelProtocol {
     func sucess() {
-//        let vc:HomeVC = HomeVC()
-//        self.navigationController?.pushViewController(vc, animated: false)
+        self.alert?.getAlert(titulo: "Parabens", mensagem: "Usuario cadastrado com Sucesso!", completion: {
+//            let vc:HomeVC = HomeVC()
+//            self.navigationController?.pushViewController(vc, animated: false)
+        })
     }
     
     func error() {

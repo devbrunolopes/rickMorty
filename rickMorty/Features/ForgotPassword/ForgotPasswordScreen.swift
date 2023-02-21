@@ -27,6 +27,15 @@ class ForgotPasswordScreen: UIView {
         return imageView
     }()
     
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "back-button"), for: .normal)
+        button.tintColor = .blue
+        button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var informationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,17 +64,12 @@ class ForgotPasswordScreen: UIView {
         textField.keyboardType = .emailAddress
         textField.clipsToBounds = true
         textField.layer.cornerRadius = 10
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "back-button"), for: .normal)
-        button.tintColor = .blue
-        button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
-        return button
-    }()
+  
     
     lazy var sendButton: UIButton = {
         let button = UIButton()
@@ -79,6 +83,15 @@ class ForgotPasswordScreen: UIView {
         button.layer.borderColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1).cgColor
         button.addTarget(self, action: #selector(tappedSendButton), for: .touchUpInside)
         return button
+    }()
+    
+    lazy var checkEmailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Email não cadastrado!"
+        label.textColor = .clear
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -129,6 +142,7 @@ class ForgotPasswordScreen: UIView {
         addSubview(informationLabel)
         addSubview(emailForgotLabel)
         addSubview(emailForgotTextField)
+        addSubview(checkEmailLabel)
         addSubview(sendButton)
         addSubview(backButton)
     }
@@ -151,6 +165,9 @@ class ForgotPasswordScreen: UIView {
             emailForgotTextField.topAnchor.constraint(equalTo: emailForgotLabel.bottomAnchor, constant: 5),
             emailForgotTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             emailForgotTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            checkEmailLabel.topAnchor.constraint(equalTo: emailForgotTextField.bottomAnchor),
+            checkEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
             
             sendButton.topAnchor.constraint(equalTo: emailForgotTextField.bottomAnchor, constant: 35),
             sendButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 55),
