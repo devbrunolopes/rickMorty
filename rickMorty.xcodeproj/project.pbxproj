@@ -19,6 +19,9 @@
 		BE8F1549299427A40061E432 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE8F1547299427A40061E432 /* LaunchScreen.storyboard */; };
 		EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BA529A54BB900F43ED1 /* HomeVC.swift */; };
 		EB122BA829A54BCF00F43ED1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */; };
+		EB122BAB29A57AAB00F43ED1 /* PopularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAA29A57AAB00F43ED1 /* PopularView.swift */; };
+		EB122BAD29A57B6000F43ED1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAC29A57B6000F43ED1 /* HomeView.swift */; };
+		EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */; };
 		EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB283CBD29A1B5B30094B3B7 /* Alert.swift */; };
 		EB34536729955FD2009A2D52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB34536629955FD2009A2D52 /* GoogleService-Info.plist */; };
 		EB34536A299560C9009A2D52 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EB345369299560C9009A2D52 /* FirebaseAuth */; };
@@ -46,6 +49,9 @@
 		BE8F154A299427A40061E432 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB122BA529A54BB900F43ED1 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		EB122BAA29A57AAB00F43ED1 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
+		EB122BAC29A57B6000F43ED1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EB283CBD29A1B5B30094B3B7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		EB34536629955FD2009A2D52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB5A61EF2995722C00F6C196 /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
@@ -126,8 +132,19 @@
 			children = (
 				EB122BA529A54BB900F43ED1 /* HomeVC.swift */,
 				EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */,
+				EB122BAA29A57AAB00F43ED1 /* PopularView.swift */,
+				EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */,
+				EB122BA929A57A4600F43ED1 /* ViewHome */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		EB122BA929A57A4600F43ED1 /* ViewHome */ = {
+			isa = PBXGroup;
+			children = (
+				EB122BAC29A57B6000F43ED1 /* HomeView.swift */,
+			);
+			path = ViewHome;
 			sourceTree = "<group>";
 		};
 		EB283CBC29A1B5A20094B3B7 /* Alerts */ = {
@@ -248,15 +265,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */,
+				EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */,
 				EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */,
 				5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */,
 				5C839CFE29942D5600ECCD91 /* LoginViewModel.swift in Sources */,
 				5C839CFB29942D1E00ECCD91 /* LoginViewController.swift in Sources */,
+				EB122BAD29A57B6000F43ED1 /* HomeView.swift in Sources */,
 				EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */,
 				EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */,
 				EB90EA5629942ED400FC36CF /* ViewCode.swift in Sources */,
 				EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */,
 				BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */,
+				EB122BAB29A57AAB00F43ED1 /* PopularView.swift in Sources */,
 				EB5A61F02995722D00F6C196 /* RegisterModel.swift in Sources */,
 				EB122BA829A54BCF00F43ED1 /* HomeScreen.swift in Sources */,
 				5C839D0629942F1C00ECCD91 /* ForgotPasswordScreen.swift in Sources */,

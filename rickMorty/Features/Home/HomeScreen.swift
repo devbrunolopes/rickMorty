@@ -20,29 +20,27 @@ class HomeScreen: UIView {
     lazy var scrollView: UIScrollView = {
        let sv = UIScrollView()
         sv.translatesAutoresizingMaskIntoConstraints = false
-        sv.showsHorizontalScrollIndicator = true
         sv.isScrollEnabled = true
-        sv.backgroundColor = .red
+        sv.contentInsetAdjustmentBehavior = .never
+        sv.backgroundColor = .black
+        sv.bounces = true
+        sv.showsVerticalScrollIndicator = false
+//        sv.contentSize = CGSize(width: stackView.frame.width, height: stackView.frame.height)
+
         return sv
     }()
     
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .systemCyan
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
+        stackView.backgroundColor = .black
+        stackView.spacing = 3
         stackView.alignment = .fill
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
-        stackView.addArrangedSubview(viewStack)
+        stackView.distribution = .fill
+//        stackView.isLayoutMarginsRelativeArrangement = true
+//        stackView.frame = CGRect(x: 0, y: 0, width: scrollView.frame.width, height: 1000)
         return stackView
-    }()
-    
-    lazy var viewStack: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        return view
     }()
     
     override init(frame: CGRect) {
@@ -55,14 +53,21 @@ class HomeScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupView(views: [HomeView]){
+        for view in views {
+            stackView.addArrangedSubview(view)
+        }
+    }
+    
 }
+
+//MARK: Extension ViewCode
 
 extension HomeScreen: ViewCode {
     func configElements() {
         addSubview(addSearch)
         addSubview(scrollView)
         scrollView.addSubview(stackView)
-        
     }
     
     func configConstraint() {
@@ -71,26 +76,20 @@ extension HomeScreen: ViewCode {
             addSearch.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 15),
             addSearch.leadingAnchor.constraint(equalTo: leadingAnchor),
             addSearch.trailingAnchor.constraint(equalTo: trailingAnchor),
+            addSearch.heightAnchor.constraint(equalToConstant: 40),
             
-            scrollView.topAnchor.constraint(equalTo: addSearch.bottomAnchor,constant: 30),
+            scrollView.topAnchor.constraint(equalTo: addSearch.bottomAnchor,constant: 10),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -45),
             
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            viewStack.topAnchor.constraint(equalTo: topAnchor),
-            viewStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-            viewStack.trailingAnchor.constraint(equalTo: trailingAnchor),
-            viewStack.heightAnchor.constraint(equalToConstant: 160),
-            
-            
-        ])
+            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            stackView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor),
+            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
         
+        ])
     }
-    
-    
 }

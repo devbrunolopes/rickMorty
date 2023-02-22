@@ -12,6 +12,7 @@ class HomeVC: UIViewController {
   
     
     var screen: HomeScreen?
+    var viewModel: HomeViewModel = HomeViewModel()
     
     override func loadView() {
         screen = HomeScreen()
@@ -20,6 +21,9 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.populateArray()
+        print(viewModel.home)
+        screen?.setupView(views: viewModel.home)
     }
     
     override func viewWillAppear(_ animated: Bool) {
