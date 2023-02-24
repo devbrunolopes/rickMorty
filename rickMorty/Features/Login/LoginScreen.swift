@@ -45,6 +45,7 @@ class LoginScreen: UIView {
         textField.keyboardType = .emailAddress
         textField.backgroundColor = .gray
         textField.layer.cornerRadius = 15
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -66,6 +67,7 @@ class LoginScreen: UIView {
         textField.layer.cornerRadius = 15
         textField.backgroundColor = .gray
         textField.isSecureTextEntry = true
+        textField.autocorrectionType = .no
         return textField
     }()
     
