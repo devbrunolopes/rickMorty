@@ -11,7 +11,7 @@ class RegisterVC: UIViewController {
     
     var screen: RegisterScreen?
     var viewModel: RegisterViewModel = RegisterViewModel()
-    var alert: Alert?
+    
     override func loadView() {
         screen = RegisterScreen()
         view = screen
@@ -21,19 +21,15 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
         screen?.delegate(delegate: self)
         screen?.configTextField(delegate: self)
-        viewModel.delegate(delegate: self)
-        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
-    
-    
 }
 
-// MARK: RegisterScreenProtocol
+// MARK: Extension ActionButton
 
 extension RegisterVC: RegisterScreenProtocol {
     
@@ -42,12 +38,12 @@ extension RegisterVC: RegisterScreenProtocol {
     }
     
     func actionRegisterButton() {
+       
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
-        viewModel.checkEmailFirebase(email: screen?.emailTextField.text ?? "", label: screen?.checkEmailLabel ?? UILabel())
     }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: Extension ConfigTextField
 
 extension RegisterVC: UITextFieldDelegate {
     
@@ -61,23 +57,6 @@ extension RegisterVC: UITextFieldDelegate {
         return true
     }
 
-}
-
-//MARK: RegisterViewModelProtocol
-
-extension RegisterVC: RegisterViewModelProtocol {
-    func sucess() {
-        self.alert?.getAlert(titulo: "Parabens", mensagem: "Usuario cadastrado com Sucesso!", completion: {
-//            let vc:HomeVC = HomeVC()
-//            self.navigationController?.pushViewController(vc, animated: false)
-        })
-    }
-    
-    func error() {
-        self.alert?.getAlert(titulo: "Atenção", mensagem: "Erro ao cadastrar. Tente novamente!")
-    }
-    
-    
 }
 
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 protocol RegisterScreenProtocol: AnyObject {
     func actionButtonBack()
@@ -86,15 +85,6 @@ class RegisterScreen: UIView {
         tf.placeholder = "Digite seu Email:"
         tf.autocapitalizationType = .none
         return tf
-    }()
-    
-    lazy var checkEmailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Email ja cadastrado"
-        label.textColor = .clear
-        label.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
-        return label
     }()
     
     lazy var passwordLabel: UILabel = {
@@ -227,8 +217,6 @@ class RegisterScreen: UIView {
             return true
         }
     }
-    
-    
 }
 
 // MARK: Extension ViewCode
@@ -242,7 +230,6 @@ extension RegisterScreen: ViewCode {
         addSubview(nameTextField)
         addSubview(emailLabel)
         addSubview(emailTextField)
-        addSubview(checkEmailLabel)
         addSubview(passwordLabel)
         addSubview(passwordTextField)
         addSubview(confirmPasswordLabel)
@@ -282,9 +269,6 @@ extension RegisterScreen: ViewCode {
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor,constant: 5),
             emailTextField.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor),
             emailTextField.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-            
-            checkEmailLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
-            checkEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
             
             passwordLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,constant: 10),
             passwordLabel.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor),
