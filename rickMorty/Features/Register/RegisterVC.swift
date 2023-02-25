@@ -68,8 +68,8 @@ extension RegisterVC: UITextFieldDelegate {
 extension RegisterVC: RegisterViewModelProtocol {
     func sucess() {
         self.alert?.getAlert(titulo: "Parabens", mensagem: "Usuario cadastrado com Sucesso!", completion: {
-//            let vc:HomeVC = HomeVC()
-//            self.navigationController?.pushViewController(vc, animated: false)
+            let vc:HomeVC = HomeVC()
+            self.navigationController?.pushViewController(vc, animated: false)
         })
     }
     
