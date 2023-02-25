@@ -1,20 +1,36 @@
 //
 //  LoginViewModel.swift
-//  rickAndMorty
+//  rickMorty
 //
-//  Created by Lorena on 02/02/23.
+//  Created by Lorena on 14/02/23.
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class LoginViewModel: UIViewController {
+protocol LoginViewModelProtocol: AnyObject{
+    func sucess()
+    func error()
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+class LoginViewModel {
+    
+    weak var delegate: LoginViewModelProtocol?
+    
+    func setupDelegate(delegate: LoginViewModelProtocol){
+        self.delegate = delegate
     }
     
-
-
-
+    func loginFirebase(email: String , password: String){
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if error == nil {
+                self.delegate?.sucess()
+                print("ok")
+            } else {
+                self.delegate?.error()
+                print("ops")
+            }
+        }
+    }
 }

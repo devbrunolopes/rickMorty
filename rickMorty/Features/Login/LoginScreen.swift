@@ -45,6 +45,8 @@ class LoginScreen: UIView {
         textField.keyboardType = .emailAddress
         textField.backgroundColor = .gray
         textField.layer.cornerRadius = 15
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -66,6 +68,8 @@ class LoginScreen: UIView {
         textField.layer.cornerRadius = 15
         textField.backgroundColor = .gray
         textField.isSecureTextEntry = true
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -97,6 +101,15 @@ class LoginScreen: UIView {
         return button
     }()
     
+    lazy var hiddenEmailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Usuário e/ou senha incorretos"
+        label.textColor = .red
+        return label
+    }()
+    
+    
     @objc func tappedForgotPasswordButton(){
         delegate?.tappedForgotPasswordButton()
     }
@@ -108,12 +121,42 @@ class LoginScreen: UIView {
     @objc func tappedSinginButton(){
         delegate?.tappedSinginButton()
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
         addViews()
         constraintsSettings()
+        buttonDisabled()
+        hideErrorLabel()   
+    }
+    
+    func buttonDisabled(){
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+
+        if !email.isEmpty && !password.isEmpty {
+            singinButton.setTitleColor(.lightGray, for: .normal)
+            singinButton.backgroundColor = .green
+            singinButton.isEnabled = true
+        } else {
+            singinButton.setTitleColor(.gray, for: .normal)
+            singinButton.backgroundColor = .lightGray
+            singinButton.isEnabled = false
+        }
+        
+    }
+    
+    func hideErrorLabel(){
+        hiddenEmailLabel.isHidden = true
+    }
+    
+    func showErrorLabel(){
+        hiddenEmailLabel.isHidden = false
+    }
+    
+    func settingsTextField(delegate: UITextFieldDelegate){
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     
     private func addViews(){
@@ -125,6 +168,7 @@ class LoginScreen: UIView {
         addSubview(singinButton)
         addSubview(forgotPasswordButton)
         addSubview(registerButton)
+        addSubview(hiddenEmailLabel)
         
     }
     
@@ -134,22 +178,24 @@ class LoginScreen: UIView {
     
     private func constraintsSettings(){
         NSLayoutConstraint.activate([
-        
+            
             rickAndMortyImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             rickAndMortyImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             rickAndMortyImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             rickAndMortyImageView.heightAnchor.constraint(equalToConstant: 140),
-//            rickAndMortyImageView.widthAnchor.constraint(equalToConstant: 120),
             
             emailLabel.topAnchor.constraint(equalTo: rickAndMortyImageView.bottomAnchor, constant: 15),
             emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
-            
+    
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10),
             emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             emailTextField.heightAnchor.constraint(equalToConstant: 45),
             
-            passwordLabel.topAnchor.constraint(equalTo: emailTextField.topAnchor, constant: 50),
+            hiddenEmailLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
+            hiddenEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            
+            passwordLabel.topAnchor.constraint(equalTo: hiddenEmailLabel.bottomAnchor, constant: 10),
             passwordLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
             
             passwordTextField.topAnchor.constraint(equalTo: passwordLabel.topAnchor, constant: 30),
@@ -167,8 +213,8 @@ class LoginScreen: UIView {
             
             registerButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor , constant: 15),
             registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        
-        
+            
+            
         ])
     }
     
