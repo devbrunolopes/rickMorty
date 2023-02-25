@@ -84,7 +84,8 @@ extension LoginViewController: UITextFieldDelegate {
 
 extension LoginViewController: LoginViewModelProtocol{
     func sucess() {
-        
+        let vc = HomeVC()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func error() {
