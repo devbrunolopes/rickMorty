@@ -42,7 +42,7 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc:RegisterVC = RegisterVC()
+        let vc: DetalisVC = DetalisVC()
         self.navigationController?.pushViewController(vc, animated: false)
     }
 }
