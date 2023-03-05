@@ -28,16 +28,41 @@ class DetalisScrren: UIView {
         return label
     }()
     
-    lazy var contentViewDtalis: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .darkGray
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 15
-        return view
+    lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Nome: Rick Morty"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
     }()
     
+    lazy var spaceLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Space: Humano"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
+    }()
     
+    lazy var localizinonLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Localizacao: Planeta Terra"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
+    }()
+    
+    lazy var statusLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Status: Vivo"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,25 +81,36 @@ extension DetalisScrren: ViewCode {
     func configElements() {
         addSubview(imagePerson)
         addSubview(descriptionLabel)
-        addSubview(contentViewDtalis)
+        addSubview(nameLabel)
+        addSubview(spaceLabel)
+        addSubview(localizinonLabel)
+        addSubview(statusLabel)
     }
     
     func configConstraint() {
             NSLayoutConstraint.activate([
                 
-                imagePerson.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                imagePerson.topAnchor.constraint(equalTo: topAnchor),
                 imagePerson.leadingAnchor.constraint(equalTo: leadingAnchor),
                 imagePerson.trailingAnchor.constraint(equalTo: trailingAnchor),
-                imagePerson.heightAnchor.constraint(equalToConstant: 270),
+                imagePerson.heightAnchor.constraint(equalToConstant: 350),
                 
                 descriptionLabel.topAnchor.constraint(equalTo: imagePerson.bottomAnchor,constant: 35),
                 descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
                 descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
                 
-                contentViewDtalis.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor,constant: 40),
-                contentViewDtalis.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10),
-                contentViewDtalis.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -10),
-                contentViewDtalis.bottomAnchor.constraint(equalTo: bottomAnchor,constant: -50),
+                nameLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor,constant: 70),
+                nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+                
+                spaceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 15),
+                spaceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+                
+                localizinonLabel.topAnchor.constraint(equalTo: spaceLabel.bottomAnchor,constant: 15),
+                localizinonLabel.leadingAnchor.constraint(equalTo: spaceLabel.leadingAnchor),
+                
+                statusLabel.topAnchor.constraint(equalTo: localizinonLabel.bottomAnchor,constant: 15),
+                statusLabel.leadingAnchor.constraint(equalTo: localizinonLabel.leadingAnchor),
+               
                 
                 
             ])
