@@ -69,8 +69,6 @@ class ForgotPasswordScreen: UIView {
         return textField
     }()
     
-  
-    
     lazy var sendButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -120,9 +118,9 @@ class ForgotPasswordScreen: UIView {
             self.sendButton.setTitleColor(.black, for: .normal)
             self.sendButton.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
             self.sendButton.isEnabled = true
-        }else{
-            self.sendButton.setTitleColor(.lightGray, for: .normal)
-            self.sendButton.backgroundColor = .gray
+        } else {
+            self.sendButton.setTitleColor(.gray, for: .normal)
+            self.sendButton.backgroundColor = .lightGray
             self.sendButton.isEnabled = false
         }
     }
@@ -139,12 +137,13 @@ class ForgotPasswordScreen: UIView {
     
     private func addViews(){
         addSubview(ForgotPasswordImageView)
+        addSubview(backButton)
         addSubview(informationLabel)
         addSubview(emailForgotLabel)
         addSubview(emailForgotTextField)
         addSubview(checkEmailLabel)
         addSubview(sendButton)
-        addSubview(backButton)
+      
     }
     
     private func constraintSettings(){
@@ -154,6 +153,11 @@ class ForgotPasswordScreen: UIView {
             ForgotPasswordImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             ForgotPasswordImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             ForgotPasswordImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+            backButton.heightAnchor.constraint(equalToConstant: 25),
+            backButton.widthAnchor.constraint(equalToConstant: 25),
             
             informationLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 120),
             informationLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
@@ -174,10 +178,6 @@ class ForgotPasswordScreen: UIView {
             sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -55),
             sendButton.heightAnchor.constraint(equalToConstant: 50),
             
-            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            backButton.heightAnchor.constraint(equalToConstant: 25),
-            backButton.widthAnchor.constraint(equalToConstant: 25)
         ])
     }
 }

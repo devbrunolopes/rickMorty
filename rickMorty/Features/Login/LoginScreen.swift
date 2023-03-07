@@ -86,7 +86,8 @@ class LoginScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Entrar", for: .normal)
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(tappedSinginButton), for: .touchUpInside)
         return button
     }()
@@ -138,6 +139,10 @@ class LoginScreen: UIView {
         hideErrorLabel()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func buttonDisabled(){
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -178,11 +183,6 @@ class LoginScreen: UIView {
         addSubview(forgotPasswordButton)
         addSubview(registerButton)
         addSubview(hiddenEmailLabel)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func constraintsSettings(){
@@ -204,7 +204,6 @@ class LoginScreen: UIView {
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10),
             emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-//            emailTextField.heightAnchor.constraint(equalToConstant: 45),
             
             hiddenEmailLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
             hiddenEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
@@ -215,22 +214,18 @@ class LoginScreen: UIView {
             passwordTextField.topAnchor.constraint(equalTo: passwordLabel.topAnchor, constant: 30),
             passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-//            passwordTextField.heightAnchor.constraint(equalToConstant: 45),
             
             forgotPasswordButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 45),
             forgotPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             
             singinButton.topAnchor.constraint(equalTo: forgotPasswordButton.topAnchor, constant: 55),
-            singinButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
-            singinButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
+            singinButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            singinButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             singinButton.heightAnchor.constraint(equalToConstant: 50),
             
             registerButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor , constant: 15),
             registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             
-            
         ])
     }
-    
-    
 }

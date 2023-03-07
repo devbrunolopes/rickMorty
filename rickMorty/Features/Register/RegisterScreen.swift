@@ -152,8 +152,6 @@ class RegisterScreen: UIView {
         button.backgroundColor = .lightGray
         button.clipsToBounds = true
         button.layer.cornerRadius = 20
-        button.layer.borderWidth = 3.0
-        button.layer.borderColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1).cgColor
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
         return button
     }()
@@ -201,8 +199,8 @@ class RegisterScreen: UIView {
             self.registerButton.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
             self.registerButton.isEnabled = true
         } else {
-            self.registerButton.setTitleColor(.lightGray, for: .normal)
-            self.registerButton.backgroundColor = .gray
+            self.registerButton.setTitleColor(.gray, for: .normal)
+            self.registerButton.backgroundColor = .lightGray
             self.registerButton.isEnabled = false
         }
     }

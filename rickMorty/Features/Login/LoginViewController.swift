@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
         view = screen
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingAndColors()
@@ -25,7 +24,6 @@ class LoginViewController: UIViewController {
         screen?.settingsTextField(delegate: self)
         screen?.singinButton.isEnabled = false
         viewModel.setupDelegate(delegate: self)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,6 +89,5 @@ extension LoginViewController: LoginViewModelProtocol{
     func error() {
         screen?.showErrorLabel()
     }
-    
     
 }
