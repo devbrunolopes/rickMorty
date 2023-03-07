@@ -50,12 +50,12 @@ extension LoginViewController: LoginDelegate {
     
     func tappedRegisterButton() {
         let vc: RegisterVC = RegisterVC()
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tappedForgotPasswordButton() {
         let vc: ForgotPasswordViewController = ForgotPasswordViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
