@@ -31,7 +31,7 @@ class HomeTableViewCell: UITableViewCell {
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "6")
+        image.image = UIImage(named: "imageHome")
         return image
     }()
     

@@ -12,7 +12,7 @@ class DetalisScrren: UIView {
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "6")
+        image.image = UIImage(named: "imageHome")
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
         return image

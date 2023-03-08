@@ -23,7 +23,7 @@ class ForgotPasswordScreen: UIView {
     lazy var ForgotPasswordImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "n")
+        imageView.image = UIImage(named: "imageFundo")
         return imageView
     }()
     
