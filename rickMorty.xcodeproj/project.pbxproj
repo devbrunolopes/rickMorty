@@ -12,6 +12,7 @@
 		5C839D0629942F1C00ECCD91 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */; };
 		5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */; };
 		5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */; };
+		5CBAE68129ACE2E800C61BC3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAE68029ACE2E800C61BC3 /* TabbarViewController.swift */; };
 		5CF0D537299BC1AE00492B59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0D536299BC1AE00492B59 /* LoginViewModel.swift */; };
 		BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F153C299427A30061E432 /* AppDelegate.swift */; };
 		BE8F153F299427A30061E432 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F153E299427A30061E432 /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 		5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
 		5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		5CBAE68029ACE2E800C61BC3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		5CF0D536299BC1AE00492B59 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		BE8F1539299427A30061E432 /* rickMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rickMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8F153C299427A30061E432 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 				5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		5CBAE67F29ACE23B00C61BC3 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				5CBAE68029ACE2E800C61BC3 /* TabbarViewController.swift */,
+			);
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		BE8F1530299427A30061E432 = {
@@ -163,6 +173,7 @@
 		EB90EA4A29942C9400FC36CF /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				5CBAE67F29ACE23B00C61BC3 /* Tabbar */,
 				EB47C78B29AA8F6900D3B6E5 /* Detalis */,
 				EB122BA329A54B5900F43ED1 /* Home */,
 				5C839D0229942EC900ECCD91 /* ForgotPassword */,
@@ -321,6 +332,7 @@
 				EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */,
 				EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */,
 				EB90EA5629942ED400FC36CF /* ViewCode.swift in Sources */,
+				5CBAE68129ACE2E800C61BC3 /* TabbarViewController.swift in Sources */,
 				EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */,
 				BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */,
 				EB122BAB29A57AAB00F43ED1 /* PopularView.swift in Sources */,
