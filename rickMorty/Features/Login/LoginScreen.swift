@@ -21,17 +21,17 @@ class LoginScreen: UIView {
         self.delegate = delegate
     }
     
-    lazy var rickAndMortyImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "testee")
-        return imageView
-    }()
-    
     lazy var fundoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "n")
+        imageView.image = UIImage(named: "imageFundo")
+        return imageView
+    }()
+    
+    lazy var rickAndMortyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "logoRick")
         return imageView
     }()
     

@@ -23,7 +23,7 @@ class RegisterScreen: UIView {
     lazy var imageFundo: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "n")
+        image.image = UIImage(named: "imageFundo")
         return image
     }()
     
@@ -39,7 +39,7 @@ class RegisterScreen: UIView {
     lazy var imageLogo: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "testee")
+        image.image = UIImage(named: "logoRick")
         return image
     }()
     
