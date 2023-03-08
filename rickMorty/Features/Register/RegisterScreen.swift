@@ -23,7 +23,7 @@ class RegisterScreen: UIView {
     lazy var imageFundo: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "4")
+        image.image = UIImage(named: "n")
         return image
     }()
     
@@ -31,7 +31,7 @@ class RegisterScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.tintColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1)
+        button.tintColor = .lightGray
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         return button
     }()
@@ -39,7 +39,7 @@ class RegisterScreen: UIView {
     lazy var imageLogo: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "newLogo")
+        image.image = UIImage(named: "testee")
         return image
     }()
     
@@ -47,8 +47,8 @@ class RegisterScreen: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Nome:"
-        label.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -69,8 +69,8 @@ class RegisterScreen: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Email:"
-        label.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -101,8 +101,8 @@ class RegisterScreen: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Senha:"
-        label.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -124,8 +124,8 @@ class RegisterScreen: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Confirma Senha:"
-        label.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.8)
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
@@ -149,11 +149,9 @@ class RegisterScreen: UIView {
         button.setTitle("Cadastrar", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(red: 237/255, green: 178/255, blue: 71/255, alpha: 1)
+        button.backgroundColor = .lightGray
         button.clipsToBounds = true
         button.layer.cornerRadius = 20
-        button.layer.borderWidth = 3.0
-        button.layer.borderColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1).cgColor
         button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
         return button
     }()
@@ -198,9 +196,11 @@ class RegisterScreen: UIView {
         
         if emptyTextField && isPasswordEqual {
             self.registerButton.setTitleColor(.black, for: .normal)
+            self.registerButton.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
             self.registerButton.isEnabled = true
         } else {
-            self.registerButton.setTitleColor(.lightGray, for: .normal)
+            self.registerButton.setTitleColor(.gray, for: .normal)
+            self.registerButton.backgroundColor = .lightGray
             self.registerButton.isEnabled = false
         }
     }
@@ -227,8 +227,6 @@ class RegisterScreen: UIView {
             return true
         }
     }
-    
-    
 }
 
 // MARK: Extension ViewCode
@@ -264,10 +262,10 @@ extension RegisterScreen: ViewCode {
             backButton.heightAnchor.constraint(equalToConstant: 20),
             backButton.widthAnchor.constraint(equalToConstant: 20),
             
-            imageLogo.topAnchor.constraint(equalTo: backButton.bottomAnchor),
+            imageLogo.topAnchor.constraint(equalTo: backButton.bottomAnchor,constant: -15),
             imageLogo.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageLogo.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageLogo.heightAnchor.constraint(equalToConstant: 180),
+            imageLogo.heightAnchor.constraint(equalToConstant: 140),
             
             nameLabel.topAnchor.constraint(equalTo: imageLogo.bottomAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
@@ -306,12 +304,11 @@ extension RegisterScreen: ViewCode {
             registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
             registerButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-            registerButton.heightAnchor.constraint(equalToConstant: 60),
+            registerButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
     }
 }
-
 
 
 
