@@ -17,9 +17,9 @@ class TabbarViewController: UITabBarController {
     private func setupTabbarController(){
         
         let homeTabbar = HomeVC()
-//        let favoritesTabbar =
+        let favoritesTabbar = FavoritesVC()
 //        let profileTabbar =
-        setViewControllers([homeTabbar], animated: false)
+        setViewControllers([homeTabbar,favoritesTabbar], animated: false)
         
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = false
@@ -30,8 +30,8 @@ class TabbarViewController: UITabBarController {
         tabBarItem[0].title = "Home"
         tabBarItem[0].image = UIImage(systemName: "house")
         
-//        tabBarItem[1].title = "Favoritos"
-//        tabBarItem[1].image = UIImage(systemName: "star")
+        tabBarItem[1].title = "Favoritos"
+        tabBarItem[1].image = UIImage(systemName: "star")
 //
 //        tabBarItem[2].title = "Perfil"
 //        tabBarItem[2].image = UIImage(systemName: "person")
