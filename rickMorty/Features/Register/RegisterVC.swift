@@ -12,6 +12,7 @@ class RegisterVC: UIViewController {
     var screen: RegisterScreen?
     var viewModel: RegisterViewModel = RegisterViewModel()
     var alert: Alert?
+    
     override func loadView() {
         screen = RegisterScreen()
         view = screen
@@ -29,7 +30,6 @@ class RegisterVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
-    
     
 }
 
@@ -68,8 +68,8 @@ extension RegisterVC: UITextFieldDelegate {
 extension RegisterVC: RegisterViewModelProtocol {
     func sucess() {
         self.alert?.getAlert(titulo: "Parabens", mensagem: "Usuario cadastrado com Sucesso!", completion: {
-            let vc:HomeVC = HomeVC()
-            self.navigationController?.pushViewController(vc, animated: false)
+            let vc: HomeVC = HomeVC()
+            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
     
@@ -77,7 +77,5 @@ extension RegisterVC: RegisterViewModelProtocol {
         self.alert?.getAlert(titulo: "Atenção", mensagem: "Erro ao cadastrar. Tente novamente!")
     }
     
-    
 }
-
 

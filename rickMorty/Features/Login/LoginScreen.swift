@@ -24,7 +24,14 @@ class LoginScreen: UIView {
     lazy var rickAndMortyImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "Rick-And-Morty-Logo")
+        imageView.image = UIImage(named: "testee")
+        return imageView
+    }()
+    
+    lazy var fundoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "n")
         return imageView
     }()
     
@@ -43,8 +50,9 @@ class LoginScreen: UIView {
         textField.placeholder = "Insira seu email"
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
-        textField.backgroundColor = .gray
-        textField.layer.cornerRadius = 15
+        textField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
+        textField.layer.cornerRadius = 10
+        textField.clipsToBounds = true
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         return textField
@@ -65,9 +73,10 @@ class LoginScreen: UIView {
         textField.placeholder = "Insira sua senha"
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
-        textField.layer.cornerRadius = 15
-        textField.backgroundColor = .gray
+        textField.layer.cornerRadius = 10
+        textField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         textField.isSecureTextEntry = true
+        textField.clipsToBounds = true
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         return textField
@@ -77,8 +86,8 @@ class LoginScreen: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Entrar", for: .normal)
-        button.layer.cornerRadius = 15
-        button.backgroundColor = .green
+        button.layer.cornerRadius = 20
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(tappedSinginButton), for: .touchUpInside)
         return button
     }()
@@ -127,7 +136,11 @@ class LoginScreen: UIView {
         addViews()
         constraintsSettings()
         buttonDisabled()
-        hideErrorLabel()   
+        hideErrorLabel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func buttonDisabled(){
@@ -135,8 +148,8 @@ class LoginScreen: UIView {
         let password = passwordTextField.text ?? ""
 
         if !email.isEmpty && !password.isEmpty {
-            singinButton.setTitleColor(.lightGray, for: .normal)
-            singinButton.backgroundColor = .green
+            singinButton.setTitleColor(.black, for: .normal)
+            singinButton.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
             singinButton.isEnabled = true
         } else {
             singinButton.setTitleColor(.gray, for: .normal)
@@ -160,6 +173,7 @@ class LoginScreen: UIView {
     }
     
     private func addViews(){
+        addSubview(fundoImageView)
         addSubview(rickAndMortyImageView)
         addSubview(emailLabel)
         addSubview(emailTextField)
@@ -169,15 +183,15 @@ class LoginScreen: UIView {
         addSubview(forgotPasswordButton)
         addSubview(registerButton)
         addSubview(hiddenEmailLabel)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func constraintsSettings(){
         NSLayoutConstraint.activate([
+            
+            fundoImageView.topAnchor.constraint(equalTo: topAnchor),
+            fundoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            fundoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            fundoImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
             
             rickAndMortyImageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             rickAndMortyImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
@@ -190,7 +204,6 @@ class LoginScreen: UIView {
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10),
             emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            emailTextField.heightAnchor.constraint(equalToConstant: 45),
             
             hiddenEmailLabel.topAnchor.constraint(equalTo: emailTextField.bottomAnchor),
             hiddenEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
@@ -201,22 +214,18 @@ class LoginScreen: UIView {
             passwordTextField.topAnchor.constraint(equalTo: passwordLabel.topAnchor, constant: 30),
             passwordTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             passwordTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 45),
             
             forgotPasswordButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 45),
             forgotPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             
             singinButton.topAnchor.constraint(equalTo: forgotPasswordButton.topAnchor, constant: 55),
-            singinButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50),
-            singinButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -50),
+            singinButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            singinButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
             singinButton.heightAnchor.constraint(equalToConstant: 50),
             
             registerButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor , constant: 15),
             registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             
-            
         ])
     }
-    
-    
 }

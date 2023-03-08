@@ -34,6 +34,7 @@ class ForgotPasswordViewModel {
                     label.textColor = .red
                 } else {
                     label.textColor = .clear
+                    self.delegate?.alertSucess()
                 }
             } else {
                 label.textColor = .red

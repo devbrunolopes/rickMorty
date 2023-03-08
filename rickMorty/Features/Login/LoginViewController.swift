@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
         view = screen
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingAndColors()
@@ -25,7 +24,6 @@ class LoginViewController: UIViewController {
         screen?.settingsTextField(delegate: self)
         screen?.singinButton.isEnabled = false
         viewModel.setupDelegate(delegate: self)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,12 +48,12 @@ extension LoginViewController: LoginDelegate {
     
     func tappedRegisterButton() {
         let vc: RegisterVC = RegisterVC()
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tappedForgotPasswordButton() {
         let vc: ForgotPasswordViewController = ForgotPasswordViewController()
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -91,6 +89,5 @@ extension LoginViewController: LoginViewModelProtocol{
     func error() {
         screen?.showErrorLabel()
     }
-    
     
 }
