@@ -22,7 +22,7 @@ class HomeTableViewCell: UITableViewCell {
     lazy var contentViewHome: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .darkGray
+        view.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
         view.clipsToBounds = true
         view.layer.cornerRadius = 15
         return view
@@ -58,7 +58,7 @@ class HomeTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        backgroundColor = .clear
+        backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
     }
     
