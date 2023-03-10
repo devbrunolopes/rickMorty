@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol DetalisScrrenProtocol: AnyObject {
+    func actionButtonBack()
+}
+
 class DetalisScrren: UIView {
+    
+    weak var delegate: DetalisScrrenProtocol?
+    func delegate(delegate:DetalisScrrenProtocol){
+        self.delegate = delegate
+    }
+
     
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
@@ -16,6 +26,15 @@ class DetalisScrren: UIView {
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
         return image
+    }()
+    
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.tintColor = .lightGray
+        button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
+        return button
     }()
     
     lazy var descriptionLabel: UILabel = {
@@ -73,6 +92,10 @@ class DetalisScrren: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func tappedBackButton(){
+        delegate?.actionButtonBack()
+    }
 }
 
 //MARK: - Extension ViewCode
@@ -80,6 +103,7 @@ class DetalisScrren: UIView {
 extension DetalisScrren: ViewCode {
     func configElements() {
         addSubview(imagePerson)
+        addSubview(backButton)
         addSubview(descriptionLabel)
         addSubview(nameLabel)
         addSubview(spaceLabel)
@@ -94,6 +118,11 @@ extension DetalisScrren: ViewCode {
                 imagePerson.leadingAnchor.constraint(equalTo: leadingAnchor),
                 imagePerson.trailingAnchor.constraint(equalTo: trailingAnchor),
                 imagePerson.heightAnchor.constraint(equalToConstant: 350),
+                
+                backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                backButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15),
+                backButton.heightAnchor.constraint(equalToConstant: 20),
+                backButton.widthAnchor.constraint(equalToConstant: 20),
                 
                 descriptionLabel.topAnchor.constraint(equalTo: imagePerson.bottomAnchor,constant: 35),
                 descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),

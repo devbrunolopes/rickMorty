@@ -14,7 +14,7 @@ class HomeScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Personagens Rick and Morty"
         label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 25, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         label.textAlignment = .center
         return label
     }()

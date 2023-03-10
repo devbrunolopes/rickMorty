@@ -17,6 +17,15 @@ class DetalisVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        screen?.delegate(delegate: self)
     }
+    
+}
+
+extension DetalisVC: DetalisScrrenProtocol {
+    func actionButtonBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
 }
