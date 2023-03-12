@@ -34,6 +34,8 @@
 		EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5029942CF300FC36CF /* RegisterScreen.swift */; };
 		EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5229942D0900FC36CF /* RegisterVC.swift */; };
 		EB90EA5629942ED400FC36CF /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5529942ED400FC36CF /* ViewCode.swift */; };
+		EBA5A92329BBC33F00C0D988 /* ProfileVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5A92229BBC33F00C0D988 /* ProfileVCViewController.swift */; };
+		EBA5A92529BD68DB00C0D988 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5A92429BD68DB00C0D988 /* EmptyCollectionViewCell.swift */; };
 		EBAA25C729B910B0005BB08F /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA25C629B910B0005BB08F /* FavoritesVC.swift */; };
 		EBAA25C929B910C0005BB08F /* FavoritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA25C829B910C0005BB08F /* FavoritesScreen.swift */; };
 		EBAA25CE29BBACEA005BB08F /* PersonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA25CD29BBACEA005BB08F /* PersonsCollectionViewCell.swift */; };
@@ -66,6 +68,8 @@
 		EB90EA5029942CF300FC36CF /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		EB90EA5229942D0900FC36CF /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		EB90EA5529942ED400FC36CF /* ViewCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
+		EBA5A92229BBC33F00C0D988 /* ProfileVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCViewController.swift; sourceTree = "<group>"; };
+		EBA5A92429BD68DB00C0D988 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		EBAA25C629B910B0005BB08F /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		EBAA25C829B910C0005BB08F /* FavoritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreen.swift; sourceTree = "<group>"; };
 		EBAA25CD29BBACEA005BB08F /* PersonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				EBAA25CD29BBACEA005BB08F /* PersonsCollectionViewCell.swift */,
+				EBA5A92429BD68DB00C0D988 /* EmptyCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				EBAA25C629B910B0005BB08F /* FavoritesVC.swift */,
+				EBA5A92229BBC33F00C0D988 /* ProfileVCViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -454,11 +460,13 @@
 			files = (
 				EBAA25C729B910B0005BB08F /* FavoritesVC.swift in Sources */,
 				EB47C78D29AA8FC800D3B6E5 /* DetalisScrren.swift in Sources */,
+				EBA5A92329BBC33F00C0D988 /* ProfileVCViewController.swift in Sources */,
 				5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */,
 				EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */,
 				EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */,
 				5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */,
 				EBAA25C929B910C0005BB08F /* FavoritesScreen.swift in Sources */,
+				EBA5A92529BD68DB00C0D988 /* EmptyCollectionViewCell.swift in Sources */,
 				EB47C78F29AA908600D3B6E5 /* DetalisVC.swift in Sources */,
 				5C839CFB29942D1E00ECCD91 /* LoginViewController.swift in Sources */,
 				EBCE682629A92FC8006D1A8D /* HomeTableViewCell.swift in Sources */,

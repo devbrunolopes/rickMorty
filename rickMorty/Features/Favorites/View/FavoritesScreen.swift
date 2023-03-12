@@ -16,6 +16,7 @@ class FavoritesScreen: UIView {
         label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 30, weight: .regular)
         label.textAlignment = .center
+        label.textColor = .clear
         return label
     }()
     
@@ -25,6 +26,7 @@ class FavoritesScreen: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         collectionView.register(PersonsCollectionViewCell.self, forCellWithReuseIdentifier: PersonsCollectionViewCell.identifier)
+        collectionView.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
         layout.scrollDirection = .vertical
