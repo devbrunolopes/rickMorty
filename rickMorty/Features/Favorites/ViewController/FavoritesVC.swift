@@ -10,6 +10,7 @@ import UIKit
 class FavoritesVC: UIViewController {
     
     var screen: FavoritesScreen?
+    var viewModel: FavoritosViewModel = FavoritosViewModel()
     
     override func loadView() {
         screen = FavoritesScreen()
@@ -25,16 +26,31 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        if section == 0 {
+            return 1
+        } else {
+            return viewModel.data.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath)
-        return cell
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonsCollectionViewCell.identifier, for: indexPath)
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 300 )
+        if indexPath.row == 0 {
+            return CGSize(width: 300, height: 400 )
+        } else {
+            return CGSize(width: 130, height: 130 )
+        }
+       
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

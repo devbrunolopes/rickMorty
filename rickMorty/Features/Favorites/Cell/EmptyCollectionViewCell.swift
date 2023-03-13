@@ -28,10 +28,11 @@ class EmptyCollectionViewCell: UICollectionViewCell {
     lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Sem Favotios"
+        label.text = "No momento não há nenhum favotiros salvo"
         label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 35, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         label.textAlignment = .center
+        label.numberOfLines = 0 
         return label
     }()
     
@@ -63,7 +64,7 @@ extension EmptyCollectionViewCell: ViewCode {
                 contentViewFavorite.trailingAnchor.constraint(equalTo: trailingAnchor),
                 contentViewFavorite.bottomAnchor.constraint(equalTo: bottomAnchor),
                 
-                emptyLabel.topAnchor.constraint(equalTo: contentViewFavorite.topAnchor, constant: 20),
+                emptyLabel.topAnchor.constraint(equalTo: contentViewFavorite.topAnchor, constant: 60),
                 emptyLabel.leadingAnchor.constraint(equalTo: contentViewFavorite.leadingAnchor,constant: 20),
                 emptyLabel.trailingAnchor.constraint(equalTo: contentViewFavorite.trailingAnchor,constant: -20),
                 

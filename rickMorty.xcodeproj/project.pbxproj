@@ -36,6 +36,8 @@
 		EB90EA5629942ED400FC36CF /* ViewCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5529942ED400FC36CF /* ViewCode.swift */; };
 		EBA5A92329BBC33F00C0D988 /* ProfileVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5A92229BBC33F00C0D988 /* ProfileVCViewController.swift */; };
 		EBA5A92529BD68DB00C0D988 /* EmptyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5A92429BD68DB00C0D988 /* EmptyCollectionViewCell.swift */; };
+		EBA5A92829BF854200C0D988 /* FavoritosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5A92729BF854200C0D988 /* FavoritosViewModel.swift */; };
+		EBA5A92B29BF85E600C0D988 /* PopularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA5A92A29BF85E600C0D988 /* PopularImage.swift */; };
 		EBAA25C729B910B0005BB08F /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA25C629B910B0005BB08F /* FavoritesVC.swift */; };
 		EBAA25C929B910C0005BB08F /* FavoritesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA25C829B910C0005BB08F /* FavoritesScreen.swift */; };
 		EBAA25CE29BBACEA005BB08F /* PersonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAA25CD29BBACEA005BB08F /* PersonsCollectionViewCell.swift */; };
@@ -70,6 +72,8 @@
 		EB90EA5529942ED400FC36CF /* ViewCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		EBA5A92229BBC33F00C0D988 /* ProfileVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVCViewController.swift; sourceTree = "<group>"; };
 		EBA5A92429BD68DB00C0D988 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
+		EBA5A92729BF854200C0D988 /* FavoritosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewModel.swift; sourceTree = "<group>"; };
+		EBA5A92A29BF85E600C0D988 /* PopularImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularImage.swift; sourceTree = "<group>"; };
 		EBAA25C629B910B0005BB08F /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		EBAA25C829B910C0005BB08F /* FavoritesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesScreen.swift; sourceTree = "<group>"; };
 		EBAA25CD29BBACEA005BB08F /* PersonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -302,11 +306,29 @@
 			path = ../../ViewController;
 			sourceTree = "<group>";
 		};
+		EBA5A92629BF851400C0D988 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EBA5A92729BF854200C0D988 /* FavoritosViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EBA5A92929BF85BE00C0D988 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBA5A92A29BF85E600C0D988 /* PopularImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EBAA25C529B9109E005BB08F /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				EBAA25CC29BBACA2005BB08F /* ViewController */,
 				EBAA25CB29BBAC99005BB08F /* View */,
+				EBA5A92629BF851400C0D988 /* ViewModel */,
+				EBA5A92929BF85BE00C0D988 /* Model */,
 				EBAA25CA29BBAC8D005BB08F /* Cell */,
 			);
 			path = Favorites;
@@ -465,6 +487,7 @@
 				EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */,
 				EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */,
 				5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */,
+				EBA5A92B29BF85E600C0D988 /* PopularImage.swift in Sources */,
 				EBAA25C929B910C0005BB08F /* FavoritesScreen.swift in Sources */,
 				EBA5A92529BD68DB00C0D988 /* EmptyCollectionViewCell.swift in Sources */,
 				EB47C78F29AA908600D3B6E5 /* DetalisVC.swift in Sources */,
@@ -480,6 +503,7 @@
 				EB5A61F02995722D00F6C196 /* RegisterModel.swift in Sources */,
 				5CF0D537299BC1AE00492B59 /* LoginViewModel.swift in Sources */,
 				EBAA25CE29BBACEA005BB08F /* PersonsCollectionViewCell.swift in Sources */,
+				EBA5A92829BF854200C0D988 /* FavoritosViewModel.swift in Sources */,
 				EB122BA829A54BCF00F43ED1 /* HomeScreen.swift in Sources */,
 				5C839D0629942F1C00ECCD91 /* ForgotPasswordScreen.swift in Sources */,
 				BE8F153F299427A30061E432 /* SceneDelegate.swift in Sources */,

@@ -14,9 +14,8 @@ class FavoritesScreen: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Favoritos 😝"
         label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
-        label.font = UIFont.systemFont(ofSize: 30, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 30, weight: .semibold)
         label.textAlignment = .center
-        label.textColor = .clear
         return label
     }()
     
@@ -61,7 +60,7 @@ extension FavoritesScreen: ViewCode {
     func configConstraint() {
             NSLayoutConstraint.activate([
                 
-                favoritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 30),
+                favoritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
                 favoritesLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 30),
                 favoritesLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
                 
