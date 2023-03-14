@@ -9,5 +9,4 @@ import UIKit
 
 struct PopularFavoritos {
     var imageFavoritos: UIImage?
-    
 }

@@ -34,7 +34,7 @@ class FavoritesScreen: UIView {
         collectionView.setCollectionViewLayout(layout, animated: false)
         return collectionView
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewCode()
@@ -49,7 +49,6 @@ class FavoritesScreen: UIView {
         collectionView.delegate = delegate
         collectionView.dataSource = Source
     }
-    
 }
 
 extension FavoritesScreen: ViewCode {
@@ -59,18 +58,15 @@ extension FavoritesScreen: ViewCode {
     }
     
     func configConstraint() {
-            NSLayoutConstraint.activate([
-                
-                favoritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                favoritesLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 30),
-                favoritesLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
-                
-                collectionView.topAnchor.constraint(equalTo: favoritesLabel.bottomAnchor,constant: 30),
-                collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            ])
+        NSLayoutConstraint.activate([
+            favoritesLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            favoritesLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 30),
+            favoritesLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
+            
+            collectionView.topAnchor.constraint(equalTo: favoritesLabel.bottomAnchor,constant: 30),
+            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
-    
-    
 }

@@ -21,41 +21,24 @@ class FavoritesVC: UIViewController {
         super.viewDidLoad()
         screen?.configCollectionView(delegate: self, Source: self)
     }
-
 }
 
 extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
-            return 1
-        } else {
-            return viewModel.data.count
-        }
-        
+        viewModel.numberOfRowsInSectionPopularFavotitos
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.identifier, for: indexPath)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonsCollectionViewCell.identifier, for: indexPath)
-            return cell
-        }
+        viewModel.userShouldInteractWithCollection(collectionView: collectionView)
+        return viewModel.whichCellShouldShow(collectionView: collectionView, indexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 0 {
-            return CGSize(width: 300, height: 400 )
-        } else {
-            return CGSize(width: 130, height: 130 )
-        }
-       
+        viewModel.sizeForItemAt()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc: DetalisVC = DetalisVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }

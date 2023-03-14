@@ -10,7 +10,7 @@ import UIKit
 class PersonsCollectionViewCell: UICollectionViewCell {
     
     lazy var contentViewFavorite: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
         view.layer.cornerRadius = 20
@@ -26,54 +26,39 @@ class PersonsCollectionViewCell: UICollectionViewCell {
         return image
     }()
     
-    lazy var heartButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        button.tintColor = .white
-        // action
-        return button
-    }()
-
-    static let identifier:String = "Nome do arquivo"
+    static let identifier:String = "PersonsCollectionViewCell"
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupViewCode()
-      }
-      
-      required init?(coder: NSCoder) {
-          fatalError("init(coder:) has not been implemented")
-      }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupCell(data: PopularFavoritos){
+        imagePerson.image = data.imageFavoritos
+    }
 }
 
 extension PersonsCollectionViewCell: ViewCode {
     func configElements() {
         addSubview(contentViewFavorite)
         contentViewFavorite.addSubview(imagePerson)
-        contentViewFavorite.addSubview(heartButton)
     }
     
     func configConstraint() {
-            NSLayoutConstraint.activate([
-                
-                contentViewFavorite.topAnchor.constraint(equalTo: topAnchor),
-                contentViewFavorite.leadingAnchor.constraint(equalTo: leadingAnchor),
-                contentViewFavorite.trailingAnchor.constraint(equalTo: trailingAnchor),
-                contentViewFavorite.bottomAnchor.constraint(equalTo: bottomAnchor),
-                
-                imagePerson.topAnchor.constraint(equalTo: contentViewFavorite.topAnchor),
-                imagePerson.leadingAnchor.constraint(equalTo: contentViewFavorite.leadingAnchor),
-                imagePerson.trailingAnchor.constraint(equalTo: contentViewFavorite.trailingAnchor),
-                imagePerson.bottomAnchor.constraint(equalTo: contentViewFavorite.bottomAnchor),
-                
-                heartButton.topAnchor.constraint(equalTo: topAnchor,constant: 12),
-                heartButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -12),
-                
-                
-                
-            ])
+        NSLayoutConstraint.activate([
+            contentViewFavorite.topAnchor.constraint(equalTo: topAnchor),
+            contentViewFavorite.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentViewFavorite.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentViewFavorite.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            imagePerson.topAnchor.constraint(equalTo: contentViewFavorite.topAnchor),
+            imagePerson.leadingAnchor.constraint(equalTo: contentViewFavorite.leadingAnchor),
+            imagePerson.trailingAnchor.constraint(equalTo: contentViewFavorite.trailingAnchor),
+            imagePerson.bottomAnchor.constraint(equalTo: contentViewFavorite.bottomAnchor)
+        ])
     }
-    
-    
 }
