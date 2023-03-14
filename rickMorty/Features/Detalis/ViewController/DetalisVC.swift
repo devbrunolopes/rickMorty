@@ -22,10 +22,10 @@ class DetalisVC: UIViewController {
     
 }
 
+//MARK: DetalisScrrenProtocol
+
 extension DetalisVC: DetalisScrrenProtocol {
     func actionButtonBack() {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
 }

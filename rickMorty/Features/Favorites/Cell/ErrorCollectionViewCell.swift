@@ -48,6 +48,8 @@ class ErrorCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: ViewCode
+
 extension ErrorCollectionViewCell: ViewCode {
     func configElements() {
         addSubview(contentViewFavorite)

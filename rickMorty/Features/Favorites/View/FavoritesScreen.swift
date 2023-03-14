@@ -51,6 +51,8 @@ class FavoritesScreen: UIView {
     }
 }
 
+//MARK: ViewCode
+
 extension FavoritesScreen: ViewCode {
     func configElements() {
         addSubview(favoritesLabel)

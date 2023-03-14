@@ -48,6 +48,8 @@ class EmptyCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: ViewCode
+
 extension EmptyCollectionViewCell: ViewCode {
     func configElements() {
         addSubview(contentViewFavorite)

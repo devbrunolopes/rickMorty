@@ -22,6 +22,7 @@ class FavoritesVC: UIViewController {
         screen?.configCollectionView(delegate: self, Source: self)
     }
 }
+//MARK: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource
 
 extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -42,6 +42,8 @@ class PersonsCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: ViewCode
+
 extension PersonsCollectionViewCell: ViewCode {
     func configElements() {
         addSubview(contentViewFavorite)
