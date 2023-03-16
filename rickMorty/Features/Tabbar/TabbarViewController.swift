@@ -26,7 +26,8 @@ class TabbarViewController: UITabBarController {
         
         let homeTabbar = HomeVC()
         let favoritesTabbar = FavoritesVC()
-        setViewControllers([homeTabbar,favoritesTabbar], animated: false)
+        let profileTabBar = ProfileVC()
+        setViewControllers([homeTabbar,favoritesTabbar,profileTabBar], animated: false)
         
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = false
@@ -40,7 +41,7 @@ class TabbarViewController: UITabBarController {
         tabBarItem[1].title = "Favoritos"
         tabBarItem[1].image = UIImage(systemName: "heart")
 
-//        tabBarItem[2].title = "Perfil"
-//        tabBarItem[2].image = UIImage(systemName: "person")
+        tabBarItem[2].title = "Perfil"
+        tabBarItem[2].image = UIImage(systemName: "person")
     }
 }
