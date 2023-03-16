@@ -18,6 +18,20 @@ class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        screen?.delegate(delegate: self)
     }
     
+}
+
+//MARK: Extension ProfileScreenProtocol
+
+extension ProfileVC: ProfileScreenProtocol {
+    func actionEditButton() {
+        
+    }
+    
+    func actionEndButton() {
+        let vc:LoginViewController = LoginViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

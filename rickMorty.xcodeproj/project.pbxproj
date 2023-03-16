@@ -368,10 +368,26 @@
 		EBB26D9929C248C50079AF6E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				EBB26D9A29C248F30079AF6E /* ProfileVC.swift */,
-				EBB26D9C29C249200079AF6E /* ProfileScreen.swift */,
+				EBB26D9E29C29F640079AF6E /* ViewController */,
+				EBB26D9F29C29F6F0079AF6E /* View */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		EBB26D9E29C29F640079AF6E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EBB26D9A29C248F30079AF6E /* ProfileVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EBB26D9F29C29F6F0079AF6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBB26D9C29C249200079AF6E /* ProfileScreen.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		EBCE682429A92FA3006D1A8D /* Cell */ = {
