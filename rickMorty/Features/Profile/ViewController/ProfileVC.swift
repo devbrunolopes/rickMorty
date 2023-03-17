@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseAuth
+import FirebaseFirestore
 
 class ProfileVC: UIViewController {
     
     var screen: ProfileScreen?
     var alert: Alert?
     let imagePicker: UIImagePickerController = UIImagePickerController()
+    let storage = Storage.storage().reference()
+    var user: [User] = []
+    let currentUser = Auth.auth().currentUser
+    let firestore = Firestore.firestore()
     
     override func loadView() {
         screen = ProfileScreen()
@@ -25,11 +32,41 @@ class ProfileVC: UIViewController {
         configImagePicker()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getUserData()
+    }
+    
     func configImagePicker(){
         imagePicker.delegate = self
     }
     
+    private func getUserData(){
+        firestore.collection("usuarios").getDocuments { snapshot, error in
+            if error == nil {
+                if let snapshot {
+                    DispatchQueue.main.async {
+                        self.user = snapshot.documents.map({ document in
+                            return User(name: document["name"] as? String ?? "",
+                                        email: document["email"] as? String ?? "")
+                        })
+                        self.popularView(index: self.getIndex(email: self.currentUser?.email ?? ""))
+                    }
+                }
+            }
+        }
+    }
+    private func popularView(index: Int) {
+        screen?.nameTextField.text = user[index].name
+        screen?.emailTextField.text = user[index].email
+    }
+    
+    private func getIndex(email: String) -> Int {
+        let index = user.firstIndex { $0.email == email } ?? 0
+        return index
+    }
+    
 }
+
 
 //MARK: Extension ProfileScreenProtocol
 
@@ -50,7 +87,7 @@ extension ProfileVC: ProfileScreenProtocol {
             }
         })
     }
-
+    
     func actionEndButton() {
         let vc:LoginViewController = LoginViewController()
         self.navigationController?.pushViewController(vc, animated: true)

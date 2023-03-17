@@ -302,8 +302,8 @@ extension RegisterScreen: ViewCode {
             checkPasswordLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             
             registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 30),
+            registerButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
             registerButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
