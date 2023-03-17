@@ -65,7 +65,6 @@ class ProfileScreen: UIView {
         textField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
-        textField.text = "Franklin Solano"
         textField.isEnabled = false
         return textField
     }()
@@ -83,7 +82,6 @@ class ProfileScreen: UIView {
     lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.text = "franklin@gmail.com"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         textField.layer.cornerRadius = 10
