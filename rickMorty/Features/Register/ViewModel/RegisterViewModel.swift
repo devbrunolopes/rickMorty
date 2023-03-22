@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseDatabase
 
 protocol RegisterViewModelProtocol: AnyObject {
     func sucess()
@@ -40,7 +41,7 @@ class RegisterViewModel {
                 DispatchQueue.global(qos: .userInitiated).async {
                     let data = ["name": name,
                                 "email": email,]
-                    self.db.collection("usuarios").addDocument(data: data) { (error) in
+                    self.db.collection("users").addDocument(data: data) { (error) in
                         if error != nil {
                             print("erro")
                             self.delegate?.error()
