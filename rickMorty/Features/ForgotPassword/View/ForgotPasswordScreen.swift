@@ -174,8 +174,8 @@ class ForgotPasswordScreen: UIView {
             checkEmailLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
             
             sendButton.topAnchor.constraint(equalTo: emailForgotTextField.bottomAnchor, constant: 35),
-            sendButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 55),
-            sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -55),
+            sendButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
             sendButton.heightAnchor.constraint(equalToConstant: 50),
             
         ])
