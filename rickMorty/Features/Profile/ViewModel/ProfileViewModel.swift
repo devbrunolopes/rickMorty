@@ -70,12 +70,7 @@ class ProfileViewModel: UIViewController {
             self.storage.child("image/file.png").downloadURL { url, error in
                 guard let url = url, error == nil else {return}
                 let urlString = url.absoluteString
-
-                let collectionRef = Firestore.firestore().collection("users").document(self.userId ?? "" )
-                let docId = collectionRef.documentID
-                print(docId)
-                print("bananananananananana")
-                let doc = self.firestore.collection("users").document(docId)
+                let doc = self.firestore.collection("users").document(self.userId ?? "")
                 doc.updateData([
                     "image": urlString
                 ])

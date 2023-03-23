@@ -33,26 +33,24 @@ class RegisterViewModel {
     
     func createUserDados(name: String, email: String, senha: String){
         
-        createUser(email: email, password: senha) { error in
-            if let error = error{
-                print(error.localizedDescription)
-                
+        Auth.auth().createUser(withEmail: email, password: senha, completion: { result, error in
+            if error != nil {
+                print(error?.localizedDescription)
+                self.delegate?.error()
             } else {
-                DispatchQueue.global(qos: .userInitiated).async {
-                    let data = ["name": name,
-                                "email": email,]
-                    self.db.collection("users").addDocument(data: data) { (error) in
-                        if error != nil {
-                            print("erro")
-                            self.delegate?.error()
-                        } else {
-                            print("foi")
-                            self.delegate?.sucess()
-                        }
-                    }
-                }
+                self.savedUserData(email: email, name: name, id: result?.user.uid ?? "")
+                self.delegate?.sucess()
             }
-        }
+        })
+    }
+    
+    func savedUserData(email: String, name: String, id: String){
+        let dataPath = "users/\(id)"
+        let docRef = db.document(dataPath)
+        docRef.setData([
+            "name": name,
+            "email": email
+        ])
     }
     
     func checkEmailFirebase(email: String, label: UILabel) {
