@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseStorage
-import FirebaseFirestore
 import Firebase
 import AlamofireImage
+import FirebaseStorage
 
 class ProfileViewModel: UIViewController {
     

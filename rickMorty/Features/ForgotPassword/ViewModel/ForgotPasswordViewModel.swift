@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Firebase
 
 protocol ForgotPasswordViewModelProtocol: AnyObject {
     func alertError()

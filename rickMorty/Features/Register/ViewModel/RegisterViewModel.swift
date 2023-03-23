@@ -6,9 +6,7 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
-import FirebaseDatabase
+import Firebase
 
 protocol RegisterViewModelProtocol: AnyObject {
     func sucess()
