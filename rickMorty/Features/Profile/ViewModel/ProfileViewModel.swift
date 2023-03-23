@@ -12,8 +12,6 @@ import FirebaseFirestore
 import Firebase
 import AlamofireImage
 
-
-
 class ProfileViewModel: UIViewController {
     
     let storage = Storage.storage().reference()

@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class ProfileVC: UIViewController {
     
     var screen: ProfileScreen?

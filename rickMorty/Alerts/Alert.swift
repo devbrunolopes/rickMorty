@@ -14,8 +14,7 @@ class Alert:NSObject{
             case library
             case cancel
         }
-        
-        
+    
         var controller:UIViewController
         
         init(controller:UIViewController) {
@@ -45,17 +44,12 @@ class Alert:NSObject{
             
             let cancel = UIAlertAction(title: "Cancel", style: .cancel) { action in
                 completion(.cancel)
-                
             }
-            
             
             alertController.addAction(camera)
             alertController.addAction(library)
             alertController.addAction(cancel)
             controller.present(alertController, animated: true)
-            
-            
         }
-        
     }
 
