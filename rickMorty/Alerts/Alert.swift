@@ -7,14 +7,14 @@
 
 import UIKit
 
+enum TypeImageSelected{
+    case camera
+    case library
+    case cancel
+}
+
 class Alert:NSObject{
-    
-        enum TypeImageSelected{
-            case camera
-            case library
-            case cancel
-        }
-    
+
         var controller:UIViewController
         
         init(controller:UIViewController) {
