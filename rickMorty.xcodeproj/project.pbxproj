@@ -24,6 +24,8 @@
 		EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */; };
 		EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB283CBD29A1B5B30094B3B7 /* Alert.swift */; };
 		EB2B4E2A29CA160700660286 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EB2B4E2929CA160700660286 /* AlamofireImage */; };
+		EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B4E4329D1DB7800660286 /* GenericService.swift */; };
+		EB2B4E4729D1DC2E00660286 /* ListRickAndMorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */; };
 		EB34536729955FD2009A2D52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB34536629955FD2009A2D52 /* GoogleService-Info.plist */; };
 		EB34536A299560C9009A2D52 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EB345369299560C9009A2D52 /* FirebaseAuth */; };
 		EB34536C299560C9009A2D52 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EB34536B299560C9009A2D52 /* FirebaseDatabase */; };
@@ -31,6 +33,7 @@
 		EB345370299560C9009A2D52 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EB34536F299560C9009A2D52 /* FirebaseStorage */; };
 		EB47C78D29AA8FC800D3B6E5 /* DetalisScrren.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47C78C29AA8FC800D3B6E5 /* DetalisScrren.swift */; };
 		EB47C78F29AA908600D3B6E5 /* DetalisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47C78E29AA908600D3B6E5 /* DetalisVC.swift */; };
+		EB4BCD3629D1E6FB00C2C5D4 /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4BCD3529D1E6FB00C2C5D4 /* HomeList.swift */; };
 		EB5A61F02995722D00F6C196 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A61EF2995722C00F6C196 /* RegisterViewModel.swift */; };
 		EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5029942CF300FC36CF /* RegisterScreen.swift */; };
 		EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5229942D0900FC36CF /* RegisterVC.swift */; };
@@ -68,9 +71,12 @@
 		EB122BAA29A57AAB00F43ED1 /* PopularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularView.swift; sourceTree = "<group>"; };
 		EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EB283CBD29A1B5B30094B3B7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		EB2B4E4329D1DB7800660286 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
+		EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRickAndMorty.swift; sourceTree = "<group>"; };
 		EB34536629955FD2009A2D52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB47C78C29AA8FC800D3B6E5 /* DetalisScrren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalisScrren.swift; sourceTree = "<group>"; };
 		EB47C78E29AA908600D3B6E5 /* DetalisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalisVC.swift; sourceTree = "<group>"; };
+		EB4BCD3529D1E6FB00C2C5D4 /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
 		EB5A61EF2995722C00F6C196 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		EB90EA5029942CF300FC36CF /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		EB90EA5229942D0900FC36CF /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -152,6 +158,7 @@
 		BE8F153B299427A30061E432 /* rickMorty */ = {
 			isa = PBXGroup;
 			children = (
+				EB2B4E4229D1DB6000660286 /* Service */,
 				EB283CBC29A1B5A20094B3B7 /* Alerts */,
 				EB90EA5429942EC000FC36CF /* Protocol */,
 				EB90EA4A29942C9400FC36CF /* Features */,
@@ -183,6 +190,16 @@
 				EB283CBD29A1B5B30094B3B7 /* Alert.swift */,
 			);
 			path = Alerts;
+			sourceTree = "<group>";
+		};
+		EB2B4E4229D1DB6000660286 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B4E4329D1DB7800660286 /* GenericService.swift */,
+				EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */,
+				EB4BCD3529D1E6FB00C2C5D4 /* HomeList.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		EB47C78B29AA8F6900D3B6E5 /* Detalis */ = {
@@ -540,7 +557,9 @@
 				EB47C78D29AA8FC800D3B6E5 /* DetalisScrren.swift in Sources */,
 				5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */,
 				EBB26D9B29C248F30079AF6E /* ProfileVC.swift in Sources */,
+				EB2B4E4729D1DC2E00660286 /* ListRickAndMorty.swift in Sources */,
 				EBB26DA529C4FA010079AF6E /* User.swift in Sources */,
+				EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */,
 				EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */,
 				EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */,
 				EBA5A92D29BFA76500C0D988 /* ErrorCollectionViewCell.swift in Sources */,
@@ -555,6 +574,7 @@
 				EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */,
 				EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */,
 				EB90EA5629942ED400FC36CF /* ViewCode.swift in Sources */,
+				EB4BCD3629D1E6FB00C2C5D4 /* HomeList.swift in Sources */,
 				5CBAE68129ACE2E800C61BC3 /* TabbarViewController.swift in Sources */,
 				EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */,
 				EBB26D9D29C249200079AF6E /* ProfileScreen.swift in Sources */,

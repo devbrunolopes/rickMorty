@@ -11,6 +11,7 @@ class HomeVC: UIViewController {
     
     var screen: HomeScreen?
     var viewModel: HomeViewModel = HomeViewModel()
+    let service: HomeList = HomeList()
     
     override func loadView() {
         screen = HomeScreen()
@@ -20,12 +21,28 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.configTableView(delegate: self, dataSource: self)
+        fetchHome()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
+    
+    func fetchHome(){
+        service.getHome { result, failure in
+            if let result = result{
+                self.viewModel.data = result
+            } else {
+                print("deu ruim")
+            }
+
+            DispatchQueue.main.async {
+                self.screen?.tableView.reloadData()
+            }
+        }
+    }
+    
 }
 
 //MARK: Extension UITableViewDelegate, UITableViewDataSource

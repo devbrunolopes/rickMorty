@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 protocol HomeTableViewCellProtocol: AnyObject {
     func actionHeartButton()
@@ -81,10 +82,14 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    func setupCell(data: PopularView){
-        nameLabel.text = data.name
-        specieLabel.text = data.specie
+    func setupCell(data: Result){
+        nameLabel.text = "Nome: \(data.name ?? "")"
+        specieLabel.text = "Specie: \(data.species ?? "")"
+        let url = URL(string: "\(data.image ?? "")") ?? URL(fileURLWithPath: "")
+        imagePerson.af.setImage(withURL: url)
     }
+    
+
 
 }
 
