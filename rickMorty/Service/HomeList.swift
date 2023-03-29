@@ -14,21 +14,21 @@ protocol HomeListProtocol: GenericService {
 
 class HomeList: HomeListProtocol {
     func getHome(completion: @escaping completion<[Result]?>) {
-    
-    let urlString: String = "https://rickandmortyapi.com/api/character"
-    guard let url = URL(string: urlString) else { return }
-    
-    let task = URLSession.shared.dataTask(with: url) { data, response, error in
-        guard let data = data else { return }
-        do {
-            let result = try JSONDecoder().decode(RickAndMorty.self, from: data)
-            completion(result.results, nil)
-        } catch {
-            print(error)
-            print("DEu ruim")
+        
+        let urlString: String = "https://rickandmortyapi.com/api/character"
+        guard let url = URL(string: urlString) else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            do {
+                let result = try JSONDecoder().decode(RickAndMorty.self, from: data)
+                completion(result.results, nil)
+            } catch {
+                completion(nil, error)
+            }
         }
+        task.resume()
     }
-    task.resume()
-}
     
 }
+

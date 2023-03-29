@@ -17,14 +17,13 @@ struct RickAndMorty: Codable {
 struct Info: Codable {
     var count, pages: Int?
     var next: String?
-//    var prev: JSONNull?
 }
 
 // MARK: - Result
 struct Result: Codable {
     var id: Int?
     var name: String?
-    var status: Status?
+    var status: String?
     var species: String?
     var type: String?
     var gender: String?
@@ -35,25 +34,8 @@ struct Result: Codable {
     var created: String?
 }
 
-enum Gender: String, Codable {
-    case female = "Female"
-    case male = "Male"
-    case unknown = "unknown"
-}
-
 // MARK: - Location
 struct Location: Codable {
     var name: String?
     var url: String?
-}
-
-enum Species: String, Codable {
-    case alien = "Alien"
-    case human = "Human"
-}
-
-enum Status: String, Codable {
-    case alive = "Alive"
-    case dead = "Dead"
-    case unknown = "unknown"
 }

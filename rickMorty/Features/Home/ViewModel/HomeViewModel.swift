@@ -8,18 +8,33 @@
 import UIKit
 
 class HomeViewModel: UIViewController {
-
-    var data: [Result] = [
-//        PopularView(name: "Nome: Franklin", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-//        PopularView(name: "Nome: Morty Smith", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-//        PopularView(name: "Nome: Rick Sanchez", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-//        PopularView(name: "Nome: Squanchy", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-//        PopularView(name: "Nome: Arthiricia", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-//        PopularView(name: "Nome: Sleepy Gary", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-//        PopularView(name: "Nome: Birdperson", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: "")
-    ]
+    
+    var data: [Result] = []
+    var service: HomeList = HomeList()
+    var isError: Bool = false
     
     var numberOfRowsInSection: Int{
         return data.count
     }
+    
+    func fetchHome(tableView: UITableView) {
+        service.getHome { result, failure in
+            if let result = result{
+                self.data = result
+                self.isError = false
+            } else {
+                self.isError = true
+            }
+            
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    func getCaracterId(indexPath: IndexPath) -> Int {
+        let id = data[indexPath.row].id ?? 1
+        return id
+    }
+    
 }

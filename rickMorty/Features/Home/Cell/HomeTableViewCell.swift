@@ -18,10 +18,11 @@ class HomeTableViewCell: UITableViewCell {
     func delegate(delegate: HomeTableViewCellProtocol){
         self.delegate = delegate
     }
+    
     var heartFull = false
     
     lazy var contentViewHome: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
         view.clipsToBounds = true
@@ -72,7 +73,6 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func actionHeartButton(button: UIButton){
-        print("foi")
         if (heartFull == false){
             button.tintColor = .red
             heartFull = true
@@ -88,9 +88,6 @@ class HomeTableViewCell: UITableViewCell {
         let url = URL(string: "\(data.image ?? "")") ?? URL(fileURLWithPath: "")
         imagePerson.af.setImage(withURL: url)
     }
-    
-
-
 }
 
 //MARK: Extension ViewCode
@@ -121,10 +118,10 @@ extension HomeTableViewCell: ViewCode {
             nameLabel.leadingAnchor.constraint(equalTo: imagePerson.trailingAnchor, constant: 20),
             
             specieLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 5),
-            specieLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            specieLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor)
         ])
     }
 }
-        
-    
+
+
 

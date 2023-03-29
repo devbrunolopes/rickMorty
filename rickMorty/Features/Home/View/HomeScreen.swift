@@ -35,6 +35,7 @@ class HomeScreen: UIView {
         tv.separatorStyle = .singleLine
         tv.showsVerticalScrollIndicator = false
         tv.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        tv.register(ErrorCell.self, forCellReuseIdentifier: ErrorCell.identifier)
         return tv
     }()
     
@@ -62,7 +63,7 @@ extension HomeScreen: ViewCode {
         addSubview(personLabel)
         addSubview(addSearch)
         addSubview(tableView)
-     
+        
     }
     
     func configConstraint() {

@@ -31,9 +31,12 @@
 		EB34536C299560C9009A2D52 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EB34536B299560C9009A2D52 /* FirebaseDatabase */; };
 		EB34536E299560C9009A2D52 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EB34536D299560C9009A2D52 /* FirebaseFirestore */; };
 		EB345370299560C9009A2D52 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EB34536F299560C9009A2D52 /* FirebaseStorage */; };
+		EB4427BC29D2117700A3C951 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4427BB29D2117700A3C951 /* ErrorCell.swift */; };
 		EB47C78D29AA8FC800D3B6E5 /* DetalisScrren.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47C78C29AA8FC800D3B6E5 /* DetalisScrren.swift */; };
 		EB47C78F29AA908600D3B6E5 /* DetalisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB47C78E29AA908600D3B6E5 /* DetalisVC.swift */; };
 		EB4BCD3629D1E6FB00C2C5D4 /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4BCD3529D1E6FB00C2C5D4 /* HomeList.swift */; };
+		EB4BCD3829D1F05300C2C5D4 /* DetalisList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4BCD3729D1F05300C2C5D4 /* DetalisList.swift */; };
+		EB4BCD3B29D1F27900C2C5D4 /* DetalisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4BCD3A29D1F27900C2C5D4 /* DetalisViewModel.swift */; };
 		EB5A61F02995722D00F6C196 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5A61EF2995722C00F6C196 /* RegisterViewModel.swift */; };
 		EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5029942CF300FC36CF /* RegisterScreen.swift */; };
 		EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB90EA5229942D0900FC36CF /* RegisterVC.swift */; };
@@ -74,9 +77,12 @@
 		EB2B4E4329D1DB7800660286 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
 		EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRickAndMorty.swift; sourceTree = "<group>"; };
 		EB34536629955FD2009A2D52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EB4427BB29D2117700A3C951 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
 		EB47C78C29AA8FC800D3B6E5 /* DetalisScrren.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalisScrren.swift; sourceTree = "<group>"; };
 		EB47C78E29AA908600D3B6E5 /* DetalisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalisVC.swift; sourceTree = "<group>"; };
 		EB4BCD3529D1E6FB00C2C5D4 /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
+		EB4BCD3729D1F05300C2C5D4 /* DetalisList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalisList.swift; sourceTree = "<group>"; };
+		EB4BCD3A29D1F27900C2C5D4 /* DetalisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalisViewModel.swift; sourceTree = "<group>"; };
 		EB5A61EF2995722C00F6C196 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		EB90EA5029942CF300FC36CF /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		EB90EA5229942D0900FC36CF /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -198,6 +204,7 @@
 				EB2B4E4329D1DB7800660286 /* GenericService.swift */,
 				EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */,
 				EB4BCD3529D1E6FB00C2C5D4 /* HomeList.swift */,
+				EB4BCD3729D1F05300C2C5D4 /* DetalisList.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -205,10 +212,19 @@
 		EB47C78B29AA8F6900D3B6E5 /* Detalis */ = {
 			isa = PBXGroup;
 			children = (
+				EB4BCD3929D1F26A00C2C5D4 /* ViewModel */,
 				EBA5A91629BBB96B00C0D988 /* ViewController */,
 				EBA5A91529BBB96100C0D988 /* View */,
 			);
 			path = Detalis;
+			sourceTree = "<group>";
+		};
+		EB4BCD3929D1F26A00C2C5D4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EB4BCD3A29D1F27900C2C5D4 /* DetalisViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		EB90EA4A29942C9400FC36CF /* Features */ = {
@@ -435,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				EBCE682529A92FC8006D1A8D /* HomeTableViewCell.swift */,
+				EB4427BB29D2117700A3C951 /* ErrorCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -559,6 +576,7 @@
 				EBB26D9B29C248F30079AF6E /* ProfileVC.swift in Sources */,
 				EB2B4E4729D1DC2E00660286 /* ListRickAndMorty.swift in Sources */,
 				EBB26DA529C4FA010079AF6E /* User.swift in Sources */,
+				EB4BCD3829D1F05300C2C5D4 /* DetalisList.swift in Sources */,
 				EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */,
 				EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */,
 				EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */,
@@ -569,12 +587,14 @@
 				EBA5A92529BD68DB00C0D988 /* EmptyCollectionViewCell.swift in Sources */,
 				EB47C78F29AA908600D3B6E5 /* DetalisVC.swift in Sources */,
 				5C839CFB29942D1E00ECCD91 /* LoginViewController.swift in Sources */,
+				EB4BCD3B29D1F27900C2C5D4 /* DetalisViewModel.swift in Sources */,
 				EBB26DA829C503250079AF6E /* ProfileViewModel.swift in Sources */,
 				EBCE682629A92FC8006D1A8D /* HomeTableViewCell.swift in Sources */,
 				EB90EA5129942CF300FC36CF /* RegisterScreen.swift in Sources */,
 				EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */,
 				EB90EA5629942ED400FC36CF /* ViewCode.swift in Sources */,
 				EB4BCD3629D1E6FB00C2C5D4 /* HomeList.swift in Sources */,
+				EB4427BC29D2117700A3C951 /* ErrorCell.swift in Sources */,
 				5CBAE68129ACE2E800C61BC3 /* TabbarViewController.swift in Sources */,
 				EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */,
 				EBB26D9D29C249200079AF6E /* ProfileScreen.swift in Sources */,
