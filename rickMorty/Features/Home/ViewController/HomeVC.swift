@@ -7,11 +7,14 @@
 
 import UIKit
 
+protocol HomeVCProtocol: AnyObject {
+    func reloadErrorButton()
+}
+
 class HomeVC: UIViewController {
     
     var screen: HomeScreen?
     var viewModel: HomeViewModel = HomeViewModel()
-    var isError: Bool = false
     
     override func loadView() {
         screen = HomeScreen()
@@ -22,6 +25,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         screen?.configTableView(delegate: self, dataSource: self)
         viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
+        viewModel.delegate(delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,48 +34,53 @@ class HomeVC: UIViewController {
     }
 }
 
-//MARK: Extension UITableViewDelegate, UITableViewDataSource
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isError {
-            return 1
-        } else {
-            return viewModel.numberOfRowsInSection
-        }
-    } 
-    
+        return viewModel.numberOfRowsInSection
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isError {
-            let cell: ErrorCell? = tableView.dequeueReusableCell(withIdentifier: ErrorCell.identifier, for: indexPath) as? ErrorCell
-            return cell ?? UITableViewCell()
-        } else {
-            let cell: HomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
-            cell?.setupCell(data: viewModel.data[indexPath.row])
-            return cell ?? UITableViewCell()
-        }
+        let cell: HomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
+        cell?.setupCell(data: viewModel.data[indexPath.row])
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if isError {
-            return 230
-        } else {
-            return 120
+        return 120
+    }
+ 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc: DetalisVC = DetalisVC()
+        vc.id = viewModel.getCaracterId(indexPath: indexPath)
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+}
+
+//MARK: - HomeViewModelProtocol
+
+extension HomeVC: HomeViewModelProtocol{
+    func requisicaoSucces() {
+        DispatchQueue.main.async {
+            self.screen?.tableView.reloadData()
         }
-        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isError {
-            viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
-        } else {
-            let vc: DetalisVC = DetalisVC()
-            vc.id = viewModel.getCaracterId(indexPath: indexPath)
-            self.navigationController?.pushViewController(vc, animated: false)
+    func requisicaoError() {
+        DispatchQueue.main.async {
+            let vc: ErrorGenericVC = ErrorGenericVC()
+            vc.errorGenericProtocol = self
+            self.present(vc, animated: true)
         }
     }
 }
 
+//MARK: - ErrorGenericScreenProtocol
 
-
-
+extension HomeVC: ErrorGenericScreenProtocol {
+    func actionReloadHome() {
+        viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
+        dismiss(animated: true)
+    }
+}

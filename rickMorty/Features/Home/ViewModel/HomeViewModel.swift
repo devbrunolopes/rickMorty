@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol HomeViewModelProtocol: AnyObject {
+    func requisicaoError()
+    func requisicaoSucces()
+}
+
 class HomeViewModel: UIViewController {
+    var delegate: HomeViewModelProtocol?
+    func delegate(delegate: HomeViewModelProtocol){
+        self.delegate = delegate
+    }
     
     var data: [Result] = []
     var service: HomeList = HomeList()
-    var isError: Bool = false
-    
+
     var numberOfRowsInSection: Int{
         return data.count
     }
@@ -21,13 +29,9 @@ class HomeViewModel: UIViewController {
         service.getHome { result, failure in
             if let result = result{
                 self.data = result
-                self.isError = false
+                self.delegate?.requisicaoSucces()
             } else {
-                self.isError = true
-            }
-            
-            DispatchQueue.main.async {
-                tableView.reloadData()
+                self.delegate?.requisicaoError()
             }
         }
     }
@@ -36,5 +40,4 @@ class HomeViewModel: UIViewController {
         let id = data[indexPath.row].id ?? 1
         return id
     }
-    
 }

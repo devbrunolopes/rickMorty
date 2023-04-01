@@ -1,31 +1,22 @@
 //
-//  IsErrorCell.swift
+//  ErrorGenericScreen.swift
 //  rickMorty
 //
-//  Created by Franklin  Stilhano on 3/27/23.
+//  Created by Franklin  Stilhano on 3/30/23.
 //
 
 import UIKit
-
-protocol ErrorCellProtocol: AnyObject {
-    func actionButtonError()
+protocol ErrorGenericScreenProtocol: AnyObject {
+    func actionReloadHome()
 }
 
-class ErrorCell: UITableViewCell {
+class ErrorGenericScreen: UIView {
     
-    weak var delegate: ErrorCellProtocol?
-    func delegate(delegate: ErrorCellProtocol){
+    weak var delegate: ErrorGenericScreenProtocol?
+    
+    func delegate(delegate: ErrorGenericScreenProtocol){
         self.delegate = delegate
     }
-    
-    lazy var contentViewError: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 20
-        view.backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
-        return view
-    }()
     
     lazy var imageError: UIImageView = {
         let image = UIImageView()
@@ -45,7 +36,7 @@ class ErrorCell: UITableViewCell {
         return label
     }()
     
-    lazy var errorButton: UIButton = {
+    lazy var reloadButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Tentar novamente", for: .normal)
@@ -54,17 +45,13 @@ class ErrorCell: UITableViewCell {
         button.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        button.addTarget(self, action: #selector(tappedErrorButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tappedReloadButton), for: .touchUpInside)
         return button
     }()
     
-    
-    static let identifier: String = "ErrorCell"
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        selectionStyle = .none
-        backgroundColor = .clear
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
     }
     
@@ -72,40 +59,35 @@ class ErrorCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func tappedErrorButton(){
-        delegate?.actionButtonError()
+    @objc func tappedReloadButton(){
+        delegate?.actionReloadHome()
     }
-    
 }
 
-extension ErrorCell: ViewCode {
+//MARK: - ErrorGenericScreen
+
+extension ErrorGenericScreen: ViewCode {
     func configElements() {
-        addSubview(contentViewError)
-        contentViewError.addSubview(imageError)
-        contentViewError.addSubview(errorLabel)
-        contentViewError.addSubview(errorButton)
+        addSubview(imageError)
+        addSubview(errorLabel)
+        addSubview(reloadButton)
     }
     
     func configConstraint() {
         NSLayoutConstraint.activate([
             
-            contentViewError.topAnchor.constraint(equalTo: topAnchor,constant: 30),
-            contentViewError.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 8),
-            contentViewError.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -8),
-            contentViewError.bottomAnchor.constraint(equalTo: bottomAnchor),
-            
-            imageError.topAnchor.constraint(equalTo: contentViewError.topAnchor),
+            imageError.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 50),
+            imageError.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageError.widthAnchor.constraint(equalToConstant: 100),
             imageError.heightAnchor.constraint(equalToConstant: 100),
-            imageError.centerXAnchor.constraint(equalTo: centerXAnchor),
             
             errorLabel.topAnchor.constraint(equalTo: imageError.bottomAnchor,constant: 15),
             errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
             
-            errorButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor,constant: 15),
-            errorButton.centerXAnchor.constraint(equalTo: imageError.centerXAnchor),
-            errorButton.widthAnchor.constraint(equalToConstant: 180)
+            reloadButton.topAnchor.constraint(equalTo: errorLabel.bottomAnchor,constant: 15),
+            reloadButton.centerXAnchor.constraint(equalTo: imageError.centerXAnchor),
+            reloadButton.widthAnchor.constraint(equalToConstant: 180)
         ])
     }
 }

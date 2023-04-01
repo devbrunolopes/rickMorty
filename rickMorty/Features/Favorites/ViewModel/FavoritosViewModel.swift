@@ -10,10 +10,9 @@ import UIKit
 class FavoritosViewModel: UIViewController {
     
     var dataPopular: [PopularFavoritos] = []
-    var requestError: Bool = false
     
     var numberOfRowsInSectionPopularFavotitos: Int{
-        if dataPopular.count == 0 || requestError {
+        if dataPopular.count == 0 {
             return 1
         } else {
             return dataPopular.count
@@ -24,10 +23,7 @@ class FavoritosViewModel: UIViewController {
         if dataPopular.count == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath)
             return cell
-        } else if requestError {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ErrorCollectionViewCell.identifier, for: indexPath)
-            return cell
-        } else {
+        }  else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonsCollectionViewCell.identifier, for: indexPath)
             return cell
         }
@@ -42,10 +38,12 @@ class FavoritosViewModel: UIViewController {
     }
     
     func userShouldInteractWithCollection(collectionView: UICollectionView) {
-        if dataPopular.count == 0 || requestError {
+        if dataPopular.count == 0 {
             collectionView.isUserInteractionEnabled = false
         } else {
             collectionView.isUserInteractionEnabled = true
         }
     }
 }
+
+

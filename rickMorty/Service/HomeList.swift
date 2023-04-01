@@ -14,10 +14,8 @@ protocol HomeListProtocol: GenericService {
 
 class HomeList: HomeListProtocol {
     func getHome(completion: @escaping completion<[Result]?>) {
-        
         let urlString: String = "https://rickandmortyapi.com/api/character"
         guard let url = URL(string: urlString) else { return }
-        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else { return }
             do {
@@ -29,6 +27,4 @@ class HomeList: HomeListProtocol {
         }
         task.resume()
     }
-    
 }
-

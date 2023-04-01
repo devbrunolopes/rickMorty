@@ -28,7 +28,6 @@ class DetalisService: DetalisListProtocol {
         }
         task.resume()
     }
-    
 }
 
 

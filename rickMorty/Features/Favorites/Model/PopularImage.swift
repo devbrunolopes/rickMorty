@@ -9,4 +9,5 @@ import UIKit
 
 struct PopularFavoritos {
     var imageFavoritos: UIImage?
+    var id: Int?
 }

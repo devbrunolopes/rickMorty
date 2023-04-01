@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetalisScrrenProtocol: AnyObject {
     func actionButtonBack()
+    func actionButtonFavoritos()
 }
 
 class DetalisScrren: UIView {
@@ -18,6 +19,7 @@ class DetalisScrren: UIView {
         self.delegate = delegate
     }
     
+    var heartFull = false
     
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
@@ -42,7 +44,7 @@ class DetalisScrren: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = .red
-        // action
+        button.addTarget(self, action: #selector(tappedFavoritosButton), for: .touchUpInside)
         return button
     }()
     
@@ -98,7 +100,6 @@ class DetalisScrren: UIView {
         return label
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
@@ -113,6 +114,23 @@ class DetalisScrren: UIView {
         delegate?.actionButtonBack()
     }
     
+    @objc func tappedFavoritosButton(){
+        delegate?.actionButtonFavoritos()
+    }
+    
+    func actionHeartButton(button: UIButton){
+        if (heartFull == false){
+            
+            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            button.tintColor = .red
+            heartFull = true
+        } else {
+            button.setImage(UIImage(systemName: "heart"), for: .normal)
+            button.tintColor = .red
+            heartFull = false
+        }
+    }
+    
     func setupView(data: [Result]) {
         nameLabel.text = "Nome: \(data[0].name ?? "Nome:")"
         spaceLabel.text = "Specie: \(data[0].species ?? "Specie:")"
@@ -122,10 +140,9 @@ class DetalisScrren: UIView {
         let url = URL(string: "\(data[0].image ?? "")") ?? URL(fileURLWithPath: "")
         imagePerson.af.setImage(withURL: url)
     }
-    
 }
 
-//MARK: - Extension ViewCode
+//MARK: -  ViewCode
 
 extension DetalisScrren: ViewCode {
     func configElements() {
@@ -138,8 +155,6 @@ extension DetalisScrren: ViewCode {
         addSubview(localizinonLabel)
         addSubview(statusLabel)
         addSubview(generoLabel)
-        
-        
     }
     
     func configConstraint() {
@@ -182,7 +197,7 @@ extension DetalisScrren: ViewCode {
             
             generoLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor,constant: 18),
             generoLabel.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor),
-            generoLabel.trailingAnchor.constraint(equalTo: statusLabel.trailingAnchor),
+            generoLabel.trailingAnchor.constraint(equalTo: statusLabel.trailingAnchor)
         ])
     }
 }
