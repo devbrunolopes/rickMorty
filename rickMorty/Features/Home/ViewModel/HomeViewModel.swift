@@ -7,19 +7,37 @@
 
 import UIKit
 
-class HomeViewModel: UIViewController {
+protocol HomeViewModelProtocol: AnyObject {
+    func requisicaoError()
+    func requisicaoSucces()
+}
 
-    var data: [PopularView] = [
-        PopularView(name: "Nome: Franklin", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-        PopularView(name: "Nome: Morty Smith", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-        PopularView(name: "Nome: Rick Sanchez", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-        PopularView(name: "Nome: Squanchy", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-        PopularView(name: "Nome: Arthiricia", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-        PopularView(name: "Nome: Sleepy Gary", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: ""),
-        PopularView(name: "Nome: Birdperson", status: "Status: Vivo", specie: "Specie: Humano", localizion: "Localização: PlanetaTerra", image: "")
-    ]
+class HomeViewModel: UIViewController {
+    var delegate: HomeViewModelProtocol?
+    func delegate(delegate: HomeViewModelProtocol){
+        self.delegate = delegate
+    }
     
+    var data: [Result] = []
+    var service: HomeList = HomeList()
+
     var numberOfRowsInSection: Int{
         return data.count
+    }
+    
+    func fetchHome(tableView: UITableView) {
+        service.getHome { result, failure in
+            if let result = result{
+                self.data = result
+                self.delegate?.requisicaoSucces()
+            } else {
+                self.delegate?.requisicaoError()
+            }
+        }
+    }
+    
+    func getCaracterId(indexPath: IndexPath) -> Int {
+        let id = data[indexPath.row].id ?? 1
+        return id
     }
 }

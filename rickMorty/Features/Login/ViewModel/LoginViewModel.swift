@@ -25,10 +25,8 @@ class LoginViewModel {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if error == nil {
                 self.delegate?.sucess()
-                print("ok")
             } else {
                 self.delegate?.error()
-                print("ops")
             }
         }
     }

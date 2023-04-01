@@ -26,7 +26,6 @@ class FavoritesScreen: UIView {
         collectionView.backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         collectionView.register(PersonsCollectionViewCell.self, forCellWithReuseIdentifier: PersonsCollectionViewCell.identifier)
         collectionView.register(EmptyCollectionViewCell.self, forCellWithReuseIdentifier: EmptyCollectionViewCell.identifier)
-        collectionView.register(ErrorCollectionViewCell.self, forCellWithReuseIdentifier: ErrorCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
         layout.scrollDirection = .vertical

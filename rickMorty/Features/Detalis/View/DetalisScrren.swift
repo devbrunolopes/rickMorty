@@ -9,6 +9,7 @@ import UIKit
 
 protocol DetalisScrrenProtocol: AnyObject {
     func actionButtonBack()
+    func actionButtonFavoritos()
 }
 
 class DetalisScrren: UIView {
@@ -17,7 +18,8 @@ class DetalisScrren: UIView {
     func delegate(delegate:DetalisScrrenProtocol){
         self.delegate = delegate
     }
-
+    
+    var heartFull = false
     
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
@@ -32,7 +34,7 @@ class DetalisScrren: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        button.tintColor = .lightGray
+        button.tintColor = .black
         button.addTarget(self, action: #selector(tappedBackButton), for: .touchUpInside)
         return button
     }()
@@ -40,18 +42,18 @@ class DetalisScrren: UIView {
     lazy var heartButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        button.tintColor = .white
-        // action
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = .red
+        button.addTarget(self, action: #selector(tappedFavoritosButton), for: .touchUpInside)
         return button
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Descricao do Personagem"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        label.text = "Descrição do Personagem"
+        label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         return label
     }()
@@ -59,9 +61,8 @@ class DetalisScrren: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "------------------------------------------------------------------------------------------------------------------------------------"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
+        label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.numberOfLines = 0
         return label
     }()
@@ -69,33 +70,39 @@ class DetalisScrren: UIView {
     lazy var spaceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Space: Humano"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         return label
     }()
     
     lazy var localizinonLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Localizacao: Planeta Terra"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.numberOfLines = 0
         return label
     }()
     
     lazy var statusLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Status: Vivo"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+        label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        return label
+    }()
+    
+    lazy var generoLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .lightGray
+        backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
     }
     
@@ -106,9 +113,36 @@ class DetalisScrren: UIView {
     @objc func tappedBackButton(){
         delegate?.actionButtonBack()
     }
+    
+    @objc func tappedFavoritosButton(){
+        delegate?.actionButtonFavoritos()
+    }
+    
+    func actionHeartButton(button: UIButton){
+        if (heartFull == false){
+            
+            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            button.tintColor = .red
+            heartFull = true
+        } else {
+            button.setImage(UIImage(systemName: "heart"), for: .normal)
+            button.tintColor = .red
+            heartFull = false
+        }
+    }
+    
+    func setupView(data: [Result]) {
+        nameLabel.text = "Nome: \(data[0].name ?? "Nome:")"
+        spaceLabel.text = "Specie: \(data[0].species ?? "Specie:")"
+        statusLabel.text = "Status: \(data[0].status ?? "Status:")"
+        generoLabel.text = "Genero: \(data[0].gender ?? " Genero:")"
+        localizinonLabel.text = "Localizacao: \(data[0].location?.name ?? "")"
+        let url = URL(string: "\(data[0].image ?? "")") ?? URL(fileURLWithPath: "")
+        imagePerson.af.setImage(withURL: url)
+    }
 }
 
-//MARK: - Extension ViewCode
+//MARK: -  ViewCode
 
 extension DetalisScrren: ViewCode {
     func configElements() {
@@ -117,45 +151,53 @@ extension DetalisScrren: ViewCode {
         addSubview(heartButton)
         addSubview(descriptionLabel)
         addSubview(nameLabel)
-//        addSubview(spaceLabel)
-//        addSubview(localizinonLabel)
-//        addSubview(statusLabel)
+        addSubview(spaceLabel)
+        addSubview(localizinonLabel)
+        addSubview(statusLabel)
+        addSubview(generoLabel)
     }
     
     func configConstraint() {
-            NSLayoutConstraint.activate([
-                
-                imagePerson.topAnchor.constraint(equalTo: topAnchor),
-                imagePerson.leadingAnchor.constraint(equalTo: leadingAnchor),
-                imagePerson.trailingAnchor.constraint(equalTo: trailingAnchor),
-                imagePerson.heightAnchor.constraint(equalToConstant: 350),
-                
-                backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                backButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15),
-                backButton.heightAnchor.constraint(equalToConstant: 20),
-                backButton.widthAnchor.constraint(equalToConstant: 20),
-                
-                heartButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                heartButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -15),
-                
-                descriptionLabel.topAnchor.constraint(equalTo: imagePerson.bottomAnchor,constant: 35),
-                descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
-                descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
-                
-                nameLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor,constant: 70),
-                nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
-                nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
-//                spaceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 15),
-//                spaceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-//
-//                localizinonLabel.topAnchor.constraint(equalTo: spaceLabel.bottomAnchor,constant: 15),
-//                localizinonLabel.leadingAnchor.constraint(equalTo: spaceLabel.leadingAnchor),
-//
-//                statusLabel.topAnchor.constraint(equalTo: localizinonLabel.bottomAnchor,constant: 15),
-//                statusLabel.leadingAnchor.constraint(equalTo: localizinonLabel.leadingAnchor),
-               
-                
-                
-            ])
+        NSLayoutConstraint.activate([
+            
+            imagePerson.topAnchor.constraint(equalTo: topAnchor),
+            imagePerson.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imagePerson.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imagePerson.heightAnchor.constraint(equalToConstant: 350),
+            
+            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 15),
+            backButton.heightAnchor.constraint(equalToConstant: 20),
+            backButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            heartButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            heartButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -15),
+            heartButton.heightAnchor.constraint(equalToConstant: 20),
+            heartButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: imagePerson.bottomAnchor,constant: 70),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -20),
+            
+            nameLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor,constant: 50),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 40),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -40),
+            
+            spaceLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 18),
+            spaceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            spaceLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            
+            localizinonLabel.topAnchor.constraint(equalTo: spaceLabel.bottomAnchor,constant: 18),
+            localizinonLabel.leadingAnchor.constraint(equalTo: spaceLabel.leadingAnchor),
+            localizinonLabel.trailingAnchor.constraint(equalTo: spaceLabel.trailingAnchor),
+            
+            statusLabel.topAnchor.constraint(equalTo: localizinonLabel.bottomAnchor,constant: 18),
+            statusLabel.leadingAnchor.constraint(equalTo: localizinonLabel.leadingAnchor),
+            statusLabel.trailingAnchor.constraint(equalTo: localizinonLabel.trailingAnchor),
+            
+            generoLabel.topAnchor.constraint(equalTo: statusLabel.bottomAnchor,constant: 18),
+            generoLabel.leadingAnchor.constraint(equalTo: statusLabel.leadingAnchor),
+            generoLabel.trailingAnchor.constraint(equalTo: statusLabel.trailingAnchor)
+        ])
     }
 }

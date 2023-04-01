@@ -42,7 +42,6 @@ class HomeScreen: UIView {
         super.init(frame: frame)
         setupViewCode()
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -55,14 +54,13 @@ class HomeScreen: UIView {
     }
 }
 
-//MARK: Extension ViewCode
+//MARK: - ViewCode
 
 extension HomeScreen: ViewCode {
     func configElements() {
         addSubview(personLabel)
         addSubview(addSearch)
         addSubview(tableView)
-     
     }
     
     func configConstraint() {
@@ -80,7 +78,7 @@ extension HomeScreen: ViewCode {
             tableView.topAnchor.constraint(equalTo: addSearch.bottomAnchor,constant: 30),
             tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

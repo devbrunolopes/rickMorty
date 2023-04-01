@@ -43,3 +43,4 @@ extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelega
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+

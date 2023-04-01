@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 protocol HomeTableViewCellProtocol: AnyObject {
     func actionHeartButton()
@@ -17,10 +18,11 @@ class HomeTableViewCell: UITableViewCell {
     func delegate(delegate: HomeTableViewCellProtocol){
         self.delegate = delegate
     }
+    
     var heartFull = false
     
     lazy var contentViewHome: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
         view.clipsToBounds = true
@@ -31,14 +33,12 @@ class HomeTableViewCell: UITableViewCell {
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "imageHome")
         return image
     }()
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "name"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
@@ -47,7 +47,6 @@ class HomeTableViewCell: UITableViewCell {
     lazy var specieLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "specie"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return label
@@ -71,7 +70,6 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func actionHeartButton(button: UIButton){
-        print("foi")
         if (heartFull == false){
             button.tintColor = .red
             heartFull = true
@@ -81,11 +79,12 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
-    func setupCell(data: PopularView){
-        nameLabel.text = data.name
-        specieLabel.text = data.specie
+    func setupCell(data: Result){
+        nameLabel.text = "Nome: \(data.name ?? "")"
+        specieLabel.text = "Specie: \(data.species ?? "")"
+        let url = URL(string: "\(data.image ?? "")") ?? URL(fileURLWithPath: "")
+        imagePerson.af.setImage(withURL: url)
     }
-
 }
 
 //MARK: Extension ViewCode
@@ -116,10 +115,10 @@ extension HomeTableViewCell: ViewCode {
             nameLabel.leadingAnchor.constraint(equalTo: imagePerson.trailingAnchor, constant: 20),
             
             specieLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor,constant: 5),
-            specieLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            specieLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor)
         ])
     }
 }
-        
-    
+
+
 

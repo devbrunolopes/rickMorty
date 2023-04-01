@@ -33,7 +33,6 @@ class RegisterViewModel {
         
         Auth.auth().createUser(withEmail: email, password: senha, completion: { result, error in
             if error != nil {
-                print(error?.localizedDescription)
                 self.delegate?.error()
             } else {
                 self.savedUserData(email: email, name: name, id: result?.user.uid ?? "")
@@ -54,11 +53,8 @@ class RegisterViewModel {
     func checkEmailFirebase(email: String, label: UILabel) {
         Auth.auth().fetchSignInMethods(forEmail: email) { (methods, error) in
             if let error = error {
-                print("Erro ao verificar o e-mail: \(error.localizedDescription)")
             } else if let methods = methods {
-                if methods.isEmpty {
-                    print("deu certo")
-                } else {
+                if !methods.isEmpty {
                     label.textColor = .red
                 }
             } else {
