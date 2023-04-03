@@ -9,7 +9,7 @@ import UIKit
 
 class FavoritosViewModel: UIViewController {
     
-    var dataPopular: [PopularFavoritos] = []
+    var dataPopular: [Result] = []
     
     var numberOfRowsInSectionPopularFavotitos: Int{
         if dataPopular.count == 0 {

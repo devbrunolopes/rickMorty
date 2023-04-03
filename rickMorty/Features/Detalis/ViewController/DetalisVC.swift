@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol DetalisVCFavoritosProtocol: AnyObject {
-    func addFavoritos()
+protocol FavoritosButton: AnyObject {
+    func actionFavortiosButton(cell: UICollectionViewCell, isActive: Bool)
 }
 
 class DetalisVC: UIViewController {
     
-    var delegate: DetalisVCFavoritosProtocol?
     var screen: DetalisScrren?
     var viewModel: DetalisViewModel = DetalisViewModel()
     var service: DetalisService = DetalisService()
     var id: Int = 1
-    var heartFull = false
+    var buttonFavoritos = false
+    var delegate: FavoritosButton?
     
     override func loadView() {
         screen = DetalisScrren()
@@ -37,6 +37,12 @@ class DetalisVC: UIViewController {
 
 extension DetalisVC: DetalisScrrenProtocol {
     func actionButtonFavoritos() {
+        screen?.actionHeartButton()
+        if screen?.buttonFavoritos == true {
+            viewModel.savedId(id: id)
+        } else {
+            print("removido")
+        }
     }
     
     func actionButtonBack() {

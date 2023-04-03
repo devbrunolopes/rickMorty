@@ -37,8 +37,9 @@ class PersonsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(data: PopularFavoritos){
-        imagePerson.image = data.imageFavoritos
+    func setupCell(data: Result){
+        let url = URL(string: "\(data.image ?? "")") ?? URL(fileURLWithPath: "")
+        imagePerson.af.setImage(withURL: url)
     }
 }
 
