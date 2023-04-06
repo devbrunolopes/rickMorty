@@ -11,6 +11,7 @@ class FavoritesVC: UIViewController {
     
     var screen: FavoritesScreen?
     var viewModel: FavoritosViewModel = FavoritosViewModel()
+    var id: [Int] = []
     
     override func loadView() {
         screen = FavoritesScreen()
@@ -20,9 +21,21 @@ class FavoritesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.configCollectionView(delegate: self, Source: self)
+        viewModel.delegate(delegate: self)
+        viewModel.testeFirebase()
+        print(#function)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(#function)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print(#function)
     }
 }
-//MARK: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource
+
+//MARK:  - UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource
 
 extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -40,7 +53,21 @@ extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc: DetalisVC = DetalisVC()
+        vc.id = viewModel.getCaracterId(indexPath: indexPath)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
+//MARK:  - FavoritosViewModelProtocol
+
+extension FavoritesVC: FavoritosViewModelProtocol {
+    func succes() {
+        DispatchQueue.main.async {
+            self.screen?.collectionView.reloadData()
+        }
+    }
+    
+    func error() {
+        
+    }
+}

@@ -15,7 +15,7 @@ class DetalisVC: UIViewController {
     
     var screen: DetalisScrren?
     var viewModel: DetalisViewModel = DetalisViewModel()
-    var service: DetalisService = DetalisService()
+    var service: DetalisList = DetalisList()
     var id: Int = 1
     var buttonFavoritos = false
     var delegate: FavoritosButton?

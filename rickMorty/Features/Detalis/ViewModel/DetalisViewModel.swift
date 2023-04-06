@@ -23,10 +23,8 @@ class DetalisViewModel: UIViewController {
     }
     
     var data: [Result] = []
-    var service: DetalisService = DetalisService()
+    var service: DetalisList = DetalisList()
     var favoritosButton = false
-    let storage = Storage.storage().reference()
-    var db = Firestore.firestore()
     
     func fetcDetails(id: Int){
         service.getDetalis(id: id) { result, failure in
@@ -53,7 +51,5 @@ class DetalisViewModel: UIViewController {
                 print("Documento adicionado com sucesso!")
             }
         }
-
-        
     }
 }

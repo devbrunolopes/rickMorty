@@ -25,7 +25,7 @@ class RegisterViewModel {
     
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            completion(error)
+            //criar alert
         }
     }
     

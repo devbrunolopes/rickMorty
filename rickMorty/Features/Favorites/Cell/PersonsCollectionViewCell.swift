@@ -43,7 +43,7 @@ class PersonsCollectionViewCell: UICollectionViewCell {
     }
 }
 
-//MARK: ViewCode
+//MARK: - ViewCode
 
 extension PersonsCollectionViewCell: ViewCode {
     func configElements() {
