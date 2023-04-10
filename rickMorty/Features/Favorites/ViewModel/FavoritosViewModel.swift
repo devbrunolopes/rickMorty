@@ -66,7 +66,7 @@ class FavoritosViewModel: UIViewController {
     func testeFirebase(){
         
         let db = Firestore.firestore()
-        let collectionRef = db.collection("FavoritosCell")
+        let collectionRef = db.collection("favortios")
         
         collectionRef.getDocuments { (querySnapshot, error) in
             if let error = error {

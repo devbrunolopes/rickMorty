@@ -19,6 +19,7 @@ class ProfileViewModel: UIViewController {
     let imagePicker: UIImagePickerController = UIImagePickerController()
     let currentUser = Auth.auth().currentUser
     var userId = Auth.auth().currentUser?.uid
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         alert = Alert(controller: self)

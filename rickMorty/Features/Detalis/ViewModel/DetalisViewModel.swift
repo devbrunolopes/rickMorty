@@ -10,6 +10,7 @@ import Firebase
 import AlamofireImage
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseAuth
 
 protocol DetalisViewModelProtocol: AnyObject {
     func requisicaoError()
@@ -25,6 +26,8 @@ class DetalisViewModel: UIViewController {
     var data: [Result] = []
     var service: DetalisList = DetalisList()
     var favoritosButton = false
+    var userId = Auth.auth().currentUser
+    let db = Firestore.firestore()
     
     func fetcDetails(id: Int){
         service.getDetalis(id: id) { result, failure in
@@ -37,19 +40,14 @@ class DetalisViewModel: UIViewController {
         }
     }
     
-    func savedId(id: Int){
-        let db = Firestore.firestore()
-        let collectionRef = db.collection("FavoritosCell")
-        
-        let data = [
-            "id": id
-        ]
-        collectionRef.addDocument(data: data) { err in
-            if let err = err {
-                print("Erro ao adicionar documento: \(err)")
-            } else {
-                print("Documento adicionado com sucesso!")
-            }
+    func saveFovrites(id: Int) {
+        let dockRef = db.collection("favortios").document(userId?.email ?? "")
+        dockRef.updateData(["id": FieldValue.arrayUnion([id])])
         }
-    }
+    
+    func removeFavorites(id: Int) {
+            db.collection("favortios").document(userId?.email ?? "").updateData(["id": FieldValue.arrayRemove([id])])
+        }
 }
+
+

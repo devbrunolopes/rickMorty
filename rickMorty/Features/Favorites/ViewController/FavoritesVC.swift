@@ -22,16 +22,10 @@ class FavoritesVC: UIViewController {
         super.viewDidLoad()
         screen?.configCollectionView(delegate: self, Source: self)
         viewModel.delegate(delegate: self)
-        viewModel.testeFirebase()
-        print(#function)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(#function)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print(#function)
+        viewModel.testeFirebase()
     }
 }
 

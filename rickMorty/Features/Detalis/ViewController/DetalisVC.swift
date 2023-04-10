@@ -39,9 +39,9 @@ extension DetalisVC: DetalisScrrenProtocol {
     func actionButtonFavoritos() {
         screen?.actionHeartButton()
         if screen?.buttonFavoritos == true {
-            viewModel.savedId(id: id)
+            viewModel.saveFovrites(id: id)
         } else {
-            print("removido")
+            viewModel.removeFavorites(id: id)
         }
     }
     

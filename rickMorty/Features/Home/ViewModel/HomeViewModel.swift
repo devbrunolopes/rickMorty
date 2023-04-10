@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 protocol HomeViewModelProtocol: AnyObject {
     func requisicaoError()
@@ -20,6 +22,8 @@ class HomeViewModel: UIViewController {
     
     var data: [Result] = []
     var service: HomeList = HomeList()
+    var db = Firestore.firestore()
+    var userId = Auth.auth().currentUser
 
     var numberOfRowsInSection: Int{
         return data.count

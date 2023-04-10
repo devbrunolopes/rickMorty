@@ -22,6 +22,7 @@ class RegisterViewModel {
     
     var auth: Auth?
     var db = Firestore.firestore()
+    var userId = Auth.auth().currentUser
     
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
@@ -36,6 +37,7 @@ class RegisterViewModel {
                 self.delegate?.error()
             } else {
                 self.savedUserData(email: email, name: name, id: result?.user.uid ?? "")
+                self.creatCollection()
                 self.delegate?.sucess()
             }
         })
@@ -62,4 +64,15 @@ class RegisterViewModel {
             }
         }
     }
-}
+    
+    func creatCollection(){
+        let dataPath = "favortios/\(userId?.email ?? "")"
+        let docRef = db.document(dataPath)
+        docRef.setData([
+            "id": []
+            ])
+            
+        }
+    }
+    
+
