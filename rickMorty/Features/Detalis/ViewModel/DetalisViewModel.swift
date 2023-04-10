@@ -26,7 +26,7 @@ class DetalisViewModel: UIViewController {
     var data: [Result] = []
     var service: DetalisList = DetalisList()
     var favoritosButton = false
-    var userId = Auth.auth().currentUser
+    var userId = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
     
     func fetcDetails(id: Int){
@@ -41,12 +41,12 @@ class DetalisViewModel: UIViewController {
     }
     
     func saveFovrites(id: Int) {
-        let dockRef = db.collection("favortios").document(userId?.email ?? "")
+        let dockRef = db.collection("favortios").document(userId ?? "")
         dockRef.updateData(["id": FieldValue.arrayUnion([id])])
         }
     
     func removeFavorites(id: Int) {
-            db.collection("favortios").document(userId?.email ?? "").updateData(["id": FieldValue.arrayRemove([id])])
+            db.collection("favortios").document(userId ?? "").updateData(["id": FieldValue.arrayRemove([id])])
         }
 }
 

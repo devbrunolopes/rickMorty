@@ -24,9 +24,8 @@ class FavoritosViewModel: UIViewController {
     
     var dataPopular: [Result] = []
     var service: FavoritosList = FavoritosList()
-    var dataArray = [[String: Any]]()
-    var intArray = [Int]()
     var stringIds = ""
+    var userId = Auth.auth().currentUser?.uid
     
     var numberOfRowsInSectionPopularFavotitos: Int{
         if dataPopular.count == 0 {
@@ -63,31 +62,21 @@ class FavoritosViewModel: UIViewController {
         }
     }
     
-    func testeFirebase(){
-        
-        let db = Firestore.firestore()
-        let collectionRef = db.collection("favortios")
-        
-        collectionRef.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting documents: \(error)")
-            } else {
-                guard let documents = querySnapshot?.documents else { return }
-                for document in documents {
-                    self.dataArray.append(document.data())
-                }
-                
-                for data in self.dataArray {
-                    if let intValue = data["id"] as? Int {
-                        self.intArray.append(intValue)
-                        let teste = self.intArray.map { String($0) }
-                        self.stringIds = teste.joined(separator: ",")
-                    }
-                }
+    func fetchFirebase(){
+        let docRef = Firestore.firestore().collection("favortios").document(self.userId ?? "")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                let array = data?["id"] as? [Any] ?? []
+                let intArray = array.compactMap { $0 as? Int }
+                let stringArray = intArray.map { String($0) }
+                self.stringIds = stringArray.joined(separator: ",")
                 
                 DispatchQueue.main.async {
                     self.fetcDetails(id: self.stringIds)
                 }
+            } else {
+                print("Documento não encontrado")
             }
         }
     }

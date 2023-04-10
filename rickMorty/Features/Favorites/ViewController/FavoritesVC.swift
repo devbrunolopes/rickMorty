@@ -25,7 +25,7 @@ class FavoritesVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.testeFirebase()
+        viewModel.fetchFirebase()
     }
 }
 
@@ -62,6 +62,19 @@ extension FavoritesVC: FavoritosViewModelProtocol {
     }
     
     func error() {
-        
+        DispatchQueue.main.async {
+            let vc: ErrorGenericVC = ErrorGenericVC()
+            vc.errorGenericProtocol = self
+            self.present(vc, animated: true)
+        }
+    }
+}
+
+//MARK:  - ErrorGenericScreenProtocol
+
+extension FavoritesVC: ErrorGenericScreenProtocol {
+    func actionReloadHome() {
+        viewModel.fetchFirebase()
+        dismiss(animated: true)
     }
 }

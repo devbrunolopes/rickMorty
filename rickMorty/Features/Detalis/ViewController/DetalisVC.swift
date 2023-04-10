@@ -55,6 +55,7 @@ extension DetalisVC: DetalisViewModelProtocol{
     func requisicaoError() {
         DispatchQueue.main.async {
             let vc: ErrorGenericVC = ErrorGenericVC()
+            vc.errorGenericProtocol = self
             self.present(vc, animated: true)
         }
     }
@@ -63,5 +64,14 @@ extension DetalisVC: DetalisViewModelProtocol{
         DispatchQueue.main.async {
             self.screen?.setupView(data: self.viewModel.data)
         }
+    }
+}
+
+//MARK: - ErrorGenericScreenProtocol
+
+extension DetalisVC: ErrorGenericScreenProtocol{
+    func actionReloadHome() {
+        viewModel.fetcDetails(id: id)
+        dismiss(animated: true)
     }
 }

@@ -37,7 +37,6 @@ class RegisterViewModel {
                 self.delegate?.error()
             } else {
                 self.savedUserData(email: email, name: name, id: result?.user.uid ?? "")
-                self.creatCollection()
                 self.delegate?.sucess()
             }
         })
@@ -50,6 +49,7 @@ class RegisterViewModel {
             "name": name,
             "email": email
         ])
+        self.creatCollection(id: id)
     }
     
     func checkEmailFirebase(email: String, label: UILabel) {
@@ -65,13 +65,12 @@ class RegisterViewModel {
         }
     }
     
-    func creatCollection(){
-        let dataPath = "favortios/\(userId?.email ?? "")"
+    func creatCollection(id:String){
+        let dataPath = "favortios/\(id)"
         let docRef = db.document(dataPath)
         docRef.setData([
             "id": []
             ])
-            
         }
     }
     
