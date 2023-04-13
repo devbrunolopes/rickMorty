@@ -12,6 +12,6 @@ protocol GenericService: AnyObject {
 }
 
 enum Error: Swift.Error {
-case errorDescription(message: String, Error: Swift.Error? = nil)
+    case errorDescription(message: String, Error: Swift.Error? = nil)
     
 }

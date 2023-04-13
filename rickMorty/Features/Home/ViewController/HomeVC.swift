@@ -31,6 +31,7 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        viewModel.savedButtonFavoritos()
     }
 }
 
@@ -54,6 +55,9 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc: DetalisVC = DetalisVC()
         vc.id = viewModel.getCaracterId(indexPath: indexPath)
+        if viewModel.favoriteIds.contains(viewModel.getCaracterId(indexPath: indexPath)) {
+            vc.isFavorito = true
+        }
         self.navigationController?.pushViewController(vc, animated: false)
     }
 }

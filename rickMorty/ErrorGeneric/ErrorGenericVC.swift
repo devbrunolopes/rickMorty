@@ -11,7 +11,7 @@ class ErrorGenericVC: UIViewController {
     
     var screen: ErrorGenericScreen?
     var errorGenericProtocol: ErrorGenericScreenProtocol?
-
+    
     override func loadView() {
         screen = ErrorGenericScreen()
         screen?.delegate = errorGenericProtocol

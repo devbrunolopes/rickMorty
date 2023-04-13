@@ -16,8 +16,8 @@ class DetalisVC: UIViewController {
     var screen: DetalisScrren?
     var viewModel: DetalisViewModel = DetalisViewModel()
     var service: DetalisList = DetalisList()
-    var id: Int = 1
-    var buttonFavoritos = false
+    var id: Int = 100
+    var isFavorito = false
     var delegate: FavoritosButton?
     
     override func loadView() {
@@ -30,6 +30,17 @@ class DetalisVC: UIViewController {
         screen?.delegate(delegate: self)
         viewModel.fetcDetails(id: id)
         viewModel.delegate(delegate: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        teste(isFavorite: isFavorito)
+    }
+    
+    func teste(isFavorite: Bool){
+        if isFavorite {
+            screen?.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            screen?.buttonFavoritos = true
+        }
     }
 }
 

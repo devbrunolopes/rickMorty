@@ -23,7 +23,7 @@ class DetalisList: DetalisListProtocol {
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 completion(result, nil)
             } catch {
-                print(error)
+                completion(nil, Error.errorDescription(message: "deu ruim", Error: error))
             }
         }
         task.resume()

@@ -12,6 +12,7 @@ class FavoritesVC: UIViewController {
     var screen: FavoritesScreen?
     var viewModel: FavoritosViewModel = FavoritosViewModel()
     var id: [Int] = []
+    var alert: Alert?
     
     override func loadView() {
         screen = FavoritesScreen()
@@ -22,10 +23,12 @@ class FavoritesVC: UIViewController {
         super.viewDidLoad()
         screen?.configCollectionView(delegate: self, Source: self)
         viewModel.delegate(delegate: self)
+        alert = Alert(controller: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel.fetchFirebase()
+        viewModel.savedButtonFavoritos()
     }
 }
 
@@ -48,6 +51,9 @@ extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc: DetalisVC = DetalisVC()
         vc.id = viewModel.getCaracterId(indexPath: indexPath)
+        if viewModel.favoriteIds.contains(viewModel.getCaracterId(indexPath: indexPath)) {
+            vc.isFavorito = true
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -55,6 +61,12 @@ extension FavoritesVC: UICollectionViewDelegateFlowLayout,UICollectionViewDelega
 //MARK:  - FavoritosViewModelProtocol
 
 extension FavoritesVC: FavoritosViewModelProtocol {
+    func errorFetchFavoritos() {
+        alert?.getAlert(titulo: "Atenção", mensagem: "Erro ao carregar Favoritos, Tente Novamente!", completion: {
+            self.viewModel.fetchFirebase()
+        })
+    }
+    
     func succes() {
         DispatchQueue.main.async {
             self.screen?.collectionView.reloadData()

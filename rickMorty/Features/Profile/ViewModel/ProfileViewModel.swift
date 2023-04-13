@@ -10,7 +10,16 @@ import Firebase
 import AlamofireImage
 import FirebaseStorage
 
+
+protocol ProfileViewModelProtocol: AnyObject {
+    func errorUplodImageProfile()
+}
+
 class ProfileViewModel: UIViewController {
+    weak var delegate: ProfileViewModelProtocol?
+    func delegate(delegate: ProfileViewModelProtocol){
+        self.delegate = delegate
+    }
     
     let storage = Storage.storage().reference()
     var user: [User] = []
@@ -60,7 +69,7 @@ class ProfileViewModel: UIViewController {
         
         storage.child("image/file.png").putData(imageData,metadata: nil) { _, error in
             guard error == nil else {
-                print("failed to upload", String(describing: error?.localizedDescription))
+                self.delegate?.errorUplodImageProfile()
                 return
             }
             

@@ -14,7 +14,6 @@ protocol FavoritosListProtocol: GenericService {
 class FavoritosList: FavoritosListProtocol {
     func getDetalis(id: String, completion: @escaping completion<[Result]?>) {
         let urlString: String = "https://rickandmortyapi.com/api/character/\(id)"
-        print(urlString)
         guard let url = URL(string: urlString) else {
             return completion(nil, Error.errorDescription(message: "errorURL"))
             
@@ -26,7 +25,7 @@ class FavoritosList: FavoritosListProtocol {
                 let result = try JSONDecoder().decode([Result].self, from: data)
                 completion(result, nil)
             } catch {
-                print(error)
+                completion(nil, Error.errorDescription(message: "deu ruim", Error: error))
             }
         }
         task.resume()

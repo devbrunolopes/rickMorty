@@ -13,6 +13,7 @@ import FirebaseAuth
 protocol FavoritosViewModelProtocol: Any {
     func succes()
     func error()
+    func errorFetchFavoritos()
 }
 
 class FavoritosViewModel: UIViewController {
@@ -26,6 +27,8 @@ class FavoritosViewModel: UIViewController {
     var service: FavoritosList = FavoritosList()
     var stringIds = ""
     var userId = Auth.auth().currentUser?.uid
+    var db = Firestore.firestore()
+    var favoriteIds: [Int] = []
     
     var numberOfRowsInSectionPopularFavotitos: Int{
         if dataPopular.count == 0 {
@@ -71,12 +74,19 @@ class FavoritosViewModel: UIViewController {
                 let intArray = array.compactMap { $0 as? Int }
                 let stringArray = intArray.map { String($0) }
                 self.stringIds = stringArray.joined(separator: ",")
-                
+                if stringArray.count == 1 {
+                    self.stringIds = "\(stringArray.joined(separator: ",")),"
+                }
                 DispatchQueue.main.async {
-                    self.fetcDetails(id: self.stringIds)
+                    if  self.favoriteIds != [] {
+                        self.fetcDetails(id: self.stringIds)
+                    } else {
+                        self.dataPopular = []
+                        self.delegate?.succes()
+                    }
                 }
             } else {
-                print("Documento não encontrado")
+                self.delegate?.errorFetchFavoritos()
             }
         }
     }
@@ -95,5 +105,16 @@ class FavoritosViewModel: UIViewController {
     func getCaracterId(indexPath: IndexPath) -> Int {
         let id = dataPopular[indexPath.row].id ?? 1
         return id
+    }
+    
+    func savedButtonFavoritos(){
+        let docRef = db.collection("favortios").document(userId ?? "")
+        
+        docRef.getDocument { (document, error) in
+            if let document = document {
+                let data = document.data()
+                self.favoriteIds = data?["id"] as? [Int] ?? []
+            }
+        }
     }
 }

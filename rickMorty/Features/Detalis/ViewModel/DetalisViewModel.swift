@@ -28,6 +28,7 @@ class DetalisViewModel: UIViewController {
     var favoritosButton = false
     var userId = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
+    var favoriteIds: [Int] = []
     
     func fetcDetails(id: Int){
         service.getDetalis(id: id) { result, failure in
