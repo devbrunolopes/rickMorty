@@ -52,6 +52,10 @@ class HomeScreen: UIView {
         tableView.delegate = delegate
         tableView.dataSource = dataSource
     }
+    
+    func configSearch(delegate: UISearchBarDelegate){
+        addSearch.delegate = delegate
+    }
 }
 
 //MARK: - ViewCode

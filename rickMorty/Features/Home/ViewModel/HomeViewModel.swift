@@ -25,6 +25,7 @@ class HomeViewModel: UIViewController {
     var db = Firestore.firestore()
     var userId = Auth.auth().currentUser?.uid
     var favoriteIds: [Int] = []
+    var dataSearchBar: [Result] = []
     
     var numberOfRowsInSection: Int{
         return data.count
@@ -34,6 +35,7 @@ class HomeViewModel: UIViewController {
         service.getHome { result, failure in
             if let result = result{
                 self.data = result
+                self.dataSearchBar = self.data
                 self.delegate?.requisicaoSucces()
             } else {
                 self.delegate?.requisicaoError()
@@ -42,7 +44,7 @@ class HomeViewModel: UIViewController {
     }
     
     func getCaracterId(indexPath: IndexPath) -> Int {
-        let id = data[indexPath.row].id ?? 1
+        let id = dataSearchBar[indexPath.row].id ?? 1
         return id
     }
     
@@ -56,4 +58,21 @@ class HomeViewModel: UIViewController {
             }
         }
     }
+    
+    func searchBarPesquisa(searchText: String, tableView: UITableView){
+        dataSearchBar = []
+        if searchText.isEmpty {
+            fetchHome(tableView: tableView)
+        } else {
+            for value in data {
+                if value.name?.contains(searchText) ?? true {
+                    dataSearchBar.append(value)
+                }
+                tableView.reloadData()
+            }
+        }
+    }
+    
+    
 }
+
