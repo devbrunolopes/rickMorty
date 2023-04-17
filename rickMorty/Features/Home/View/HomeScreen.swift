@@ -35,6 +35,7 @@ class HomeScreen: UIView {
         tv.separatorStyle = .singleLine
         tv.showsVerticalScrollIndicator = false
         tv.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
+        tv.register(HomeTableViewErrorTableViewCell.self, forCellReuseIdentifier: HomeTableViewErrorTableViewCell.identifier)
         return tv
     }()
     

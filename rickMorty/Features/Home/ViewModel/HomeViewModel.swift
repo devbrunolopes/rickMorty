@@ -28,7 +28,23 @@ class HomeViewModel: UIViewController {
     var dataSearchBar: [Result] = []
     
     var numberOfRowsInSection: Int{
-        return data.count
+        if dataSearchBar.count == 0 {
+            return 1
+        }
+        return dataSearchBar.count
+    }
+    
+    func whichCellShouldShow(tableview: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        if dataSearchBar.count == 0 {
+            let cell: HomeTableViewErrorTableViewCell? = tableview.dequeueReusableCell(withIdentifier: HomeTableViewErrorTableViewCell.identifier, for: indexPath) as? HomeTableViewErrorTableViewCell
+            return cell ?? UITableViewCell()
+        } else {
+            let cell: HomeTableViewCell? = tableview.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
+            cell?.setupCell(data: dataSearchBar[indexPath.row])
+            return cell ?? UITableViewCell()
+            
+        }
+        
     }
     
     func fetchHome(tableView: UITableView) {
@@ -72,7 +88,5 @@ class HomeViewModel: UIViewController {
             }
         }
     }
-    
-    
 }
 

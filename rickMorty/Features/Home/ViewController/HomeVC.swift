@@ -27,7 +27,6 @@ class HomeVC: UIViewController {
         screen?.configSearch(delegate: self)
         viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
         viewModel.delegate(delegate: self)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,13 +40,11 @@ class HomeVC: UIViewController {
 
 extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dataSearchBar.count
+        return viewModel.numberOfRowsInSection
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
-        cell?.setupCell(data: viewModel.dataSearchBar[indexPath.row])
-        return cell ?? UITableViewCell()
+        viewModel.whichCellShouldShow(tableview: tableView, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -64,15 +61,17 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+//MARK: - UISearchBarDelegate
+
 extension HomeVC: UISearchBarDelegate{
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {       viewModel.searchBarPesquisa(searchText: searchText, tableView: screen?.tableView ?? UITableView())
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchBarPesquisa(searchText: searchText, tableView: screen?.tableView ?? UITableView())
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         screen?.addSearch.resignFirstResponder()
     }
 }
-
 
 //MARK: - HomeViewModelProtocol
 
