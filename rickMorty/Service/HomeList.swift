@@ -22,7 +22,7 @@ class HomeList: HomeListProtocol {
                 let result = try JSONDecoder().decode(RickAndMorty.self, from: data)
                 completion(result.results, nil)
             } catch {
-                completion(nil, error)
+                completion(nil, Error.errorDescription(message: "deuRuim", Error: error))
             }
         }
         task.resume()

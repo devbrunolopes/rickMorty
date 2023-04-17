@@ -6,6 +6,11 @@
 //
 
 import UIKit
+import Firebase
+import AlamofireImage
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 protocol DetalisViewModelProtocol: AnyObject {
     func requisicaoError()
@@ -19,7 +24,11 @@ class DetalisViewModel: UIViewController {
     }
     
     var data: [Result] = []
-    var service: DetalisService = DetalisService()
+    var service: DetalisList = DetalisList()
+    var favoritosButton = false
+    var userId = Auth.auth().currentUser?.uid
+    let db = Firestore.firestore()
+    var favoriteIds: [Int] = []
     
     func fetcDetails(id: Int){
         service.getDetalis(id: id) { result, failure in
@@ -31,5 +40,15 @@ class DetalisViewModel: UIViewController {
             }
         }
     }
+    
+    func saveFovrites(id: Int) {
+        let dockRef = db.collection("favortios").document(userId ?? "")
+        dockRef.updateData(["id": FieldValue.arrayUnion([id])])
+        }
+    
+    func removeFavorites(id: Int) {
+            db.collection("favortios").document(userId ?? "").updateData(["id": FieldValue.arrayRemove([id])])
+        }
 }
+
 

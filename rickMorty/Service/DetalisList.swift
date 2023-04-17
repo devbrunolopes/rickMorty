@@ -11,7 +11,7 @@ protocol DetalisListProtocol: GenericService {
     func getDetalis(id: Int, completion: @escaping completion<Result?>)
 }
 
-class DetalisService: DetalisListProtocol {
+class DetalisList: DetalisListProtocol {
     func getDetalis(id: Int, completion: @escaping completion<Result?>) {
         
         let urlString: String = "https://rickandmortyapi.com/api/character/\(id)"
@@ -23,7 +23,7 @@ class DetalisService: DetalisListProtocol {
                 let result = try JSONDecoder().decode(Result.self, from: data)
                 completion(result, nil)
             } catch {
-                print(error)
+                completion(nil, Error.errorDescription(message: "deu ruim", Error: error))
             }
         }
         task.resume()

@@ -22,10 +22,11 @@ class RegisterViewModel {
     
     var auth: Auth?
     var db = Firestore.firestore()
+    var userId = Auth.auth().currentUser
     
     func createUser(email: String, password: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-            completion(error)
+            //criar alert
         }
     }
     
@@ -48,6 +49,7 @@ class RegisterViewModel {
             "name": name,
             "email": email
         ])
+        self.creatCollection(id: id)
     }
     
     func checkEmailFirebase(email: String, label: UILabel) {
@@ -62,4 +64,14 @@ class RegisterViewModel {
             }
         }
     }
-}
+    
+    func creatCollection(id:String){
+        let dataPath = "favortios/\(id)"
+        let docRef = db.document(dataPath)
+        docRef.setData([
+            "id": []
+            ])
+        }
+    }
+    
+

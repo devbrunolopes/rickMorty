@@ -19,7 +19,7 @@ class DetalisScrren: UIView {
         self.delegate = delegate
     }
     
-    var heartFull = false
+    var buttonFavoritos = false
     
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
@@ -118,16 +118,13 @@ class DetalisScrren: UIView {
         delegate?.actionButtonFavoritos()
     }
     
-    func actionHeartButton(button: UIButton){
-        if (heartFull == false){
-            
-            button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            button.tintColor = .red
-            heartFull = true
+    func actionHeartButton(){
+        if buttonFavoritos {
+            heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            buttonFavoritos = false
         } else {
-            button.setImage(UIImage(systemName: "heart"), for: .normal)
-            button.tintColor = .red
-            heartFull = false
+            heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            buttonFavoritos = true
         }
     }
     

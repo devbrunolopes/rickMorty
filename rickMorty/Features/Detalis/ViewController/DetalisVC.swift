@@ -7,18 +7,18 @@
 
 import UIKit
 
-protocol DetalisVCFavoritosProtocol: AnyObject {
-    func addFavoritos()
+protocol FavoritosButton: AnyObject {
+    func actionFavortiosButton(cell: UICollectionViewCell, isActive: Bool)
 }
 
 class DetalisVC: UIViewController {
     
-    var delegate: DetalisVCFavoritosProtocol?
     var screen: DetalisScrren?
     var viewModel: DetalisViewModel = DetalisViewModel()
-    var service: DetalisService = DetalisService()
-    var id: Int = 1
-    var heartFull = false
+    var service: DetalisList = DetalisList()
+    var id: Int = 100
+    var isFavorito = false
+    var delegate: FavoritosButton?
     
     override func loadView() {
         screen = DetalisScrren()
@@ -31,12 +31,29 @@ class DetalisVC: UIViewController {
         viewModel.fetcDetails(id: id)
         viewModel.delegate(delegate: self)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        teste(isFavorite: isFavorito)
+    }
+    
+    func teste(isFavorite: Bool){
+        if isFavorite {
+            screen?.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            screen?.buttonFavoritos = true
+        }
+    }
 }
 
 //MARK: - DetalisScrrenProtocol
 
 extension DetalisVC: DetalisScrrenProtocol {
     func actionButtonFavoritos() {
+        screen?.actionHeartButton()
+        if screen?.buttonFavoritos == true {
+            viewModel.saveFovrites(id: id)
+        } else {
+            viewModel.removeFavorites(id: id)
+        }
     }
     
     func actionButtonBack() {
@@ -49,6 +66,7 @@ extension DetalisVC: DetalisViewModelProtocol{
     func requisicaoError() {
         DispatchQueue.main.async {
             let vc: ErrorGenericVC = ErrorGenericVC()
+            vc.errorGenericProtocol = self
             self.present(vc, animated: true)
         }
     }
@@ -57,5 +75,14 @@ extension DetalisVC: DetalisViewModelProtocol{
         DispatchQueue.main.async {
             self.screen?.setupView(data: self.viewModel.data)
         }
+    }
+}
+
+//MARK: - ErrorGenericScreenProtocol
+
+extension DetalisVC: ErrorGenericScreenProtocol{
+    func actionReloadHome() {
+        viewModel.fetcDetails(id: id)
+        dismiss(animated: true)
     }
 }

@@ -6,10 +6,29 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import Firebase
+import FirebaseAuth
+
+protocol FavoritosViewModelProtocol: Any {
+    func succes()
+    func error()
+    func errorFetchFavoritos()
+}
 
 class FavoritosViewModel: UIViewController {
     
-    var dataPopular: [PopularFavoritos] = []
+    var delegate: FavoritosViewModelProtocol?
+    func delegate(delegate: FavoritosViewModelProtocol){
+        self.delegate = delegate
+    }
+    
+    var dataPopular: [Result] = []
+    var service: FavoritosList = FavoritosList()
+    var stringIds = ""
+    var userId = Auth.auth().currentUser?.uid
+    var db = Firestore.firestore()
+    var favoriteIds: [Int] = []
     
     var numberOfRowsInSectionPopularFavotitos: Int{
         if dataPopular.count == 0 {
@@ -24,8 +43,9 @@ class FavoritosViewModel: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptyCollectionViewCell.identifier, for: indexPath)
             return cell
         }  else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonsCollectionViewCell.identifier, for: indexPath)
-            return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PersonsCollectionViewCell.identifier, for: indexPath) as? PersonsCollectionViewCell
+            cell?.setupCell(data: dataPopular[indexPath.row])
+            return cell ?? UICollectionViewCell()
         }
     }
     
@@ -44,6 +64,57 @@ class FavoritosViewModel: UIViewController {
             collectionView.isUserInteractionEnabled = true
         }
     }
+    
+    func fetchFirebase(){
+        let docRef = Firestore.firestore().collection("favortios").document(self.userId ?? "")
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                let array = data?["id"] as? [Any] ?? []
+                let intArray = array.compactMap { $0 as? Int }
+                let stringArray = intArray.map { String($0) }
+                self.stringIds = stringArray.joined(separator: ",")
+                if stringArray.count == 1 {
+                    self.stringIds = "\(stringArray.joined(separator: ",")),"
+                }
+                DispatchQueue.main.async {
+                    if  self.favoriteIds != [] {
+                        self.fetcDetails(id: self.stringIds)
+                    } else {
+                        self.dataPopular = []
+                        self.delegate?.succes()
+                    }
+                }
+            } else {
+                self.delegate?.errorFetchFavoritos()
+            }
+        }
+    }
+    
+    func fetcDetails(id: String){
+        service.getDetalis(id: id) { result, failure in
+            if let result {
+                self.dataPopular = result
+                self.delegate?.succes()
+            } else {
+                self.delegate?.error()
+            }
+        }
+    }
+    
+    func getCaracterId(indexPath: IndexPath) -> Int {
+        let id = dataPopular[indexPath.row].id ?? 1
+        return id
+    }
+    
+    func savedButtonFavoritos(){
+        let docRef = db.collection("favortios").document(userId ?? "")
+        
+        docRef.getDocument { (document, error) in
+            if let document = document {
+                let data = document.data()
+                self.favoriteIds = data?["id"] as? [Int] ?? []
+            }
+        }
+    }
 }
-
-

@@ -52,7 +52,7 @@ class ProfileVC: UIViewController {
     }
 }
 
-//MARK: Extension ProfileScreenProtocol
+//MARK: - Extension ProfileScreenProtocol
 
 extension ProfileVC: ProfileScreenProtocol {
     func actionEditButton() {
@@ -65,7 +65,7 @@ extension ProfileVC: ProfileScreenProtocol {
     }
 }
 
-// MARK: Extendion UIImagePickerControllerDelegate, UINavigationControllerDelegate
+// MARK: - Extendion UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -78,3 +78,12 @@ extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     }
 }
 
+// MARK: - ProfileViewModelProtocol
+
+extension ProfileVC: ProfileViewModelProtocol {
+    func errorUplodImageProfile() {
+        alert?.getAlert(titulo: "Atenção", mensagem: "Erro ao atualizar a Foto, Tente Novamente!", completion: {
+            self.viewModel.savedImage(image: self.screen?.imageProfile.image ?? UIImage())
+        })
+    }
+}
