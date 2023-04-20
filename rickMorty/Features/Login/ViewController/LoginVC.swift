@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController {
     
     var viewModel: LoginViewModel = LoginViewModel()
     var screen: LoginScreen?
@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
 
 //MARK: - LoginDelegate
 
-extension LoginViewController: LoginDelegate {
+extension LoginVC: LoginDelegate {
     func tappedSinginButton() {
         viewModel.loginFirebase(email: screen?.emailTextField.text ?? "", password: screen?.passwordTextField.text ?? "")
         screen?.hideErrorLabel()
@@ -52,14 +52,14 @@ extension LoginViewController: LoginDelegate {
     }
     
     func tappedForgotPasswordButton() {
-        let vc: ForgotPasswordViewController = ForgotPasswordViewController()
+        let vc: ForgotPasswordVC = ForgotPasswordVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 //MARK: - UITextFieldDelegate
 
-extension LoginViewController: UITextFieldDelegate {
+extension LoginVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.isEqual(self.screen?.emailTextField){
@@ -80,7 +80,7 @@ extension LoginViewController: UITextFieldDelegate {
 
 //MARK: -LoginViewModelProtocol
 
-extension LoginViewController: LoginViewModelProtocol{
+extension LoginVC: LoginViewModelProtocol{
     func sucess() {
         let vc = TabbarViewController()
         navigationController?.pushViewController(vc, animated: true)

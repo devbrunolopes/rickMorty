@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordVC: UIViewController {
     
     var screen: ForgotPasswordScreen?
     var viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
@@ -29,7 +29,7 @@ class ForgotPasswordViewController: UIViewController {
 
 //MARK: -Extensão ActionButton
 
-extension ForgotPasswordViewController: ForgotPasswordDelegate {
+extension ForgotPasswordVC: ForgotPasswordDelegate {
     func tappedSendButton() {
         viewModel.checkEmailFirebase(email: screen?.emailForgotTextField.text ?? "", label: screen?.checkEmailLabel ?? UILabel())
         viewModel.sendPassword(email: screen?.emailForgotTextField.text ?? "")
@@ -42,7 +42,7 @@ extension ForgotPasswordViewController: ForgotPasswordDelegate {
 
 //MARK: Extension TextFields
 
-extension ForgotPasswordViewController: UITextFieldDelegate{
+extension ForgotPasswordVC: UITextFieldDelegate{
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         screen?.validarTextField()
@@ -56,7 +56,7 @@ extension ForgotPasswordViewController: UITextFieldDelegate{
 
 //MARK: Extension ForgotPasswordViewModelProtocol
 
-extension ForgotPasswordViewController: ForgotPasswordViewModelProtocol {
+extension ForgotPasswordVC: ForgotPasswordViewModelProtocol {
     func alertSucess() {
         alert?.getAlert(titulo: "Sucess", mensagem: "Link para redefinir a senha enviado!")
     }
