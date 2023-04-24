@@ -116,5 +116,228 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66C01599-2FE8-4D16-8679-656F1B6C9407"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rickMorty/Features/Home/Cell/HomeTableViewErrorTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "init(style:reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "66C01599-2FE8-4D16-8679-656F1B6C9407 - d3302b6634eb5171"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeTableViewErrorTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; rickMorty.HomeTableViewErrorTableViewCell"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/Cell/HomeTableViewErrorTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "344">
+               </Location>
+               <Location
+                  uuid = "66C01599-2FE8-4D16-8679-656F1B6C9407 - d3302b6634eb5171"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeTableViewErrorTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; rickMorty.HomeTableViewErrorTableViewCell"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/Cell/HomeTableViewErrorTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "348">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD028A75-B33E-4C10-B9B9-C2CFBB63D2AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rickMorty/Features/Home/Cell/HomeTableViewErrorTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "init(style:reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CD028A75-B33E-4C10-B9B9-C2CFBB63D2AB - d3302b6634eb5150"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeTableViewErrorTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; rickMorty.HomeTableViewErrorTableViewCell"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/Cell/HomeTableViewErrorTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "368">
+               </Location>
+               <Location
+                  uuid = "CD028A75-B33E-4C10-B9B9-C2CFBB63D2AB - d3302b6634eb5150"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeTableViewErrorTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; rickMorty.HomeTableViewErrorTableViewCell"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/Cell/HomeTableViewErrorTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "372">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B967AE8E-8DEA-41BC-8188-337D7A61531B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rickMorty/Features/Home/ViewController/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "searchBarSearchButtonClicked(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B967AE8E-8DEA-41BC-8188-337D7A61531B - 61e9e1024fdf1b59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeVC.searchBar(_: __C.UISearchBar, textDidChange: Swift.String) -&gt; ()"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/ViewController/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "B967AE8E-8DEA-41BC-8188-337D7A61531B - 6baba7af137d070e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeVC.searchBarSearchButtonClicked(__C.UISearchBar) -&gt; ()"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/ViewController/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "192">
+               </Location>
+               <Location
+                  uuid = "B967AE8E-8DEA-41BC-8188-337D7A61531B - 6baba7af137d070e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeVC.searchBarSearchButtonClicked(__C.UISearchBar) -&gt; ()"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/ViewController/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "76"
+                  endingLineNumber = "76"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E36A78BC-9E0B-44E4-AD71-E403CCC97B13"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rickMorty/Features/Home/View/HomeScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "hideKeyboard()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4FA11BAF-7840-4786-8246-E09B4A0DCC83"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "rickMorty/Features/Home/ViewController/HomeVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "dismissKeyboard()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4FA11BAF-7840-4786-8246-E09B4A0DCC83 - 1fa2b3f567704eac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeVC.dismissKeyboard() -&gt; ()"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/ViewController/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "272">
+               </Location>
+               <Location
+                  uuid = "4FA11BAF-7840-4786-8246-E09B4A0DCC83 - 1fa2b3f567704eac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "rickMorty.HomeVC.dismissKeyboard() -&gt; ()"
+                  moduleName = "rickMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/franklinstilhano/Desktop/rickMorty/rickMorty/Features/Home/ViewController/HomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

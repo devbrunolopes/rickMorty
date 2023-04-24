@@ -27,7 +27,10 @@ class HomeVC: UIViewController {
         screen?.configSearch(delegate: self)
         viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
         viewModel.delegate(delegate: self)
+        screen?.delegate(delegate: self)
     }
+    
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,7 +47,8 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        viewModel.whichCellShouldShow(tableview: tableView, indexPath: indexPath)
+        viewModel.userShouldInteractWithCollection(tableView: tableView)
+        return viewModel.whichCellShouldShow(tableview: tableView, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -100,3 +104,8 @@ extension HomeVC: ErrorGenericScreenProtocol {
     }
 }
 
+extension HomeVC: HomeScreenProtocol {
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}

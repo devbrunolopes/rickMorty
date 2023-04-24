@@ -92,8 +92,7 @@ class ForgotPasswordScreen: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
-        constraintSettings()
+        setupViewCode()
         configButtonEnable(false)
     }
     
@@ -134,8 +133,12 @@ class ForgotPasswordScreen: UIView {
             self.configButtonEnable(false)
         }
     }
-    
-    private func addViews(){
+}
+
+//MARK: - ViewCode
+
+extension ForgotPasswordScreen: ViewCode {
+    func configElements() {
         addSubview(ForgotPasswordImageView)
         addSubview(backButton)
         addSubview(informationLabel)
@@ -143,10 +146,9 @@ class ForgotPasswordScreen: UIView {
         addSubview(emailForgotTextField)
         addSubview(checkEmailLabel)
         addSubview(sendButton)
-      
     }
     
-    private func constraintSettings(){
+    func configConstraint() {
         NSLayoutConstraint.activate([
             
             ForgotPasswordImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -176,10 +178,8 @@ class ForgotPasswordScreen: UIView {
             sendButton.topAnchor.constraint(equalTo: emailForgotTextField.bottomAnchor, constant: 35),
             sendButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             sendButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            sendButton.heightAnchor.constraint(equalToConstant: 50),
-            
+            sendButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
-
 

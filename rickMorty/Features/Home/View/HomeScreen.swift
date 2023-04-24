@@ -7,7 +7,16 @@
 
 import UIKit
 
+protocol HomeScreenProtocol: AnyObject {
+    func dismissKeyboard()
+}
+
 class HomeScreen: UIView {
+    weak var delegate: HomeScreenProtocol?
+    func delegate(delegate: HomeScreenProtocol){
+        self.delegate = delegate
+    }
+  
     
     lazy var personLabel: UILabel = {
         let label = UILabel()
@@ -43,10 +52,21 @@ class HomeScreen: UIView {
         super.init(frame: frame)
         setupViewCode()
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
+        dismissKeyboard()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func hideKeyboard() {
+        delegate?.dismissKeyboard()
+    }
+    
+    func dismissKeyboard(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        addGestureRecognizer(tapGesture)
     }
     
     func configTableView(delegate: UITableViewDelegate, dataSource: UITableViewDataSource){

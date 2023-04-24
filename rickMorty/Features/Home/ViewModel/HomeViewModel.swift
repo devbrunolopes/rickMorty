@@ -44,7 +44,14 @@ class HomeViewModel: UIViewController {
             return cell ?? UITableViewCell()
             
         }
-        
+    }
+    
+    func userShouldInteractWithCollection(tableView: UITableView) {
+        if dataSearchBar.count == 0 {
+            tableView.isUserInteractionEnabled = false
+        } else {
+            tableView.isUserInteractionEnabled = true
+        }
     }
     
     func fetchHome(tableView: UITableView) {

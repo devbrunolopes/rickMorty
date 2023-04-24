@@ -229,7 +229,7 @@ class RegisterScreen: UIView {
     }
 }
 
-// MARK: Extension ViewCode
+// MARK: - Extension ViewCode
 
 extension RegisterScreen: ViewCode {
     func configElements() {

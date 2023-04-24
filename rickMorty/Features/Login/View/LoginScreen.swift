@@ -72,7 +72,7 @@ class LoginScreen: UIView {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Insira sua senha"
         textField.borderStyle = .roundedRect
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .default
         textField.layer.cornerRadius = 10
         textField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
         textField.isSecureTextEntry = true
@@ -118,6 +118,16 @@ class LoginScreen: UIView {
         return label
     }()
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViewCode()
+        buttonDisabled()
+        hideErrorLabel()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     @objc func tappedForgotPasswordButton(){
         delegate?.tappedForgotPasswordButton()
@@ -131,22 +141,15 @@ class LoginScreen: UIView {
         delegate?.tappedSinginButton()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addViews()
-        constraintsSettings()
-        buttonDisabled()
-        hideErrorLabel()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func settingsTextField(delegate: UITextFieldDelegate){
+        emailTextField.delegate = delegate
+        passwordTextField.delegate = delegate
     }
     
     func buttonDisabled(){
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-
+        
         if !email.isEmpty && !password.isEmpty {
             singinButton.setTitleColor(.black, for: .normal)
             singinButton.backgroundColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
@@ -167,12 +170,12 @@ class LoginScreen: UIView {
         hiddenEmailLabel.isHidden = false
     }
     
-    func settingsTextField(delegate: UITextFieldDelegate){
-        emailTextField.delegate = delegate
-        passwordTextField.delegate = delegate
-    }
-    
-    private func addViews(){
+}
+
+//MARK: - ViewCode
+
+extension LoginScreen: ViewCode {
+    func configElements() {
         addSubview(fundoImageView)
         addSubview(rickAndMortyImageView)
         addSubview(emailLabel)
@@ -185,7 +188,7 @@ class LoginScreen: UIView {
         addSubview(hiddenEmailLabel)
     }
     
-    private func constraintsSettings(){
+    func configConstraint() {
         NSLayoutConstraint.activate([
             
             fundoImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -200,7 +203,7 @@ class LoginScreen: UIView {
             
             emailLabel.topAnchor.constraint(equalTo: rickAndMortyImageView.bottomAnchor, constant: 15),
             emailLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25),
-    
+            
             emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10),
             emailTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             emailTextField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
