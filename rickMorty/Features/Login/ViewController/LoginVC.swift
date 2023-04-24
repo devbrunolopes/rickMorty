@@ -23,14 +23,14 @@ class LoginVC: UIViewController {
         screen?.settingsTextField(delegate: self)
         screen?.singinButton.isEnabled = false
         viewModel.setupDelegate(delegate: self)
-        screen?.emailTextField.text = Utils.getUserDefaults(key: "1") as? String
-        screen?.passwordTextField.text = Utils.getUserDefaults(key: "2") as? String
+        screen?.testeSenha()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         screen?.buttonDisabled()
+        screen?.passwordTextField.text = screen?.passwordGlobal
     }
 }
 
@@ -40,7 +40,6 @@ extension LoginVC: LoginDelegate {
     func tappedSinginButton() {
         viewModel.loginFirebase(email: screen?.emailTextField.text ?? "", password: screen?.passwordTextField.text ?? "")
         screen?.hideErrorLabel()
-        screen?.savedDadosUsers()
     }
     
     func tappedRegisterButton() {

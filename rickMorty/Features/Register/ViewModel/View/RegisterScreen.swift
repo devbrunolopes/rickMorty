@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Security
 
 protocol RegisterScreenProtocol: AnyObject {
     func actionButtonBack()
@@ -227,6 +228,41 @@ class RegisterScreen: UIView {
             return true
         }
     }
+    
+    func savedDadosUsers(){
+//        guard let passwordData = confirmPasswordTextField.text?.data(using: .utf8) else {
+//            print("Não foi possível converter o valor do campo de texto em dados.")
+//            return
+//        }
+//
+//        let keychainKey = "3"
+//
+//        if KeychainService.save(key: keychainKey, data: passwordData) {
+//            print("Senha salva no Keychain com sucesso.")
+//        } else {
+//            print("Não foi possível salvar a senha no Keychain.")
+//        }
+//    }
+        
+        let userEmail = "example@example.com"
+        let serviceName = "MyApp"
+        let userPassword = "password123"
+
+        // Cria uma chave única combinando o e-mail do usuário e o nome do serviço
+        let account = "\(userEmail)-\(serviceName)"
+
+        // Cria um novo objeto KeychainPasswordItem com o nome do serviço e a chave única
+        let passwordItem = KeychainPasswordItem(service: serviceName, account: account)
+
+        do {
+            // Salva a senha do usuário usando o método savePassword
+            try passwordItem.savePassword(userPassword)
+            print("Senha salva com sucesso no Keychain")
+        } catch {
+            // Se ocorrer um erro, exibe uma mensagem de erro
+            fatalError("Não foi possível salvar a senha do usuário \(userEmail). Erro: \(error)")
+        }
+
 }
 
 // MARK: - Extension ViewCode

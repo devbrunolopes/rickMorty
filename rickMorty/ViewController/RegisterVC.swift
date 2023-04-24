@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Security
+
 
 class RegisterVC: UIViewController {
     
@@ -44,6 +46,7 @@ extension RegisterVC: RegisterScreenProtocol {
     func actionRegisterButton() {
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
         viewModel.checkEmailFirebase(email: screen?.emailTextField.text ?? "", label: screen?.checkEmailLabel ?? UILabel())
+        screen?.savedDadosUsers()
     }
 }
 
