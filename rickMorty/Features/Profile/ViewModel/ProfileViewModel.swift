@@ -83,4 +83,14 @@ class ProfileViewModel: UIViewController {
             }
         }
     }
+    
+    func desconectFirebase(){
+        do {
+            try Auth.auth().signOut()
+            // usuário desconectado com sucesso
+            
+        } catch let signOutError as NSError {
+            print("Erro ao desconectar o usuário: %@", signOutError)
+        }
+    }
 }

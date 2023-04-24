@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,18 +15,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        FirebaseApp.configure()
         
         if #available(iOS 15, *) {
             UINavigationBar.appearance().scrollEdgeAppearance = UINavigationBarAppearance()
         }
-        
-        let window = UIWindow(windowScene: windowScene)
-        let vc: LoginVC = LoginVC()
-        let navVC = UINavigationController(rootViewController: vc)
-        window.rootViewController = navVC
-        window.makeKeyAndVisible()
-        self.window = window
+         
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let window = UIWindow(windowScene: windowScene)
+            let vc: TabbarViewController = TabbarViewController()
+            let navVC = UINavigationController(rootViewController: vc)
+            window.rootViewController = navVC
+            window.makeKeyAndVisible()
+            self.window = window
+        } else {
+            let window = UIWindow(windowScene: windowScene)
+            let vc: LoginVC = LoginVC()
+            let navVC = UINavigationController(rootViewController: vc)
+            window.rootViewController = navVC
+            window.makeKeyAndVisible()
+            self.window = window
+        }
     }
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

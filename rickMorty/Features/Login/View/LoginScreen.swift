@@ -78,7 +78,7 @@ class LoginScreen: UIView {
         textField.keyboardType = .default
         textField.layer.cornerRadius = 10
         textField.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.6)
-//        textField.isSecureTextEntry = true
+        textField.isSecureTextEntry = true
         textField.clipsToBounds = true
         textField.autocapitalizationType = .none
         return textField
@@ -170,18 +170,6 @@ class LoginScreen: UIView {
     func showErrorLabel(){
         hiddenEmailLabel.isHidden = false
     }
-        
-    func testeSenha(){
-        if let passwordData = KeychainService.load(key: "3"),
-           let password = String(data: passwordData, encoding: .utf8) {
-            print("A senha do usuário é: \(password)")
-            self.passwordGlobal = password
-
-        } else {
-            print("Não foi possível carregar a senha do Keychain.")
-        }
-    }
-    
 }
 
 //MARK: - ViewCode

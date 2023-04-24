@@ -23,7 +23,6 @@ class LoginVC: UIViewController {
         screen?.settingsTextField(delegate: self)
         screen?.singinButton.isEnabled = false
         viewModel.setupDelegate(delegate: self)
-        screen?.testeSenha()
     }
     
     override func viewWillAppear(_ animated: Bool) {

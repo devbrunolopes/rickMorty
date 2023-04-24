@@ -22,7 +22,6 @@
 		EB122BA829A54BCF00F43ED1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */; };
 		EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */; };
 		EB16953E29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB16953D29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift */; };
-		EB16954529F6F816004929DB /* Ultis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB16954429F6F816004929DB /* Ultis.swift */; };
 		EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB283CBD29A1B5B30094B3B7 /* Alert.swift */; };
 		EB2B4E2A29CA160700660286 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EB2B4E2929CA160700660286 /* AlamofireImage */; };
 		EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B4E4329D1DB7800660286 /* GenericService.swift */; };
@@ -74,7 +73,6 @@
 		EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EB16953D29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewErrorTableViewCell.swift; sourceTree = "<group>"; };
-		EB16954429F6F816004929DB /* Ultis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ultis.swift; sourceTree = "<group>"; };
 		EB283CBD29A1B5B30094B3B7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		EB2B4E4329D1DB7800660286 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
 		EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRickAndMorty.swift; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 		BE8F153B299427A30061E432 /* rickMorty */ = {
 			isa = PBXGroup;
 			children = (
-				EB16954329F6F804004929DB /* Ultis */,
 				EB31C99829D5BA650007C054 /* ErrorGeneric */,
 				EB2B4E4229D1DB6000660286 /* Service */,
 				EB283CBC29A1B5A20094B3B7 /* Alerts */,
@@ -191,14 +188,6 @@
 				EBCE682429A92FA3006D1A8D /* Cell */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		EB16954329F6F804004929DB /* Ultis */ = {
-			isa = PBXGroup;
-			children = (
-				EB16954429F6F816004929DB /* Ultis.swift */,
-			);
-			path = Ultis;
 			sourceTree = "<group>";
 		};
 		EB283CBC29A1B5A20094B3B7 /* Alerts */ = {
@@ -576,7 +565,6 @@
 				EBAA25C729B910B0005BB08F /* FavoritesVC.swift in Sources */,
 				EB47C78D29AA8FC800D3B6E5 /* DetalisScrren.swift in Sources */,
 				EB31C99C29D5BAC20007C054 /* ErrorGenericScreen.swift in Sources */,
-				EB16954529F6F816004929DB /* Ultis.swift in Sources */,
 				5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */,
 				EBB26D9B29C248F30079AF6E /* ProfileVC.swift in Sources */,
 				EB2B4E4729D1DC2E00660286 /* ListRickAndMorty.swift in Sources */,

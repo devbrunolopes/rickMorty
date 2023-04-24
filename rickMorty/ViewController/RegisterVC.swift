@@ -46,7 +46,6 @@ extension RegisterVC: RegisterScreenProtocol {
     func actionRegisterButton() {
         viewModel.createUserDados(name: screen?.nameTextField.text ?? "", email: screen?.emailTextField.text ?? "", senha: screen?.passwordTextField.text ?? "")
         viewModel.checkEmailFirebase(email: screen?.emailTextField.text ?? "", label: screen?.checkEmailLabel ?? UILabel())
-        screen?.savedDadosUsers()
     }
 }
 
@@ -54,7 +53,7 @@ extension RegisterVC: RegisterScreenProtocol {
 
 extension RegisterVC: UITextFieldDelegate {
     
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         screen?.configButtonEnable()
     }
@@ -63,7 +62,7 @@ extension RegisterVC: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
+    
 }
 
 //MARK: RegisterViewModelProtocol
