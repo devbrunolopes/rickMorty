@@ -78,7 +78,6 @@ class LoginScreen: UIView {
         textField.isSecureTextEntry = true
         textField.clipsToBounds = true
         textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -121,7 +120,6 @@ class LoginScreen: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViewCode()
-        buttonDisabled()
         hideErrorLabel()
     }
     
@@ -168,6 +166,11 @@ class LoginScreen: UIView {
     
     func showErrorLabel(){
         hiddenEmailLabel.isHidden = false
+    }
+    
+    func savedDadosUsers(){
+        Utils.saveUserDefaults(value: emailTextField.text ?? "", key: "1")
+        Utils.saveUserDefaults(value: passwordTextField.text ?? "", key: "2")
     }
     
 }

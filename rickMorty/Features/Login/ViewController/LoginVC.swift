@@ -19,22 +19,18 @@ class LoginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingAndColors()
         screen?.delegate(delegate: self)
         screen?.settingsTextField(delegate: self)
         screen?.singinButton.isEnabled = false
         viewModel.setupDelegate(delegate: self)
+        screen?.emailTextField.text = Utils.getUserDefaults(key: "1") as? String
+        screen?.passwordTextField.text = Utils.getUserDefaults(key: "2") as? String
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        screen?.emailTextField.text = ""
-        screen?.passwordTextField.text = ""
-    }
-    
-    func settingAndColors() {
-        view.backgroundColor = .black
+        screen?.buttonDisabled()
     }
 }
 
@@ -44,6 +40,7 @@ extension LoginVC: LoginDelegate {
     func tappedSinginButton() {
         viewModel.loginFirebase(email: screen?.emailTextField.text ?? "", password: screen?.passwordTextField.text ?? "")
         screen?.hideErrorLabel()
+        screen?.savedDadosUsers()
     }
     
     func tappedRegisterButton() {
@@ -73,7 +70,6 @@ extension LoginVC: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         screen?.buttonDisabled()
-
     }
     
 }
