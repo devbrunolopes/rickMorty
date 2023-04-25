@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C839CFB29942D1E00ECCD91 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839CFA29942D1E00ECCD91 /* LoginViewController.swift */; };
+		5C839CFB29942D1E00ECCD91 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839CFA29942D1E00ECCD91 /* LoginVC.swift */; };
 		5C839D0029942D6400ECCD91 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839CFF29942D6400ECCD91 /* LoginScreen.swift */; };
 		5C839D0629942F1C00ECCD91 /* ForgotPasswordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */; };
 		5C839D0729942F1C00ECCD91 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */; };
-		5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */; };
+		5C839D0829942F1C00ECCD91 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C839D0529942F1C00ECCD91 /* ForgotPasswordVC.swift */; };
 		5CBAE68129ACE2E800C61BC3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBAE68029ACE2E800C61BC3 /* TabbarViewController.swift */; };
 		5CF0D537299BC1AE00492B59 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0D536299BC1AE00492B59 /* LoginViewModel.swift */; };
 		BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8F153C299427A30061E432 /* AppDelegate.swift */; };
@@ -21,6 +21,7 @@
 		EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BA529A54BB900F43ED1 /* HomeVC.swift */; };
 		EB122BA829A54BCF00F43ED1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */; };
 		EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */; };
+		EB16953E29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB16953D29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift */; };
 		EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB283CBD29A1B5B30094B3B7 /* Alert.swift */; };
 		EB2B4E2A29CA160700660286 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EB2B4E2929CA160700660286 /* AlamofireImage */; };
 		EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B4E4329D1DB7800660286 /* GenericService.swift */; };
@@ -55,11 +56,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C839CFA29942D1E00ECCD91 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5C839CFA29942D1E00ECCD91 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		5C839CFF29942D6400ECCD91 /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		5C839D0329942F1C00ECCD91 /* ForgotPasswordScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordScreen.swift; sourceTree = "<group>"; };
 		5C839D0429942F1C00ECCD91 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
-		5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		5C839D0529942F1C00ECCD91 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		5CBAE68029ACE2E800C61BC3 /* TabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
 		5CF0D536299BC1AE00492B59 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		BE8F1539299427A30061E432 /* rickMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rickMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +72,7 @@
 		EB122BA529A54BB900F43ED1 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EB16953D29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewErrorTableViewCell.swift; sourceTree = "<group>"; };
 		EB283CBD29A1B5B30094B3B7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		EB2B4E4329D1DB7800660286 /* GenericService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericService.swift; sourceTree = "<group>"; };
 		EB2B4E4629D1DC2E00660286 /* ListRickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRickAndMorty.swift; sourceTree = "<group>"; };
@@ -303,7 +305,7 @@
 		EBA5A91929BBB9B600C0D988 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5C839D0529942F1C00ECCD91 /* ForgotPasswordViewController.swift */,
+				5C839D0529942F1C00ECCD91 /* ForgotPasswordVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -327,7 +329,7 @@
 		EBA5A91C29BBB9D800C0D988 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5C839CFA29942D1E00ECCD91 /* LoginViewController.swift */,
+				5C839CFA29942D1E00ECCD91 /* LoginVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -449,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				EBCE682529A92FC8006D1A8D /* HomeTableViewCell.swift */,
+				EB16953D29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -570,11 +573,11 @@
 				EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */,
 				EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */,
 				EB122BA629A54BB900F43ED1 /* HomeVC.swift in Sources */,
-				5C839D0829942F1C00ECCD91 /* ForgotPasswordViewController.swift in Sources */,
+				5C839D0829942F1C00ECCD91 /* ForgotPasswordVC.swift in Sources */,
 				EBAA25C929B910C0005BB08F /* FavoritesScreen.swift in Sources */,
 				EBA5A92529BD68DB00C0D988 /* EmptyCollectionViewCell.swift in Sources */,
 				EB47C78F29AA908600D3B6E5 /* DetalisVC.swift in Sources */,
-				5C839CFB29942D1E00ECCD91 /* LoginViewController.swift in Sources */,
+				5C839CFB29942D1E00ECCD91 /* LoginVC.swift in Sources */,
 				EB4BCD3B29D1F27900C2C5D4 /* DetalisViewModel.swift in Sources */,
 				EBB26DA829C503250079AF6E /* ProfileViewModel.swift in Sources */,
 				EBCE682629A92FC8006D1A8D /* HomeTableViewCell.swift in Sources */,
@@ -586,6 +589,7 @@
 				EB90EA5329942D0900FC36CF /* RegisterVC.swift in Sources */,
 				EBB26D9D29C249200079AF6E /* ProfileScreen.swift in Sources */,
 				BE8F153D299427A30061E432 /* AppDelegate.swift in Sources */,
+				EB16953E29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift in Sources */,
 				EB5A61F02995722D00F6C196 /* RegisterViewModel.swift in Sources */,
 				5CF0D537299BC1AE00492B59 /* LoginViewModel.swift in Sources */,
 				EBAA25CE29BBACEA005BB08F /* PersonsCollectionViewCell.swift in Sources */,
@@ -737,12 +741,13 @@
 				DEVELOPMENT_TEAM = ZA8R8PH29T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rickMorty/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RickAndMorty;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,12 +771,13 @@
 				DEVELOPMENT_TEAM = ZA8R8PH29T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = rickMorty/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = RickAndMorty;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

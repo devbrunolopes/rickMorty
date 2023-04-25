@@ -24,7 +24,6 @@ class DetalisScrren: UIView {
     lazy var imagePerson: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "imageHome")
         image.clipsToBounds = true
         image.layer.cornerRadius = 12
         return image
@@ -48,10 +47,18 @@ class DetalisScrren: UIView {
         return button
     }()
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let loading = UIActivityIndicatorView()
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        loading.style = .large
+        loading.color = .white
+        loading.startAnimating()
+        return loading
+    }()
+    
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Descrição do Personagem"
         label.textColor = UIColor(red: 81/255, green: 179/255, blue: 201/255, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
@@ -136,6 +143,7 @@ class DetalisScrren: UIView {
         localizinonLabel.text = "Localizacao: \(data[0].location?.name ?? "")"
         let url = URL(string: "\(data[0].image ?? "")") ?? URL(fileURLWithPath: "")
         imagePerson.af.setImage(withURL: url)
+        descriptionLabel.text = "Descrição do Personagem"
     }
 }
 
@@ -146,6 +154,7 @@ extension DetalisScrren: ViewCode {
         addSubview(imagePerson)
         addSubview(backButton)
         addSubview(heartButton)
+        addSubview(activityIndicator)
         addSubview(descriptionLabel)
         addSubview(nameLabel)
         addSubview(spaceLabel)
@@ -171,6 +180,9 @@ extension DetalisScrren: ViewCode {
             heartButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -15),
             heartButton.heightAnchor.constraint(equalToConstant: 20),
             heartButton.widthAnchor.constraint(equalToConstant: 20),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
             
             descriptionLabel.topAnchor.constraint(equalTo: imagePerson.bottomAnchor,constant: 70),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 20),

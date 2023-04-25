@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Security
+
 
 class RegisterVC: UIViewController {
     
@@ -51,7 +53,7 @@ extension RegisterVC: RegisterScreenProtocol {
 
 extension RegisterVC: UITextFieldDelegate {
     
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
         screen?.configButtonEnable()
     }
@@ -60,7 +62,7 @@ extension RegisterVC: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-
+    
 }
 
 //MARK: RegisterViewModelProtocol

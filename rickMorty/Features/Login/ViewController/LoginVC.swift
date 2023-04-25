@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginVC: UIViewController {
     
     var viewModel: LoginViewModel = LoginViewModel()
     var screen: LoginScreen?
@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingAndColors()
         screen?.delegate(delegate: self)
         screen?.settingsTextField(delegate: self)
         screen?.singinButton.isEnabled = false
@@ -29,18 +28,14 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        screen?.emailTextField.text = ""
-        screen?.passwordTextField.text = ""
-    }
-    
-    func settingAndColors() {
-        view.backgroundColor = .black
+        screen?.buttonDisabled()
+        screen?.passwordTextField.text = screen?.passwordGlobal
     }
 }
 
 //MARK: - LoginDelegate
 
-extension LoginViewController: LoginDelegate {
+extension LoginVC: LoginDelegate {
     func tappedSinginButton() {
         viewModel.loginFirebase(email: screen?.emailTextField.text ?? "", password: screen?.passwordTextField.text ?? "")
         screen?.hideErrorLabel()
@@ -52,14 +47,14 @@ extension LoginViewController: LoginDelegate {
     }
     
     func tappedForgotPasswordButton() {
-        let vc: ForgotPasswordViewController = ForgotPasswordViewController()
+        let vc: ForgotPasswordVC = ForgotPasswordVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 //MARK: - UITextFieldDelegate
 
-extension LoginViewController: UITextFieldDelegate {
+extension LoginVC: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.isEqual(self.screen?.emailTextField){
@@ -73,14 +68,13 @@ extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         screen?.buttonDisabled()
-
     }
     
 }
 
 //MARK: -LoginViewModelProtocol
 
-extension LoginViewController: LoginViewModelProtocol{
+extension LoginVC: LoginViewModelProtocol{
     func sucess() {
         let vc = TabbarViewController()
         navigationController?.pushViewController(vc, animated: true)

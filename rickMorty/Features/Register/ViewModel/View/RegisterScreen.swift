@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Security
 
 protocol RegisterScreenProtocol: AnyObject {
     func actionButtonBack()
@@ -229,7 +230,7 @@ class RegisterScreen: UIView {
     }
 }
 
-// MARK: Extension ViewCode
+// MARK: - Extension ViewCode
 
 extension RegisterScreen: ViewCode {
     func configElements() {

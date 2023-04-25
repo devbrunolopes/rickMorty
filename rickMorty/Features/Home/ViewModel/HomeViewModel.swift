@@ -25,15 +25,40 @@ class HomeViewModel: UIViewController {
     var db = Firestore.firestore()
     var userId = Auth.auth().currentUser?.uid
     var favoriteIds: [Int] = []
+    var dataSearchBar: [Result] = []
     
     var numberOfRowsInSection: Int{
-        return data.count
+        if dataSearchBar.count == 0 {
+            return 1
+        }
+        return dataSearchBar.count
+    }
+    
+    func whichCellShouldShow(tableview: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        if dataSearchBar.count == 0 {
+            let cell: HomeTableViewErrorTableViewCell? = tableview.dequeueReusableCell(withIdentifier: HomeTableViewErrorTableViewCell.identifier, for: indexPath) as? HomeTableViewErrorTableViewCell
+            return cell ?? UITableViewCell()
+        } else {
+            let cell: HomeTableViewCell? = tableview.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
+            cell?.setupCell(data: dataSearchBar[indexPath.row])
+            return cell ?? UITableViewCell()
+            
+        }
+    }
+    
+    func userShouldInteractWithCollection(tableView: UITableView) {
+        if dataSearchBar.count == 0 {
+            tableView.isUserInteractionEnabled = false
+        } else {
+            tableView.isUserInteractionEnabled = true
+        }
     }
     
     func fetchHome(tableView: UITableView) {
         service.getHome { result, failure in
             if let result = result{
                 self.data = result
+                self.dataSearchBar = self.data
                 self.delegate?.requisicaoSucces()
             } else {
                 self.delegate?.requisicaoError()
@@ -42,7 +67,7 @@ class HomeViewModel: UIViewController {
     }
     
     func getCaracterId(indexPath: IndexPath) -> Int {
-        let id = data[indexPath.row].id ?? 1
+        let id = dataSearchBar[indexPath.row].id ?? 1
         return id
     }
     
@@ -56,4 +81,19 @@ class HomeViewModel: UIViewController {
             }
         }
     }
+    
+    func searchBarPesquisa(searchText: String, tableView: UITableView){
+        dataSearchBar = []
+        if searchText.isEmpty {
+            fetchHome(tableView: tableView)
+        } else {
+            for value in data {
+                if value.name?.contains(searchText) ?? true {
+                    dataSearchBar.append(value)
+                }
+                tableView.reloadData()
+            }
+        }
+    }
 }
+

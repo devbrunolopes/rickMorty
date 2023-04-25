@@ -33,10 +33,10 @@ class DetalisVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        teste(isFavorite: isFavorito)
+        favoritosFull(isFavorite: isFavorito)
     }
     
-    func teste(isFavorite: Bool){
+    func favoritosFull(isFavorite: Bool){
         if isFavorite {
             screen?.heartButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             screen?.buttonFavoritos = true
@@ -72,8 +72,9 @@ extension DetalisVC: DetalisViewModelProtocol{
     }
     
     func requisicaoSucces() {
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.screen?.setupView(data: self.viewModel.data)
+            self.screen?.activityIndicator.stopAnimating()
         }
     }
 }

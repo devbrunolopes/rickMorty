@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileVC: UIViewController {
     
@@ -60,7 +61,8 @@ extension ProfileVC: ProfileScreenProtocol {
     }
     
     func actionEndButton() {
-        let vc:LoginViewController = LoginViewController()
+        viewModel.desconectFirebase()
+        let vc:LoginVC = LoginVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

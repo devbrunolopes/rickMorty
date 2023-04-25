@@ -24,9 +24,13 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         screen?.configTableView(delegate: self, dataSource: self)
+        screen?.configSearch(delegate: self)
         viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
         viewModel.delegate(delegate: self)
+        screen?.delegate(delegate: self)
     }
+    
+   
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,17 +45,16 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: HomeTableViewCell? = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
-        cell?.setupCell(data: viewModel.data[indexPath.row])
-        return cell ?? UITableViewCell()
+        viewModel.userShouldInteractWithCollection(tableView: tableView)
+        return viewModel.whichCellShouldShow(tableview: tableView, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
- 
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc: DetalisVC = DetalisVC()
         vc.id = viewModel.getCaracterId(indexPath: indexPath)
@@ -59,6 +62,18 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             vc.isFavorito = true
         }
         self.navigationController?.pushViewController(vc, animated: false)
+    }
+}
+
+//MARK: - UISearchBarDelegate
+
+extension HomeVC: UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchBarPesquisa(searchText: searchText, tableView: screen?.tableView ?? UITableView())
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        screen?.addSearch.resignFirstResponder()
     }
 }
 
@@ -86,5 +101,11 @@ extension HomeVC: ErrorGenericScreenProtocol {
     func actionReloadHome() {
         viewModel.fetchHome(tableView: screen?.tableView ?? UITableView())
         dismiss(animated: true)
+    }
+}
+
+extension HomeVC: HomeScreenProtocol {
+    func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
