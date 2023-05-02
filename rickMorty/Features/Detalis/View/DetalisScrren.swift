@@ -111,6 +111,7 @@ class DetalisScrren: UIView {
         super.init(frame: frame)
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
@@ -140,11 +141,44 @@ class DetalisScrren: UIView {
         spaceLabel.text = "Specie: \(data[0].species ?? "Specie:")"
         statusLabel.text = "Status: \(data[0].status ?? "Status:")"
         generoLabel.text = "Genero: \(data[0].gender ?? " Genero:")"
-        localizinonLabel.text = "Localizacao: \(data[0].location?.name ?? "")"
+        localizinonLabel.text = "Localização: \(data[0].location?.name ?? "")"
         let url = URL(string: "\(data[0].image ?? "")") ?? URL(fileURLWithPath: "")
         imagePerson.af.setImage(withURL: url)
         descriptionLabel.text = "Descrição do Personagem"
     }
+    
+    func configAcessibilidade(){
+        activityIndicator.isAccessibilityElement = true
+        backButton.isAccessibilityElement = true
+        heartButton.isAccessibilityElement = true
+        imagePerson.isAccessibilityElement = true
+        descriptionLabel.isAccessibilityElement = true
+        nameLabel.isAccessibilityElement = true
+        spaceLabel.isAccessibilityElement = true
+        statusLabel.isAccessibilityElement = true
+        localizinonLabel.isAccessibilityElement = true
+        
+        activityIndicator.accessibilityLabel = "Tela de Carregamento"
+        backButton.accessibilityLabel = "Voltar"
+        heartButton.accessibilityLabel = "Salvar ou remover Favoritos"
+        imagePerson.accessibilityLabel = "Imagem do Personagem"
+        
+        activityIndicator.accessibilityTraits = .staticText
+        backButton.accessibilityTraits = .button
+        heartButton.accessibilityTraits = .button
+        imagePerson.accessibilityTraits = .staticText
+        descriptionLabel.accessibilityTraits = .staticText
+        nameLabel.accessibilityTraits = .staticText
+        spaceLabel.accessibilityTraits = .staticText
+        statusLabel.accessibilityTraits = .staticText
+        localizinonLabel.accessibilityTraits = .staticText
+
+        accessibilityElements = [activityIndicator,backButton,heartButton,imagePerson,descriptionLabel,nameLabel,spaceLabel,localizinonLabel,statusLabel,generoLabel]
+        
+    }
+    
+        
+    
 }
 
 //MARK: -  ViewCode

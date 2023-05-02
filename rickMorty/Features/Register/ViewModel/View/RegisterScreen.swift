@@ -305,11 +305,7 @@ extension RegisterScreen: ViewCode {
             registerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
             registerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 30),
             registerButton.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -30),
-            registerButton.heightAnchor.constraint(equalToConstant: 50),
-            
+            registerButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }
-
-
-

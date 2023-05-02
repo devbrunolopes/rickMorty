@@ -106,6 +106,7 @@ class ProfileScreen: UIView {
         super.init(frame: frame)
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
+        configAcessebilidade()
     }
     
     required init?(coder: NSCoder) {
@@ -118,6 +119,35 @@ class ProfileScreen: UIView {
     
     @objc func tappedEnd(){
         delegate?.actionEndButton()
+    }
+    
+    func configAcessebilidade(){
+        profileLabel.isAccessibilityElement = true
+        imageProfile.isAccessibilityElement = true
+        editarButton.isAccessibilityElement = true
+        namelLabel.isAccessibilityElement = true
+        nameTextField.isAccessibilityElement = true
+        emailLabel.isAccessibilityElement = true
+        emailTextField.isAccessibilityElement = true
+        endButton.isAccessibilityElement = true
+        
+        profileLabel.accessibilityLabel = "Perfil"
+        imageProfile.accessibilityLabel = "Imagem do Usuario"
+        editarButton.accessibilityLabel = "Editar foto do Usuario"
+        namelLabel.accessibilityLabel = "Nome"
+        emailLabel.accessibilityLabel = "Email"
+        endButton.accessibilityLabel = "Sair"
+        
+        profileLabel.accessibilityTraits = .staticText
+        imageProfile.accessibilityTraits = .image
+        editarButton.accessibilityTraits = .button
+        namelLabel.accessibilityTraits = .staticText
+        nameTextField.accessibilityTraits = .staticText
+        emailLabel.accessibilityTraits = .staticText
+        emailTextField.accessibilityTraits = .staticText
+        endButton.accessibilityTraits = .button
+        
+        accessibilityElements = [profileLabel, imageProfile, editarButton, namelLabel, nameTextField, emailLabel, emailTextField, endButton]
     }
     
 }

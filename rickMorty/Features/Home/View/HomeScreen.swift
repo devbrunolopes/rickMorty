@@ -53,6 +53,7 @@ class HomeScreen: UIView {
         setupViewCode()
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         dismissKeyboard()
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
@@ -77,6 +78,20 @@ class HomeScreen: UIView {
     func configSearch(delegate: UISearchBarDelegate){
         addSearch.delegate = delegate
     }
+    
+    func configAcessibilidade(){
+        personLabel.isAccessibilityElement = true
+        addSearch.isAccessibilityElement = true
+        
+        addSearch.accessibilityLabel = "Digite o nome de um Personagem, toque duas vezes para abrir o teclado na parte inferior da tela"
+        
+        personLabel.accessibilityTraits = .header
+        addSearch.accessibilityTraits = .searchField
+        tableView.accessibilityTraits = .none
+        
+        accessibilityElements = [personLabel,addSearch,tableView]
+    }
+    
 }
 
 //MARK: - ViewCode
