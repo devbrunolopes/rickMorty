@@ -31,6 +31,7 @@ class PersonsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupViewCode()
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +42,17 @@ class PersonsCollectionViewCell: UICollectionViewCell {
         let url = URL(string: "\(data.image ?? "")") ?? URL(fileURLWithPath: "")
         imagePerson.af.setImage(withURL: url)
     }
+    
+    func configAcessibilidade(){
+        imagePerson.isAccessibilityElement = true
+        
+        imagePerson.accessibilityLabel = "Imagem de um personagem salvo"
+        
+        imagePerson.accessibilityTraits = .button
+        
+        accessibilityElements = [imagePerson]
+    }
+    
 }
 
 //MARK: - ViewCode

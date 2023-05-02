@@ -41,10 +41,24 @@ class EmptyCollectionViewCell: UICollectionViewCell {
         super.init(frame: .zero)
         setupViewCode()
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configAcessibilidade() {
+        emptyLabel.isAccessibilityElement = true
+        imagePerson.isAccessibilityElement = true
+        
+        emptyLabel.accessibilityLabel = "No momento não há nenhum favoritos salvo"
+        imagePerson.accessibilityLabel = "Imagem de um Personagem"
+        
+        emptyLabel.accessibilityTraits = .staticText
+        imagePerson.accessibilityTraits = .staticText
+        
+        accessibilityElements = [emptyLabel, imagePerson]
     }
 }
 

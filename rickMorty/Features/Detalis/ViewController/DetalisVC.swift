@@ -72,7 +72,7 @@ extension DetalisVC: DetalisViewModelProtocol{
     }
     
     func requisicaoSucces() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.screen?.setupView(data: self.viewModel.data)
             self.screen?.activityIndicator.stopAnimating()
         }

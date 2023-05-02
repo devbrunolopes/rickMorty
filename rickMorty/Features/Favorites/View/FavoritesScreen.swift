@@ -38,6 +38,7 @@ class FavoritesScreen: UIView {
         super.init(frame: frame)
         setupViewCode()
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +49,18 @@ class FavoritesScreen: UIView {
         collectionView.delegate = delegate
         collectionView.dataSource = Source
     }
+    
+    func configAcessibilidade(){
+        favoritesLabel.isAccessibilityElement = true
+        
+        favoritesLabel.accessibilityLabel = "Favoritos"
+        
+        favoritesLabel.accessibilityTraits = .header
+        collectionView.accessibilityTraits = .none
+        
+        accessibilityElements = [favoritesLabel,collectionView]
+    }
+    
 }
 
 //MARK: ViewCode

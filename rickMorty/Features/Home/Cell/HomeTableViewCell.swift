@@ -59,6 +59,7 @@ class HomeTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
@@ -84,6 +85,21 @@ class HomeTableViewCell: UITableViewCell {
         specieLabel.text = "Specie: \(data.species ?? "")"
         let url = URL(string: "\(data.image ?? "")") ?? URL(fileURLWithPath: "")
         imagePerson.af.setImage(withURL: url)
+    }
+    
+    func configAcessibilidade(){
+        
+        contentViewHome.isAccessibilityElement = true
+        nameLabel.isAccessibilityElement = true
+        specieLabel.isAccessibilityElement = true
+        
+        contentViewHome.accessibilityLabel = "Selecionado campo Favoritos toque duas vezes para ver Detalhes"
+        
+        nameLabel.accessibilityTraits = .staticText
+        specieLabel.accessibilityTraits = .staticText
+        contentViewHome.accessibilityTraits = .none
+        
+        accessibilityElements = [contentViewHome, nameLabel, specieLabel]
     }
 }
 

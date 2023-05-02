@@ -61,6 +61,14 @@ class LoginScreen: UIView {
         return textField
     }()
     
+    lazy var hiddenEmailLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Usuário e/ou senha incorretos"
+        label.textColor = .red
+        return label
+    }()
+    
     lazy var passwordLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -110,14 +118,6 @@ class LoginScreen: UIView {
         button.setTitleColor(.lightGray, for: .normal)
         button.addTarget(self, action: #selector(tappedregisterButton), for: .touchUpInside)
         return button
-    }()
-    
-    lazy var hiddenEmailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Usuário e/ou senha incorretos"
-        label.textColor = .red
-        return label
     }()
     
     override init(frame: CGRect) {
@@ -180,12 +180,12 @@ extension LoginScreen: ViewCode {
         addSubview(rickAndMortyImageView)
         addSubview(emailLabel)
         addSubview(emailTextField)
+        addSubview(hiddenEmailLabel)
         addSubview(passwordLabel)
         addSubview(passwordTextField)
         addSubview(singinButton)
         addSubview(forgotPasswordButton)
         addSubview(registerButton)
-        addSubview(hiddenEmailLabel)
     }
     
     func configConstraint() {
@@ -228,7 +228,6 @@ extension LoginScreen: ViewCode {
             
             registerButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor , constant: 15),
             registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-            
         ])
     }
 }

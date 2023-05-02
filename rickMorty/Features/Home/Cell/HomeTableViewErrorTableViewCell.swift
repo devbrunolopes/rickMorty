@@ -9,7 +9,7 @@ import UIKit
 
 class HomeTableViewErrorTableViewCell: UITableViewCell {
     
-    lazy var loginLabel: UILabel = {
+    lazy var noPerson: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Personagem não encontrado ☹️"
@@ -27,25 +27,38 @@ class HomeTableViewErrorTableViewCell: UITableViewCell {
         selectionStyle = .none
         backgroundColor = UIColor(red: 48/255, green: 48/255, blue: 47/255, alpha: 1)
         setupViewCode()
+        configAcessibilidade()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+     
+    func configAcessibilidade(){
+        
+        noPerson.isAccessibilityElement = true
+        
+        noPerson.accessibilityLabel = "Personagem não encontrado"
+        
+        noPerson.accessibilityTraits = .staticText
+        
+        accessibilityElements = [noPerson]
+    }
+    
 }
 
 //MARK: - ViewCode
 
 extension HomeTableViewErrorTableViewCell: ViewCode {
     func configElements() {
-        addSubview(loginLabel)
+        addSubview(noPerson)
     }
     
     func configConstraint() {
         NSLayoutConstraint.activate([
-            loginLabel.topAnchor.constraint(equalTo: topAnchor,constant: 150),
-            loginLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 35),
-            loginLabel.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -35)
+            noPerson.topAnchor.constraint(equalTo: topAnchor,constant: 150),
+            noPerson.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 35),
+            noPerson.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -35)
         ])
     }
 }
