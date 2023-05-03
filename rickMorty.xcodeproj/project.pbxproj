@@ -22,6 +22,7 @@
 		EB122BA829A54BCF00F43ED1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BA729A54BCF00F43ED1 /* HomeScreen.swift */; };
 		EB122BAF29A5836300F43ED1 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB122BAE29A5836300F43ED1 /* HomeViewModel.swift */; };
 		EB16953E29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB16953D29EDA4A5004929DB /* HomeTableViewErrorTableViewCell.swift */; };
+		EB240B722A02EB78008D51ED /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EB240B712A02EB78008D51ED /* AlamofireImage */; };
 		EB283CBE29A1B5B30094B3B7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB283CBD29A1B5B30094B3B7 /* Alert.swift */; };
 		EB2B4E2A29CA160700660286 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EB2B4E2929CA160700660286 /* AlamofireImage */; };
 		EB2B4E4429D1DB7800660286 /* GenericService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2B4E4329D1DB7800660286 /* GenericService.swift */; };
@@ -65,7 +66,7 @@
 		EB9B7BBA2A018BC700E2F5F2 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EB9B7BB92A018BC700E2F5F2 /* FirebaseRemoteConfigSwift */; };
 		EB9B7BBC2A018BC700E2F5F2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EB9B7BBB2A018BC700E2F5F2 /* FirebaseStorage */; };
 		EB9B7BBE2A018BC700E2F5F2 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EB9B7BBD2A018BC700E2F5F2 /* FirebaseStorageCombine-Community */; };
-		EB9B7BC62A018BFD00E2F5F2 /* rickMortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7BC52A018BFD00E2F5F2 /* rickMortyTests.swift */; };
+		EB9B7BC62A018BFD00E2F5F2 /* LoginVCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7BC52A018BFD00E2F5F2 /* LoginVCTest.swift */; };
 		EB9B7BD42A0190F900E2F5F2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EB9B7BD32A0190F900E2F5F2 /* FirebaseAnalytics */; };
 		EB9B7BD62A0190F900E2F5F2 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = EB9B7BD52A0190F900E2F5F2 /* FirebaseAnalyticsOnDeviceConversion */; };
 		EB9B7BD82A0190F900E2F5F2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EB9B7BD72A0190F900E2F5F2 /* FirebaseAnalyticsSwift */; };
@@ -150,7 +151,7 @@
 		EB90EA5229942D0900FC36CF /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		EB90EA5529942ED400FC36CF /* ViewCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewCode.swift; sourceTree = "<group>"; };
 		EB9B7BC32A018BFD00E2F5F2 /* rickMortyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rickMortyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB9B7BC52A018BFD00E2F5F2 /* rickMortyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rickMortyTests.swift; sourceTree = "<group>"; };
+		EB9B7BC52A018BFD00E2F5F2 /* LoginVCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCTest.swift; sourceTree = "<group>"; };
 		EBA5A92429BD68DB00C0D988 /* EmptyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCollectionViewCell.swift; sourceTree = "<group>"; };
 		EBA5A92729BF854200C0D988 /* FavoritosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewModel.swift; sourceTree = "<group>"; };
 		EBAA144329DB4D8300551E2F /* FavoritosList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosList.swift; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 				EB9B7BFC2A0190F900E2F5F2 /* FirebaseMessaging in Frameworks */,
 				EB9B7BE02A0190F900E2F5F2 /* FirebaseAuth in Frameworks */,
 				EB9B7C042A0190F900E2F5F2 /* FirebaseRemoteConfigSwift in Frameworks */,
+				EB240B722A02EB78008D51ED /* AlamofireImage in Frameworks */,
 				EB9B7BE42A0190F900E2F5F2 /* FirebaseCrashlytics in Frameworks */,
 				EB9B7BF62A0190F900E2F5F2 /* FirebaseInAppMessaging-Beta in Frameworks */,
 				EB9B7BE82A0190F900E2F5F2 /* FirebaseDatabaseSwift in Frameworks */,
@@ -396,7 +398,7 @@
 		EB9B7BC42A018BFD00E2F5F2 /* rickMortyTests */ = {
 			isa = PBXGroup;
 			children = (
-				EB9B7BC52A018BFD00E2F5F2 /* rickMortyTests.swift */,
+				EB9B7BC52A018BFD00E2F5F2 /* LoginVCTest.swift */,
 			);
 			path = rickMortyTests;
 			sourceTree = "<group>";
@@ -710,6 +712,7 @@
 				EB9B7C032A0190F900E2F5F2 /* FirebaseRemoteConfigSwift */,
 				EB9B7C052A0190F900E2F5F2 /* FirebaseStorage */,
 				EB9B7C072A0190F900E2F5F2 /* FirebaseStorageCombine-Community */,
+				EB240B712A02EB78008D51ED /* AlamofireImage */,
 			);
 			productName = rickMortyTests;
 			productReference = EB9B7BC32A018BFD00E2F5F2 /* rickMortyTests.xctest */;
@@ -827,7 +830,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB9B7BC62A018BFD00E2F5F2 /* rickMortyTests.swift in Sources */,
+				EB9B7BC62A018BFD00E2F5F2 /* LoginVCTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,6 +1120,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EB240B712A02EB78008D51ED /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB2B4E2829CA160700660286 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
 		EB2B4E2929CA160700660286 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EB2B4E2829CA160700660286 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
